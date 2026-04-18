@@ -24,8 +24,9 @@ Semantics:
 - Else if `query_symbol` matches one of the `aliases`, set
   `resolved_symbol` and `ensembl_gene_id` from that row and set
   `status = "alias"`.
-- Otherwise write `query_symbol` unchanged, leave `resolved_symbol`
-  and `ensembl_gene_id` empty, and set `status = "not_found"`.
+- Otherwise: `status = "not_found"`, `query_symbol` unchanged, and
+  **both** `resolved_symbol` and `ensembl_gene_id` must be empty
+  fields (not the query again, not `NA` or `-`).
 
 Rows must be sorted alphabetically by `query_symbol` (case-sensitive
 ASCII order). Lookup is case-sensitive.

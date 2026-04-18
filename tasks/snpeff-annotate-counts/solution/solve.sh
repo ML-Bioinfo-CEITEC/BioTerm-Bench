@@ -7,14 +7,14 @@ snpEff -noStats \
     -c /app/data/snpeff.config \
     -dataDir /app/data/snpeff_db/data \
     SARSCoV2 \
-    /app/data/variants.vcf > /tmp/annotated.vcf
+    /app/data/variants.vcf > /app/output/annotated.vcf
 
 python3 - <<'PY' > /app/output/impact_counts.json
 import json
 
 impacts = {"HIGH": 0, "MODERATE": 0, "LOW": 0, "MODIFIER": 0}
 total = 0
-with open("/tmp/annotated.vcf") as fh:
+with open("/app/output/annotated.vcf") as fh:
     for line in fh:
         if line.startswith("#") or not line.strip():
             continue

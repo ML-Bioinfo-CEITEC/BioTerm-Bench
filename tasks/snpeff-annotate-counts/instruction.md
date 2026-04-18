@@ -13,11 +13,17 @@ annotation impact classes:
 
     snpEff -noStats -c /app/data/snpeff.config \
         -dataDir /app/data/snpeff_db/data SARSCoV2 \
-        /app/data/variants.vcf > annotated.vcf
+        /app/data/variants.vcf > /app/output/annotated.vcf
 
-For every annotated record, take the **first** `ANN=` subfield and
-read its impact column (the third sub-entry, one of `HIGH`,
-`MODERATE`, `LOW`, `MODIFIER`).
+`snpEff` may print progress or banner lines to stdout before the VCF
+body. When parsing the redirected file, **only treat a line as a VCF
+data record** if it does not start with `#`, is non-empty, and splits
+into at least eight tab-separated columns (`CHROM` … `INFO`). Skip all
+other lines.
+
+For every **such** data line, take the **first** `ANN=` subfield in
+`INFO` and read its impact column (the third pipe-separated sub-entry,
+one of `HIGH`, `MODERATE`, `LOW`, `MODIFIER`).
 
 Produce one output file:
 
