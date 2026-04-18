@@ -31,8 +31,9 @@ run_one() {
   fi
 }
 
-# Cheapest / lighter models first (same order as agreed).
+# Cheapest / lighter models first (OpenAI direct, then OpenRouter).
 run_one full30-gpt54nano-k3 "openai/gpt-5.4-nano"
+run_one full30-gpt54mini-k3 "openai/gpt-5.4-mini"
 run_one full30-mistral2603-k3 "openrouter/mistralai/mistral-small-2603"
 run_one full30-gpt-oss-120b-k3 "openrouter/openai/gpt-oss-120b"
 run_one full30-qwen35122b-k3 "openrouter/qwen/qwen3.5-122b-a10b"
