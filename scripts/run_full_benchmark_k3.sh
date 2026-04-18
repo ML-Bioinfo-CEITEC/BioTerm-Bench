@@ -42,5 +42,12 @@ run_one full30-kimi-k25-k3 "openrouter/moonshotai/kimi-k2.5"
 run_one full30-glm5-k3 "openrouter/z-ai/glm-5"
 run_one full30-glm51-k3 "openrouter/z-ai/glm-5.1"
 
+# Extra OpenRouter sweep (ids verified on openrouter.ai/api/v1/models).
+run_one full30-gemma4-26b-k3 "openrouter/google/gemma-4-26b-a4b-it"
+run_one full30-nemotron3-super-k3 "openrouter/nvidia/nemotron-3-super-120b-a12b"
+run_one full30-minimax-m27-k3 "openrouter/minimax/minimax-m2.7"
+run_one full30-qwen3-32b-k3 "openrouter/qwen/qwen3-32b"
+run_one full30-gemma4-31b-k3 "openrouter/google/gemma-4-31b-it"
+
 echo "" | tee -a "$MASTER"
 echo "=== full benchmark k=3 complete $(date -Iseconds) ===" | tee -a "$MASTER"
