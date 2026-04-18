@@ -1,1 +1,2 @@
 FROM bioterm-rnaseq:v1
+RUN mkdir -p /app/output

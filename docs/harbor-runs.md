@@ -28,14 +28,14 @@ harbor run --path tasks/gtf-to-bed \
 `gtf-to-bed` is the cheapest task in the pack (pure text munging, no
 aligners). Expect ~25 s wall time and ~$0.007 cost for a passing run.
 
-### Full 17-task run
+### Full 30-task run
 
 ```bash
 harbor run --path tasks/ \
     --agent terminus-2 \
     -m openai/gpt-5.4-mini \
     --no-delete -n 4 -k 1 \
-    --job-name full17-gpt54mini
+    --job-name full30-gpt54mini
 ```
 
 - `--no-delete` is mandatory while running with prebuilt images.
@@ -62,7 +62,81 @@ you have a regression in either the task data or the grader.
 
 ## Run log
 
-### 2026-04-18 — `openai/gpt-5.4-mini`, `terminus-2`
+### 2026-04-18 — `openai/gpt-5.4-mini`, `terminus-2`, full 30 tasks
+
+| metric        | value        |
+|---------------|--------------|
+| model         | gpt-5.4-mini |
+| agent         | terminus-2   |
+| tasks         | 30           |
+| attempts      | 1 / task     |
+| wall clock    | 3 m 6 s      |
+| total cost    | $0.2033      |
+| mean reward   | 0.967        |
+| pass / fail   | 29 / 1       |
+
+Per-task cost and outcome:
+
+| task | reward | cost $ | in_tok | out_tok | episodes |
+|---|---:|---:|---:|---:|---:|
+| `bam-depth-histogram` | 1 | 0.0126 | 13446 | 1757 | 5 |
+| `bam-mark-duplicates` | 1 | 0.0074 | 5388 | 1020 | 3 |
+| `bam-sort-index` | 1 | 0.0054 | 4303 | 676 | 3 |
+| `bed-merge-intervals` | 1 | 0.0047 | 2754 | 596 | 2 |
+| `blast-best-hit` | 1 | 0.0075 | 3400 | 1093 | 2 |
+| `fasta-longest-orf` | 1 | 0.0096 | 3505 | 1558 | 2 |
+| `fasta-rename-headers` | 1 | 0.0059 | 3363 | 750 | 2 |
+| `fastq-adapter-count` | 1 | 0.0047 | 2697 | 598 | 2 |
+| `fastq-length-distribution` | 1 | 0.0043 | 2361 | 565 | 2 |
+| `fastqc-quality-report` | 1 | 0.0147 | 18839 | 1365 | 5 |
+| `flagstat-report` | 1 | 0.0063 | 7904 | 736 | 5 |
+| `gtf-gene-lengths` | 1 | 0.0077 | 3081 | 1202 | 2 |
+| `gtf-to-bed` | 1 | 0.0052 | 2546 | 736 | 2 |
+| `id-mapping` | 1 | 0.0070 | 4304 | 839 | 2 |
+| `insert-size-stats` | 1 | 0.0111 | 10236 | 1447 | 4 |
+| `kmer-presence-grid` | 1 | 0.0058 | 3540 | 707 | 2 |
+| `mafft-msa-identity` | 0 | 0.0081 | 3405 | 1231 | 2 |
+| `mpileup-call-snps` | 1 | 0.0043 | 2742 | 488 | 2 |
+| `region-extract` | 1 | 0.0042 | 2544 | 502 | 2 |
+| `sam-to-cram-roundtrip` | 1 | 0.0052 | 2796 | 682 | 2 |
+| `seqkit-fasta-stats` | 1 | 0.0054 | 3012 | 688 | 2 |
+| `snpeff-annotate-counts` | 1 | 0.0076 | 3257 | 1157 | 2 |
+| `tpm-normalize` | 1 | 0.0067 | 3780 | 853 | 2 |
+| `vcf-allele-frequency` | 1 | 0.0047 | 2849 | 574 | 2 |
+| `vcf-filter-quality` | 1 | 0.0051 | 4765 | 609 | 3 |
+| `vcf-intersect-bed` | 1 | 0.0051 | 2669 | 678 | 2 |
+| `vcf-normalize` | 1 | 0.0049 | 2845 | 618 | 2 |
+| `vcf-split-by-type` | 1 | 0.0056 | 4479 | 683 | 3 |
+| `vcf-stats-summary` | 1 | 0.0088 | 6786 | 1083 | 3 |
+| `vcf-to-tsv` | 1 | 0.0077 | 5287 | 828 | 3 |
+
+Failure post-mortem:
+
+- `mafft-msa-identity`: the model attempted
+  `mafft ... > /app/output/seqs.aln.fa` as its very first command,
+  but `/app/output` did not exist on the agent's container, so bash
+  refused the redirection and the task never produced an output.
+  This was a task-environment bug, not a model bug: 4 of the 30
+  trials did not `mkdir -p /app/output` before writing, and we got
+  unlucky on one of them. Fixed by adding
+  `RUN mkdir -p /app/output` to every task's
+  `environment/Dockerfile` (and to the
+  `scripts/new_task.sh` template), so `/app/output` exists as a
+  writable directory the moment the container starts. Re-running
+  the task after the fix produced reward `1.0` in 46 s.
+
+Notable improvements vs the 17-task run on 2026-04-18 earlier in the
+day:
+
+- `id-mapping`: was the "empty-field-on-not-found" failure; agent
+  now reads the instruction correctly and emits the empty fields.
+- `snpeff-annotate-counts`: was the parser `IndexError` failure;
+  agent now uses a more defensive line-splitter.
+
+Both former failures passed without any grader change — the model is
+simply more attentive on the second run, or got a luckier sampling.
+
+### 2026-04-18 — `openai/gpt-5.4-mini`, `terminus-2`, initial 17 tasks
 
 | metric        | value        |
 |---------------|--------------|
@@ -116,8 +190,8 @@ task or image bug.
 Tokens per task scale roughly with instruction length and debugging
 depth. For `openai/gpt-5.4-mini`:
 
-- Cheap run (17 tasks, 1 attempt): ≈ $0.15
-- Reliable run (17 tasks, 3 attempts): ≈ $0.45
+- Cheap run (30 tasks, 1 attempt): ≈ $0.20
+- Reliable run (30 tasks, 3 attempts): ≈ $0.60
 - Expensive models (e.g. `openai/gpt-5-pro`): multiply by the price
   ratio on the [OpenAI pricing page](https://openai.com/pricing).
 

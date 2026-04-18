@@ -103,11 +103,20 @@ agent/verifier pipeline identical to `scripts/run_oracle_all.sh`
 without duplicating any inputs. `scripts/validate_task.py` enforces
 both files.
 
-First external Harbor run (2026-04-18, `terminus-2` +
-`openai/gpt-5.4-mini`, 1 attempt per task) on the initial 17-task
-set cleared **15 / 17 tasks in 1 m 55 s for $0.14** total API spend.
-The 30-task expansion is run via the same workflow; per-run
-breakdowns and failure post-mortems live in
+Two external Harbor runs have been recorded against this task pack on
+2026-04-18 with `terminus-2` + `openai/gpt-5.4-mini`, 1 attempt per
+task:
+
+- Initial 17 tasks: **15 / 17** passed in 1 m 55 s, $0.14 total spend.
+- Full 30 tasks (post-expansion): **29 / 30** passed (mean reward
+  0.967) in 3 m 6 s, $0.20 total spend. The single failure
+  (`mafft-msa-identity`) was a task-environment bug — `/app/output`
+  was not pre-created, so a redirection-first agent strategy
+  crashed before producing any output. Fixed by having every
+  task's `environment/Dockerfile` `RUN mkdir -p /app/output`; a
+  targeted re-run scored 1.0.
+
+Per-task breakdowns and post-mortems live in
 [`docs/harbor-runs.md`](harbor-runs.md).
 
 Operational note: Harbor's default `--delete` flag runs

@@ -59,6 +59,7 @@ mkdir -p "${DEST}"/{solution,tests,data,gold,environment}
 # verifier see /app/data and /gold just like the native oracle runner.
 cat > "${DEST}/environment/Dockerfile" <<EOF
 FROM ${IMAGE}
+RUN mkdir -p /app/output
 EOF
 
 cat > "${DEST}/environment/docker-compose.yaml" <<'EOF'
