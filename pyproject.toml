@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Terminal bioinformatics tasks for open-model tracking (Harbor-compatible dataset)."
 readme = "README.md"
 requires-python = ">=3.11"
-license = { text = "MIT" }
+license = { text = "Apache-2.0" }
 authors = [
     { name = "Vojtech Bystry" },
     { name = "Petr Simecek" },

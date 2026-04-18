@@ -196,4 +196,4 @@ qwen3-coder-next,,,,,,,,,,
 
 ## Authors & license
 
-Vojtech Bystry and Petr Simecek. MIT licensed — see [LICENSE](LICENSE).
+Vojtech Bystry and Petr Simecek. Apache 2.0 licensed — see [LICENSE](LICENSE).

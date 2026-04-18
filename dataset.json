@@ -4,5 +4,5 @@
   "description": "Terminal bioinformatics tasks for open-model tracking",
   "tasks_path": "tasks/",
   "author": "Vojtech Bystry, Petr Simecek",
-  "license": "MIT"
+  "license": "Apache-2.0"
 }
