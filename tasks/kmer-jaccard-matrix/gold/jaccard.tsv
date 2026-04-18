@@ -1,0 +1,15 @@
+genome_01	genome_02	0.130846
+genome_01	genome_03	0.025412
+genome_01	genome_04	0.000000
+genome_01	genome_05	0.000000
+genome_01	genome_06	0.000000
+genome_02	genome_03	0.012890
+genome_02	genome_04	0.000000
+genome_02	genome_05	0.000000
+genome_02	genome_06	0.000000
+genome_03	genome_04	0.000000
+genome_03	genome_05	0.000000
+genome_03	genome_06	0.000000
+genome_04	genome_05	0.042052
+genome_04	genome_06	0.000000
+genome_05	genome_06	0.000000

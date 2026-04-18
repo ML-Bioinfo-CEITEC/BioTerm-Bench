@@ -1,0 +1,8 @@
+{
+  "bases_in": 100000,
+  "bases_out": 69761,
+  "mean_len_in": 100.0,
+  "mean_len_out": 70.4657,
+  "n_in": 1000,
+  "n_out": 990
+}
