@@ -50,8 +50,12 @@ REQUIRED_FILES = [
     "solution/solve.sh",
     "tests/test.sh",
     "tests/check.py",
+    # Harbor compatibility: each task must ship a minimal environment/
+    # (Dockerfile + docker-compose.yaml). See docs/harbor-layout.md.
+    "environment/Dockerfile",
+    "environment/docker-compose.yaml",
 ]
-REQUIRED_DIRS = ["data", "gold"]
+REQUIRED_DIRS = ["data", "gold", "environment"]
 
 REQUIRED_TOML = {
     "metadata": ["author_name", "author_email", "difficulty", "category", "tags"],

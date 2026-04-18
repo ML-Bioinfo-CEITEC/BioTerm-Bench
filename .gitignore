@@ -213,3 +213,6 @@ references/
 results/
 
 build-log/
+
+# Harbor trial output
+jobs/

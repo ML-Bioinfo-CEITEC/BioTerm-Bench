@@ -50,7 +50,24 @@ if [[ -e "${DEST}" ]]; then
     exit 2
 fi
 
-mkdir -p "${DEST}"/{solution,tests,data,gold}
+mkdir -p "${DEST}"/{solution,tests,data,gold,environment}
+
+# Harbor requires each task to have an environment/ directory with either
+# a Dockerfile or docker-compose.yaml. We ship both: a trivial Dockerfile
+# that re-uses the prebuilt image, and a compose override that bind-mounts
+# the task's data/ and gold/ dirs into the container so Harbor's agent and
+# verifier see /app/data and /gold just like the native oracle runner.
+cat > "${DEST}/environment/Dockerfile" <<EOF
+FROM ${IMAGE}
+EOF
+
+cat > "${DEST}/environment/docker-compose.yaml" <<'EOF'
+services:
+  main:
+    volumes:
+      - ../data:/app/data:ro
+      - ../gold:/gold:ro
+EOF
 
 cat > "${DEST}/task.toml" <<EOF
 version = "1.0"
