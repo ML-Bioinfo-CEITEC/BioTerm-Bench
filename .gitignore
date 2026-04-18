@@ -208,11 +208,6 @@ __marimo__/
 
 # BioTerm-Bench: reference data bundles (baked into Docker images, not committed)
 references/
-*.fai
-*.gzi
-*.bai
-*.csi
-*.tbi
 
 # BioTerm-Bench: local results from model runs
 results/
