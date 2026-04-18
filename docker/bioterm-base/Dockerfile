@@ -27,7 +27,7 @@ ARG SEQKIT_VERSION=2.8.2
 ARG FASTQC_VERSION=0.12.1
 ARG MULTIQC_VERSION=1.25.1
 ARG BLAST_VERSION=2.16.0
-ARG MAFFT_VERSION=7.526
+ARG MAFFT_VERSION=7.525
 ARG JELLYFISH_VERSION=2.3.1
 ARG ENSEMBL_RELEASE=112
 
@@ -51,7 +51,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         libncurses-dev \
         libssl-dev \
         libxml2-dev \
-        libz-dev \
         make \
         perl \
         pkg-config \
@@ -112,23 +111,24 @@ RUN set -eux; \
 
 # ---------------------------------------------------------------------------
 # 3. Aligners
-# bwa-mem2 upstream ships an x86_64 binary only. On arm64 we compile from
-# source with sse2neon shims (the project's recommended portable build).
+# Install classic bwa everywhere (it has arm64 builds in apt). bwa-mem2 is
+# added on amd64 only via the upstream prebuilt binary; on arm64 the
+# source build is fragile (SIMD intrinsics) and we rely on classic bwa.
 # ---------------------------------------------------------------------------
+RUN apt-get update && apt-get install -y --no-install-recommends bwa \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN set -eux; \
-    cd /opt; \
     if [ "${TARGETARCH}" = "amd64" ]; then \
+        cd /opt; \
         wget -q https://github.com/bwa-mem2/bwa-mem2/releases/download/v${BWA_MEM2_VERSION}/bwa-mem2-${BWA_MEM2_VERSION}_x64-linux.tar.bz2; \
         tar -xjf bwa-mem2-${BWA_MEM2_VERSION}_x64-linux.tar.bz2; \
         rm bwa-mem2-${BWA_MEM2_VERSION}_x64-linux.tar.bz2; \
         mv bwa-mem2-${BWA_MEM2_VERSION}_x64-linux bwa-mem2; \
+        ln -s /opt/bwa-mem2/bwa-mem2 /usr/local/bin/bwa-mem2; \
     else \
-        git clone --depth 1 --branch v${BWA_MEM2_VERSION} --recursive \
-            https://github.com/bwa-mem2/bwa-mem2.git; \
-        cd bwa-mem2; \
-        make arch=sse41 CXX=g++ -j"$(nproc)" || make -j"$(nproc)"; \
-    fi; \
-    ln -s /opt/bwa-mem2/bwa-mem2 /usr/local/bin/bwa-mem2
+        echo "arm64 build: bwa-mem2 not available; classic bwa is the default aligner"; \
+    fi
 
 RUN set -eux; \
     cd /tmp; \
@@ -244,7 +244,7 @@ RUN set -eux; \
         r-base r-base-dev \
         libxml2-dev libssl-dev libcurl4-openssl-dev \
         libfontconfig1-dev libharfbuzz-dev libfribidi-dev \
-        libfreetype6-dev libpng-dev libtiff5-dev libjpeg-dev; \
+        libfreetype6-dev libpng-dev libtiff-dev libjpeg-dev; \
     rm -rf /var/lib/apt/lists/*; \
     R -q -e 'install.packages("BiocManager", repos="https://cloud.r-project.org")'; \
     R -q -e 'BiocManager::install(c("DESeq2","edgeR","limma","tximport"), ask=FALSE, update=FALSE)'
@@ -270,9 +270,14 @@ RUN set -eux; \
     zcat chr22.fa.gz | bgzip -@ 4 > chr22.fa.bgz; \
     mv chr22.fa.bgz chr22.fa.gz; \
     samtools faidx chr22.fa.gz; \
-    wget -q -O chr22.gtf.gz \
-        "http://ftp.ensembl.org/pub/release-${ENSEMBL_RELEASE}/gtf/homo_sapiens/Homo_sapiens.GRCh38.${ENSEMBL_RELEASE}.chromosome.22.gtf.gz"; \
-    /opt/bwa-mem2/bwa-mem2 index chr22.fa.gz || bwa-mem2 index chr22.fa.gz
+    # Ensembl does not publish a per-chromosome GTF; fetch the full one and
+    # slice to chr22 (rows matching the seqname + their comment headers).
+    wget -q -O chr22_full.gtf.gz \
+        "http://ftp.ensembl.org/pub/release-${ENSEMBL_RELEASE}/gtf/homo_sapiens/Homo_sapiens.GRCh38.${ENSEMBL_RELEASE}.gtf.gz"; \
+    ( zcat chr22_full.gtf.gz | awk 'BEGIN{FS=OFS="\t"} /^#!/ || $1=="22"' | bgzip -@ 4 > chr22.gtf.gz ); \
+    rm chr22_full.gtf.gz; \
+    bwa index chr22.fa.gz; \
+    if command -v bwa-mem2 >/dev/null 2>&1; then bwa-mem2 index chr22.fa.gz; fi
 
 # GIAB HG002 truth set, subset to chr22
 RUN set -eux; \
@@ -293,7 +298,8 @@ RUN set -eux; \
     zcat ecoli_k12.fa.gz | bgzip -@ 4 > ecoli_k12.fa.bgz; \
     mv ecoli_k12.fa.bgz ecoli_k12.fa.gz; \
     samtools faidx ecoli_k12.fa.gz; \
-    bwa-mem2 index ecoli_k12.fa.gz
+    bwa index ecoli_k12.fa.gz; \
+    if command -v bwa-mem2 >/dev/null 2>&1; then bwa-mem2 index ecoli_k12.fa.gz; fi
 
 # SARS-CoV-2 reference NC_045512.2 (GCF_009858895.2) + BWA index
 RUN set -eux; \
@@ -303,7 +309,8 @@ RUN set -eux; \
     zcat sars_cov_2.fa.gz | bgzip -@ 4 > sars_cov_2.fa.bgz; \
     mv sars_cov_2.fa.bgz sars_cov_2.fa.gz; \
     samtools faidx sars_cov_2.fa.gz; \
-    bwa-mem2 index sars_cov_2.fa.gz
+    bwa index sars_cov_2.fa.gz; \
+    if command -v bwa-mem2 >/dev/null 2>&1; then bwa-mem2 index sars_cov_2.fa.gz; fi
 
 # Small curated protein BLAST DB (UniProt Swiss-Prot human kinome subset, <100MB).
 # Keeps the DB tiny but non-trivial for blastp best-hit / homolog-set tasks.
