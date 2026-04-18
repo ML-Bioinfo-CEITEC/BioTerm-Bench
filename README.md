@@ -23,35 +23,37 @@ comparison, numeric tolerance, or exact file diff. No LLM judges.
 The 17 tasks currently shipping in V1 (see
 [docs/status.md](docs/status.md) for the full roadmap):
 
-| task                       | category  | grader    | image            |
-|----------------------------|-----------|-----------|------------------|
-| `bam-sort-index`           | alignment | Pattern A | bioterm-base     |
-| `region-extract`           | alignment | Pattern A | bioterm-base     |
-| `flagstat-report`          | alignment | Pattern A | bioterm-base     |
-| `bam-depth-histogram`      | alignment | Pattern C | bioterm-base     |
-| `gtf-to-bed`               | metadata  | Pattern A | bioterm-base     |
-| `id-mapping`               | metadata  | Pattern A | bioterm-base     |
-| `vcf-to-tsv`               | metadata  | Pattern A | bioterm-base     |
-| `vcf-stats-summary`        | metadata  | Pattern C | bioterm-base     |
-| `fastqc-quality-report`    | qc        | Pattern C | bioterm-base     |
-| `seqkit-fasta-stats`       | qc        | Pattern A | bioterm-base     |
-| `vcf-filter-quality`       | variant   | Pattern D | bioterm-base     |
-| `vcf-split-by-type`        | variant   | Pattern D | bioterm-base     |
-| `mpileup-call-snps`        | variant   | Pattern D | bioterm-base     |
-| `snpeff-annotate-counts`   | variant   | Pattern A | bioterm-variant  |
-| `blast-best-hit`           | search    | Pattern A | bioterm-base     |
-| `kmer-presence-grid`       | search    | Pattern A | bioterm-base     |
-| `tpm-normalize`            | rnaseq    | Pattern C | bioterm-rnaseq   |
+
+| task                     | category  | grader    | image           |
+| ------------------------ | --------- | --------- | --------------- |
+| `bam-sort-index`         | alignment | Pattern A | bioterm-base    |
+| `region-extract`         | alignment | Pattern A | bioterm-base    |
+| `flagstat-report`        | alignment | Pattern A | bioterm-base    |
+| `bam-depth-histogram`    | alignment | Pattern C | bioterm-base    |
+| `gtf-to-bed`             | metadata  | Pattern A | bioterm-base    |
+| `id-mapping`             | metadata  | Pattern A | bioterm-base    |
+| `vcf-to-tsv`             | metadata  | Pattern A | bioterm-base    |
+| `vcf-stats-summary`      | metadata  | Pattern C | bioterm-base    |
+| `fastqc-quality-report`  | qc        | Pattern C | bioterm-base    |
+| `seqkit-fasta-stats`     | qc        | Pattern A | bioterm-base    |
+| `vcf-filter-quality`     | variant   | Pattern D | bioterm-base    |
+| `vcf-split-by-type`      | variant   | Pattern D | bioterm-base    |
+| `mpileup-call-snps`      | variant   | Pattern D | bioterm-base    |
+| `snpeff-annotate-counts` | variant   | Pattern A | bioterm-variant |
+| `blast-best-hit`         | search    | Pattern A | bioterm-base    |
+| `kmer-presence-grid`     | search    | Pattern A | bioterm-base    |
+| `tpm-normalize`          | rnaseq    | Pattern C | bioterm-rnaseq  |
+
 
 V1 holds three commitments that override everything else:
 
 1. **Deterministic grading only.** If a task's grader cannot be written
-   in ~30 lines of bash + Python, it is not in V1.
+  in ~30 lines of bash + Python, it is not in V1.
 2. **Laptop-runnable.** Full evaluation of one model against all tasks
-   completes in under 5 hours on a 36 GB Apple Silicon MacBook. No
+  completes in under 5 hours on a 36 GB Apple Silicon MacBook. No
    mammalian WGS, no GPUs, no 100 GB references.
 3. **Harbor-compatible.** BioTerm-Bench is a *dataset*, not a harness.
-   Orchestration, logging, agent integration, and parallelism come from
+  Orchestration, logging, agent integration, and parallelism come from
    [Harbor](https://github.com/anthropics/harbor).
 
 ## Repo layout
@@ -120,17 +122,32 @@ See [docs/live-network-pattern.md](docs/live-network-pattern.md).
 ## Running the benchmark
 
 ```bash
-pip install harbor-bench
-docker pull ghcr.io/<org>/bioterm-base:v1
-docker pull ghcr.io/<org>/bioterm-rnaseq:v1
-docker pull ghcr.io/<org>/bioterm-variant:v1
+uv tool install harbor
+# (or `pip install harbor`, whichever your environment prefers)
+bash scripts/build_images.sh --only base    # and --only variant / rnaseq
+export OPENAI_API_KEY=sk-...
 
-harbor dataset register bioterm-bench-core --path ./bioterm-bench
-harbor run -d bioterm-bench-core -m anthropic/claude-opus-4-7 -a terminus -n 1
+# single-task smoke test
+harbor run --path tasks/gtf-to-bed \
+    --agent terminus-2 -m openai/gpt-5.4-mini --no-delete
+
+# full 17-task run
+harbor run --path tasks/ \
+    --agent terminus-2 -m openai/gpt-5.4-mini \
+    --no-delete -n 4 -k 1
 ```
 
-For variance estimation, run each model three times and average the
-per-task binary scores.
+`--no-delete` is **required** when running with the prebuilt images in
+this repo: Harbor's default `--delete` flag runs
+`docker compose down --rmi all` after every trial, which would wipe the
+`bioterm-*:v1` images from the local Docker engine.
+
+For variance estimation, run each model three times (`-k 3`) and
+average the per-task binary scores.
+
+Baseline receipts — cost, wall clock, and per-task pass/fail for the
+reference Harbor runs — live in
+[docs/harbor-runs.md](docs/harbor-runs.md).
 
 ## Adding a task
 

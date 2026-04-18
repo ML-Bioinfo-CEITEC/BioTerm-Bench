@@ -80,6 +80,27 @@ for a smaller model while keeping grading deterministic:
   record-count equality (previously the set-based name check could
   silently accept duplicates).
 
+## Harbor compatibility
+
+Each task ships an `environment/Dockerfile` (one-line `FROM <image>`
+so Harbor's Docker backend has a valid build definition) and an
+`environment/docker-compose.yaml` that bind-mounts the task's own
+`data/` onto `/app/data` and `gold/` onto `/gold`. This keeps Harbor's
+agent/verifier pipeline identical to `scripts/run_oracle_all.sh`
+without duplicating any inputs. `scripts/validate_task.py` enforces
+both files.
+
+The first external Harbor run (2026-04-18, `terminus-2` +
+`openai/gpt-5.4-mini`, 1 attempt per task) cleared **15 / 17 tasks in
+1 m 55 s for $0.14** total API spend. Full per-task breakdown and
+failure post-mortems live in
+[`docs/harbor-runs.md`](harbor-runs.md).
+
+Operational note: Harbor's default `--delete` flag runs
+`docker compose down --rmi all` after every trial, which removes
+prebuilt `bioterm-*:v1` images. Always pass `--no-delete` when
+running against the local images in this repo.
+
 ## Deferred — explicitly out of scope for this PR
 
 - **DB-retrieval tasks (Entrez, NCBI, Ensembl REST).** Scaffolding
