@@ -4,7 +4,7 @@ This file tracks what is shipped, what is next, and what is explicitly
 deferred. It is updated alongside task PRs, not kept in the future
 tense.
 
-## Post-V1 rebalance — 30 → 17 → 22
+## Post-V1 rebalance — 30 → 17 → 22 → 25
 
 The first full Harbor run (k=3, 6 models of varying strength) showed
 that **16 / 30 tasks had zero failed attempts across every model
@@ -14,21 +14,28 @@ Always-pass tasks contribute no information to a leaderboard, so we
 removed 13 of them and kept 3 (`tpm-normalize`, `mafft-msa-identity`,
 `vcf-normalize`) to prevent categories from collapsing to zero.
 
-Ten new harder candidate tasks were then authored and difficulty-probed
-with a k=1 × 4-model sweep (nano, mistral-small-2603, gpt-5.4-mini,
-gpt-5.4 full). The probe cost $0.56 of a $25 budget. Five candidates
-were all-pass across the probe and were dropped
-(`blast-reciprocal-best-hits`, `counts-median-of-ratios`,
-`counts-to-deg-ttest`, `fastq-quality-trim`, `seqkit-gc-window`). Five
-candidates were kept — four show clean weak-vs-strong differentiation
-(`bam-clipping-stats`, `fasta-6frame-codon-counts`,
-`gtf-longest-transcript-cds`, `vcf-trio-mendelian`) and one
-(`kmer-jaccard-matrix`) was kept after a spec clarification (id format:
-basename without `.fa`). The final pack is **22 tasks** that
-exercises all six categories and covers a spread of easy/medium/hard
-difficulty.
+Two rounds of k=1 × 4-model probes (nano, mistral-small-2603,
+gpt-5.4-mini, gpt-5.4 full) were then run on 15 newly-authored harder
+candidates, covering a $0.89 slice of the $25 probe budget:
 
-## Tasks shipped (22)
+- **Round 1 (10 candidates):** Dropped 5 all-pass
+  (`blast-reciprocal-best-hits`, `counts-median-of-ratios`,
+  `counts-to-deg-ttest`, `fastq-quality-trim`, `seqkit-gc-window`);
+  kept 4 weak-vs-strong differentiators (`bam-clipping-stats`,
+  `fasta-6frame-codon-counts`, `gtf-longest-transcript-cds`,
+  `vcf-trio-mendelian`) and 1 after a spec clarification
+  (`kmer-jaccard-matrix`).
+- **Round 2 (5 candidates):** Dropped 2 all-pass
+  (`bam-per-contig-strand-counts`, `gtf-intron-gc`); kept 2 clean
+  differentiators (`vcf-region-variant-density`,
+  `rnaseq-tpm-top-biotype`) and 1 for category balance
+  (`fastq-per-base-quality`, bumping `qc` from 2 → 3 tasks).
+
+The final pack is **25 tasks** across 6 categories (6 alignment,
+6 metadata, 5 variant, 3 search, 3 qc, 2 rnaseq) with a spread of
+easy / medium / hard difficulties.
+
+## Tasks shipped (25)
 
 | #  | task                           | category  | difficulty | grader    | image            | notes                                          |
 |----|--------------------------------|-----------|------------|-----------|------------------|------------------------------------------------|
@@ -46,14 +53,17 @@ difficulty.
 | 12 | `fasta-6frame-codon-counts`    | metadata  | medium     | Pattern A | bioterm-base     | codon counts across all 6 reading frames        |
 | 13 | `fastqc-quality-report`        | qc        | easy       | Pattern C | bioterm-base     | 5 QC stats parsed out of fastqc_data.txt       |
 | 14 | `seqkit-fasta-stats`           | qc        | easy       | Pattern A | bioterm-base     | per-sequence length / GC% / N%, 2-decimal TSV  |
-| 15 | `vcf-split-by-type`            | variant   | easy       | Pattern D | bioterm-base     | split SNVs / indels, type-purity sanity check  |
-| 16 | `vcf-allele-frequency`         | variant   | easy       | Pattern C | bioterm-base     | AF per record from AD, tol-per-row compare      |
-| 17 | `vcf-normalize`                | variant   | medium     | Pattern D | bioterm-base     | bcftools norm -m -any, split + left-align       |
-| 18 | `vcf-trio-mendelian`           | variant   | hard       | Pattern C | bioterm-base     | trio Mendelian-violation counts, proband view   |
-| 19 | `blast-best-hit`               | search    | easy       | Pattern A | bioterm-base     | blastp against kinome, deterministic tiebreak  |
-| 20 | `mafft-msa-identity`           | search    | medium     | Pattern C | bioterm-base     | MAFFT + pairwise identity on upper triangle     |
-| 21 | `kmer-jaccard-matrix`          | search    | medium     | Pattern C | bioterm-base     | canonical k=15 Jaccard over 6 small genomes     |
-| 22 | `tpm-normalize`                | rnaseq    | easy       | Pattern C | bioterm-rnaseq   | TPM normalization, 1 % tolerance per cell      |
+| 15 | `fastq-per-base-quality`       | qc        | medium     | Pattern C | bioterm-base     | per-position mean + median Phred quality       |
+| 16 | `vcf-split-by-type`            | variant   | easy       | Pattern D | bioterm-base     | split SNVs / indels, type-purity sanity check  |
+| 17 | `vcf-allele-frequency`         | variant   | easy       | Pattern C | bioterm-base     | AF per record from AD, tol-per-row compare      |
+| 18 | `vcf-normalize`                | variant   | medium     | Pattern D | bioterm-base     | bcftools norm -m -any, split + left-align       |
+| 19 | `vcf-trio-mendelian`           | variant   | hard       | Pattern C | bioterm-base     | trio Mendelian-violation counts, proband view   |
+| 20 | `vcf-region-variant-density`   | variant   | medium     | Pattern C | bioterm-base     | per-BED variant density; multi-allelic split   |
+| 21 | `blast-best-hit`               | search    | easy       | Pattern A | bioterm-base     | blastp against kinome, deterministic tiebreak  |
+| 22 | `mafft-msa-identity`           | search    | medium     | Pattern C | bioterm-base     | MAFFT + pairwise identity on upper triangle     |
+| 23 | `kmer-jaccard-matrix`          | search    | medium     | Pattern C | bioterm-base     | canonical k=15 Jaccard over 6 small genomes     |
+| 24 | `tpm-normalize`                | rnaseq    | easy       | Pattern C | bioterm-rnaseq   | TPM normalization, 1 % tolerance per cell      |
+| 25 | `rnaseq-tpm-top-biotype`       | rnaseq    | medium     | Pattern C | bioterm-rnaseq   | inner-join + TPM + biotype filter + top-30     |
 
 Every task is validated by two independent gates:
 
@@ -127,10 +137,10 @@ Historical Harbor runs (k=1, `terminus-2` + `openai/gpt-5.4-mini`):
 A follow-up k=3 sweep across 5 additional models (nano,
 mistral-small-2603, gpt-oss-120b, qwen3.5-122b, deepseek-v3.2) drove
 the rebalance described above: 16/30 tasks had zero failed attempts
-across all models. A k=1 × 4-model probe of 10 new harder candidates
-then selected 5 to ship and dropped 5 too-easy ones. Per-model
-summaries and the probe table live in
-[`docs/harbor-runs.md`](harbor-runs.md).
+across all models. Two k=1 × 4-model probes of 15 new harder
+candidates then selected 8 to ship (5 in round 1, 3 in round 2) and
+dropped 7 too-easy ones. Per-model summaries and both probe tables
+live in [`docs/harbor-runs.md`](harbor-runs.md).
 
 Operational note: Harbor's default `--delete` flag runs
 `docker compose down --rmi all` after every trial, which removes

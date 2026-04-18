@@ -8,11 +8,11 @@ of terminal bioinformatics tasks for tracking open-model progress.
 > `bioterm-rnaseq:v1`), the validation / build / oracle-run tooling,
 > CI, authoring docs, and the `scripts/new_task.sh` scaffolder. After
 > the first full Harbor k=3 sweep (5 models × 30 tasks) we removed 13
-> tasks that every tested model always solved and added 5 new harder
-> tasks probed for weak-vs-strong model differentiation; the pack now
-> has **22 tasks**. Harbor runs and rationale live in
-> [docs/status.md](docs/status.md) and
-> [docs/harbor-runs.md](docs/harbor-runs.md).
+> tasks that every tested model always solved, then ran two rounds of
+> k=1 × 4-model difficulty probes on 15 new candidate tasks and kept
+> 8 of them. The pack now has **25 tasks** spread across 6 categories.
+> Harbor runs and rationale live in [docs/status.md](docs/status.md)
+> and [docs/harbor-runs.md](docs/harbor-runs.md).
 
 ## What BioTerm-Bench is
 
@@ -22,7 +22,7 @@ synthesis) that a coding agent must complete in a terminal environment.
 Grading is **deterministic** — bcftools isec, set comparison, numeric
 tolerance, or exact file diff. No LLM judges.
 
-The 22 tasks currently shipping (see
+The 25 tasks currently shipping (see
 [docs/status.md](docs/status.md) for the full roadmap):
 
 | task                           | category  | grader    | image           |
@@ -41,14 +41,17 @@ The 22 tasks currently shipping (see
 | `fasta-6frame-codon-counts`    | metadata  | Pattern A | bioterm-base    |
 | `fastqc-quality-report`        | qc        | Pattern C | bioterm-base    |
 | `seqkit-fasta-stats`           | qc        | Pattern A | bioterm-base    |
+| `fastq-per-base-quality`       | qc        | Pattern C | bioterm-base    |
 | `vcf-split-by-type`            | variant   | Pattern D | bioterm-base    |
 | `vcf-allele-frequency`         | variant   | Pattern C | bioterm-base    |
 | `vcf-normalize`                | variant   | Pattern D | bioterm-base    |
 | `vcf-trio-mendelian`           | variant   | Pattern C | bioterm-base    |
+| `vcf-region-variant-density`   | variant   | Pattern C | bioterm-base    |
 | `blast-best-hit`               | search    | Pattern A | bioterm-base    |
 | `mafft-msa-identity`           | search    | Pattern C | bioterm-base    |
 | `kmer-jaccard-matrix`          | search    | Pattern C | bioterm-base    |
 | `tpm-normalize`                | rnaseq    | Pattern C | bioterm-rnaseq  |
+| `rnaseq-tpm-top-biotype`       | rnaseq    | Pattern C | bioterm-rnaseq  |
 
 
 V1 holds three commitments that override everything else:

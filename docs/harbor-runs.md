@@ -159,8 +159,42 @@ $25 allotted budget).
   k-mer logic still has room to trip smaller agents.
 
 Net result: **5 new tasks shipped, 5 dropped** (plus one spec fix).
-Final pack size is **17 + 5 = 22 tasks**. Probe artefacts live under
-`jobs/probe10-*/` and `jobs/probe-kmer-mini-k2/`.
+Pack size after round 1 is **17 + 5 = 22 tasks**. Probe artefacts
+live under `jobs/probe10-*/` and `jobs/probe-kmer-mini-k2/`.
+
+### 2026-04-18 — k=1 × 4-model probe, round 2 (5 candidates)
+
+Five additional harder candidates were scaffolded to push the pack to
+25 tasks and close the gap in under-represented categories (`qc`,
+`rnaseq`). Same probe harness (`tasks_probe2/`, `-k 1 -n 2`, four
+models). Total round-2 cost: **$0.328**.
+
+| task                           | nano | mistral-2603 | gpt-5.4-mini | gpt-5.4 | verdict      |
+|--------------------------------|:---:|:---:|:---:|:---:|--------------|
+| `vcf-region-variant-density`   | **F** | P | **F** | P | kept (weak+mini fail) |
+| `rnaseq-tpm-top-biotype`       | P | **F** | P | P | kept (weak-differ) |
+| `fastq-per-base-quality`       | P | P | P | P | kept for `qc` balance (2 → 3) |
+| `bam-per-contig-strand-counts` | P | P | P | P | **dropped** (too easy) |
+| `gtf-intron-gc`                | P | P | P | P | **dropped** (too easy) |
+
+Failure inspection:
+- `vcf-region-variant-density`: nano + mini both returned
+  `n_indel=1` vs gold `n_indel=2` on a `chr1` interval. Both models
+  failed to split the multi-allelic `G,AT` record and count the
+  insertion ALT; a genuine parsing error.
+- `rnaseq-tpm-top-biotype`: mistral emitted `ENSG100178` at rank 2
+  instead of `ENSG100204`; its TPM ranking / tie-break diverged from
+  spec.
+
+`fastq-per-base-quality` was kept deliberately: the `qc` category
+only had 2 tasks before, and a FASTQ → per-position quality table
+rounds the category out even if no probe model failed it. The
+`bam-per-contig-strand-counts` and `gtf-intron-gc` candidates hit
+already-saturated categories (alignment 6, metadata 6), so
+all-pass outcomes left no ship case for them.
+
+Net result: **3 new tasks shipped, 2 dropped**. Final pack size is
+**22 + 3 = 25 tasks**. Probe artefacts live under `jobs/probe5-*/`.
 
 ### 2026-04-18 — `openai/gpt-5.4-mini`, `terminus-2`, full 30 tasks
 
