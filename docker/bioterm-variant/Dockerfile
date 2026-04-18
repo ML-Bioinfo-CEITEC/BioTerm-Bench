@@ -2,23 +2,34 @@
 #
 # bioterm-variant:v1 -- Variant calling / annotation / benchmarking image.
 #
-# Derives from bioterm-base and adds freebayes, vcflib, VEP (offline cache
-# limited to chr22), SnpEff (GRCh38.99 subset), hap.py, and vcfeval from
-# rtg-tools.
+# Derives from bioterm-base. Current V1 tasks that target this image all
+# rely on bcftools (already in base); the extras here prepare for the
+# annotation and hap.py-based tasks on the deferred list.
 #
-# Placeholder stub for V1: tool contents will be authored alongside the
-# Category 2 tasks (mpileup-call-snps, vcf-filter-quality, vcf-split-by-type,
-# variant-call-precision-recall, vcf-annotate-impact). Until then this image
-# is a pure passthrough of bioterm-base so the build script wires up cleanly.
+# Installed in V1:
+#   - SnpEff 5.2.b (apt)     -- annotation, HIGH-impact gene tasks
+#
+# NOT installed (reason):
+#   - vcftools        -- pulls r-cran-ggplot2 which conflicts with the
+#                        BioConductor R stack already in bioterm-base.
+#   - libvcflib-tools -- same r-cran dep chain. bcftools is the V1 workhorse.
+#
+# Still TODO (tracked in docs/status.md):
+#   - freebayes 1.3.7        -- no arm64 apt package; source build required
+#   - VEP 112 + chr22 cache  -- large, needs offline cache provisioning
+#   - hap.py 0.3.15          -- Python-2 toolchain makes this painful
+#   - rtg-tools vcfeval      -- Java install, pairs with hap.py
 ARG BASE_IMAGE=bioterm-base:v1
 FROM ${BASE_IMAGE}
 
-# TODO(bioterm-variant): install pinned versions:
-#   - freebayes 1.3.7
-#   - vcflib 1.0.12
-#   - VEP 112 with offline cache limited to chr22
-#   - SnpEff 5.2 with GRCh38.99 database (chr22 subset)
-#   - hap.py 0.3.15
-#   - vcfeval from rtg-tools
+ARG DEBIAN_FRONTEND=noninteractive
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        snpeff \
+    && rm -rf /var/lib/apt/lists/*
+
+# Debian's snpeff package installs the launcher at /usr/bin/snpEff (mixed
+# case). Provide a lowercase alias for convenience.
+RUN ln -sf /usr/bin/snpEff /usr/local/bin/snpeff
 
 CMD ["/bin/bash"]
