@@ -6,8 +6,9 @@ of terminal bioinformatics tasks for tracking open-model progress.
 > **Status — V1 in progress.** The repository currently ships the three
 > Docker images (`bioterm-base:v1`, `bioterm-variant:v1`,
 > `bioterm-rnaseq:v1`), the validation / build / oracle-run tooling,
-> CI, authoring docs, and **13 deterministic tasks** covering alignment,
-> variant calling, RNA-seq normalization, QC, sequence search, and
+> CI, authoring docs, the `scripts/new_task.sh` scaffolder, and **17
+> deterministic tasks** covering alignment, variant calling &
+> annotation, RNA-seq normalization, QC, sequence search, and
 > metadata. Remaining tasks land in subsequent PRs — see
 > [docs/status.md](docs/status.md).
 
@@ -19,7 +20,7 @@ end-to-end synthesis) that a coding agent must complete in a terminal
 environment. Grading is **deterministic** — bcftools isec, hap.py, set
 comparison, numeric tolerance, or exact file diff. No LLM judges.
 
-The 13 tasks currently shipping in V1 (see
+The 17 tasks currently shipping in V1 (see
 [docs/status.md](docs/status.md) for the full roadmap):
 
 | task                       | category  | grader    | image            |
@@ -27,13 +28,17 @@ The 13 tasks currently shipping in V1 (see
 | `bam-sort-index`           | alignment | Pattern A | bioterm-base     |
 | `region-extract`           | alignment | Pattern A | bioterm-base     |
 | `flagstat-report`          | alignment | Pattern A | bioterm-base     |
+| `bam-depth-histogram`      | alignment | Pattern C | bioterm-base     |
 | `gtf-to-bed`               | metadata  | Pattern A | bioterm-base     |
 | `id-mapping`               | metadata  | Pattern A | bioterm-base     |
+| `vcf-to-tsv`               | metadata  | Pattern A | bioterm-base     |
 | `vcf-stats-summary`        | metadata  | Pattern C | bioterm-base     |
 | `fastqc-quality-report`    | qc        | Pattern C | bioterm-base     |
+| `seqkit-fasta-stats`       | qc        | Pattern A | bioterm-base     |
 | `vcf-filter-quality`       | variant   | Pattern D | bioterm-base     |
 | `vcf-split-by-type`        | variant   | Pattern D | bioterm-base     |
 | `mpileup-call-snps`        | variant   | Pattern D | bioterm-base     |
+| `snpeff-annotate-counts`   | variant   | Pattern A | bioterm-variant  |
 | `blast-best-hit`           | search    | Pattern A | bioterm-base     |
 | `kmer-presence-grid`       | search    | Pattern A | bioterm-base     |
 | `tpm-normalize`            | rnaseq    | Pattern C | bioterm-rnaseq   |
@@ -60,6 +65,7 @@ bioterm-bench/
 ├── tasks/                # one directory per task (see docs/task-authoring.md)
 ├── scripts/
 │   ├── build_images.sh       # buildx, multi-arch
+│   ├── new_task.sh           # scaffold a new task directory
 │   ├── validate_task.py      # task-structure linter
 │   ├── run_oracle_all.sh     # oracles must all hit reward=1
 │   └── refresh_db_golds.sh   # regenerate DB golds from live APIs
@@ -131,6 +137,19 @@ per-task binary scores.
 Read [docs/task-authoring.md](docs/task-authoring.md), then pick one of
 the five allowed grader shapes from [docs/grading-patterns.md](docs/grading-patterns.md).
 If your task does not fit one of the five, redesign or cut it.
+
+To jump-start the directory structure:
+
+```bash
+scripts/new_task.sh my-new-task \
+    --image bioterm-base:v1 \
+    --category alignment \
+    --difficulty easy
+```
+
+The scaffolded task is structurally valid but intentionally fails
+`validate_task.py` (TODO markers in `solve.sh`) until you fill in real
+logic.
 
 ## Leaderboard (placeholder)
 
