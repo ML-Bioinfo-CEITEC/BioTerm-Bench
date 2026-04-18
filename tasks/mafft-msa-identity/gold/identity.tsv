@@ -1,0 +1,11 @@
+seq_a	seq_b	identity
+seq_1	seq_2	0.992500
+seq_1	seq_3	0.969167
+seq_1	seq_4	0.944167
+seq_1	seq_5	0.897500
+seq_2	seq_3	0.961667
+seq_2	seq_4	0.936667
+seq_2	seq_5	0.893333
+seq_3	seq_4	0.914167
+seq_3	seq_5	0.870833
+seq_4	seq_5	0.849167

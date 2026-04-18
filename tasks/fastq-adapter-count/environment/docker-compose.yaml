@@ -1,0 +1,5 @@
+services:
+  main:
+    volumes:
+      - ../data:/app/data:ro
+      - ../gold:/gold:ro

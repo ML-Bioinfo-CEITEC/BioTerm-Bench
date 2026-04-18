@@ -4,27 +4,40 @@ This file tracks what is shipped, what is next, and what is explicitly
 deferred. It is updated alongside task PRs, not kept in the future
 tense.
 
-## Tasks shipped (17 / 30)
+## Tasks shipped (30 / 30)
 
-| # | task                        | category  | difficulty | grader    | image            | notes                                          |
-|---|-----------------------------|-----------|------------|-----------|------------------|------------------------------------------------|
-| 1 | `bam-sort-index`            | alignment | easy       | Pattern A | bioterm-base     | samtools sort + index, SO:coordinate check     |
-| 2 | `region-extract`            | alignment | easy       | Pattern A | bioterm-base     | samtools view + sort/dup-count enforcement     |
-| 3 | `flagstat-report`           | alignment | easy       | Pattern A | bioterm-base     | 5 flagstat metrics, sorted TSV                 |
-| 4 | `bam-depth-histogram`       | alignment | easy       | Pattern C | bioterm-base     | samtools depth -a → mean/median/covered frac   |
-| 5 | `gtf-to-bed`                | metadata  | easy       | Pattern A | bioterm-base     | awk/sort exon extraction, 4-key sort           |
-| 6 | `id-mapping`                | metadata  | easy       | Pattern A | bioterm-base     | HGNC symbol + alias resolution, offline table  |
-| 7 | `vcf-to-tsv`                | metadata  | easy       | Pattern A | bioterm-base     | pysam extract of CHROM/POS/REF/ALT/QUAL/DP/GT  |
-| 8 | `vcf-stats-summary`         | metadata  | easy       | Pattern C | bioterm-base     | Ti/Tv + het/hom ratios, per-ALT counting       |
-| 9 | `fastqc-quality-report`     | qc        | easy       | Pattern C | bioterm-base     | 5 QC stats parsed out of fastqc_data.txt       |
-| 10 | `seqkit-fasta-stats`        | qc        | easy       | Pattern A | bioterm-base     | per-sequence length / GC% / N%, 2-decimal TSV  |
-| 11 | `vcf-filter-quality`        | variant   | easy       | Pattern D | bioterm-base     | QUAL>=30 && INFO/DP>=10 filter, bcftools isec  |
-| 12 | `vcf-split-by-type`         | variant   | easy       | Pattern D | bioterm-base     | split SNVs / indels, type-purity sanity check  |
-| 13 | `mpileup-call-snps`         | variant   | medium     | Pattern D | bioterm-base     | bcftools mpileup → call pipeline               |
-| 14 | `snpeff-annotate-counts`    | variant   | medium     | Pattern A | bioterm-variant  | snpEff + bundled SARS-CoV-2 DB, impact tally   |
-| 15 | `blast-best-hit`            | search    | easy       | Pattern A | bioterm-base     | blastp against kinome, deterministic tiebreak  |
-| 16 | `kmer-presence-grid`        | search    | easy       | Pattern A | bioterm-base     | genome × kmer presence matrix                  |
-| 17 | `tpm-normalize`             | rnaseq    | easy       | Pattern C | bioterm-rnaseq   | TPM normalization, 1 % tolerance per cell      |
+| #  | task                        | category  | difficulty | grader    | image            | notes                                          |
+|----|-----------------------------|-----------|------------|-----------|------------------|------------------------------------------------|
+|  1 | `bam-sort-index`            | alignment | easy       | Pattern A | bioterm-base     | samtools sort + index, SO:coordinate check     |
+|  2 | `region-extract`            | alignment | easy       | Pattern A | bioterm-base     | samtools view + sort/dup-count enforcement     |
+|  3 | `flagstat-report`           | alignment | easy       | Pattern A | bioterm-base     | 5 flagstat metrics, sorted TSV                 |
+|  4 | `bam-depth-histogram`       | alignment | easy       | Pattern C | bioterm-base     | samtools depth -a → mean/median/covered frac   |
+|  5 | `sam-to-cram-roundtrip`     | alignment | easy       | Pattern A | bioterm-base     | BAM → CRAM (+index); grader samtools-views back|
+|  6 | `bam-mark-duplicates`       | alignment | easy       | Pattern C | bioterm-base     | samtools markdup, exact duplicate count         |
+|  7 | `insert-size-stats`         | alignment | easy       | Pattern C | bioterm-base     | mean + stdev insert size from `samtools stats`  |
+|  8 | `gtf-to-bed`                | metadata  | easy       | Pattern A | bioterm-base     | awk/sort exon extraction, 4-key sort           |
+|  9 | `gtf-gene-lengths`          | metadata  | easy       | Pattern A | bioterm-base     | union-of-exon length per gene, sorted TSV       |
+| 10 | `id-mapping`                | metadata  | easy       | Pattern A | bioterm-base     | HGNC symbol + alias resolution, offline table  |
+| 11 | `vcf-to-tsv`                | metadata  | easy       | Pattern A | bioterm-base     | pysam extract of CHROM/POS/REF/ALT/QUAL/DP/GT  |
+| 12 | `vcf-stats-summary`         | metadata  | easy       | Pattern C | bioterm-base     | Ti/Tv + het/hom ratios, per-ALT counting       |
+| 13 | `fasta-rename-headers`      | metadata  | easy       | Pattern A | bioterm-base     | rename FASTA ids from a mapping TSV             |
+| 14 | `bed-merge-intervals`       | metadata  | easy       | Pattern A | bioterm-base     | bedtools merge with 50 bp slop, strict sort     |
+| 15 | `fasta-longest-orf`         | metadata  | medium     | Pattern A | bioterm-base     | 6-frame longest ORF, explicit tiebreak          |
+| 16 | `fastqc-quality-report`     | qc        | easy       | Pattern C | bioterm-base     | 5 QC stats parsed out of fastqc_data.txt       |
+| 17 | `seqkit-fasta-stats`        | qc        | easy       | Pattern A | bioterm-base     | per-sequence length / GC% / N%, 2-decimal TSV  |
+| 18 | `fastq-adapter-count`       | qc        | easy       | Pattern A | bioterm-base     | substring-match adapter occurrence count        |
+| 19 | `fastq-length-distribution` | qc        | easy       | Pattern A | bioterm-base     | length → count histogram, sorted TSV            |
+| 20 | `vcf-filter-quality`        | variant   | easy       | Pattern D | bioterm-base     | QUAL>=30 && INFO/DP>=10 filter, bcftools isec  |
+| 21 | `vcf-split-by-type`         | variant   | easy       | Pattern D | bioterm-base     | split SNVs / indels, type-purity sanity check  |
+| 22 | `mpileup-call-snps`         | variant   | medium     | Pattern D | bioterm-base     | bcftools mpileup → call pipeline               |
+| 23 | `snpeff-annotate-counts`    | variant   | medium     | Pattern A | bioterm-variant  | snpEff + bundled SARS-CoV-2 DB, impact tally   |
+| 24 | `vcf-allele-frequency`      | variant   | easy       | Pattern C | bioterm-base     | AF per record from AD, tol-per-row compare      |
+| 25 | `vcf-intersect-bed`         | variant   | easy       | Pattern D | bioterm-base     | bcftools view -R, VCF-set equality              |
+| 26 | `vcf-normalize`             | variant   | medium     | Pattern D | bioterm-base     | bcftools norm -m -any, split + left-align       |
+| 27 | `blast-best-hit`            | search    | easy       | Pattern A | bioterm-base     | blastp against kinome, deterministic tiebreak  |
+| 28 | `kmer-presence-grid`        | search    | easy       | Pattern A | bioterm-base     | genome × kmer presence matrix                  |
+| 29 | `mafft-msa-identity`        | search    | medium     | Pattern C | bioterm-base     | MAFFT + pairwise identity on upper triangle     |
+| 30 | `tpm-normalize`             | rnaseq    | easy       | Pattern C | bioterm-rnaseq   | TPM normalization, 1 % tolerance per cell      |
 
 Every task is validated by two independent gates:
 
@@ -35,7 +48,7 @@ Every task is validated by two independent gates:
   and asserts `reward.txt == 1`. Pass `--skip-missing-images` to
   tolerate images that are not locally loaded.
 
-As of the latest commit both gates pass for all 17 tasks. All three
+As of the latest commit both gates pass for all 30 tasks. All three
 images (`bioterm-base`, `bioterm-variant`, `bioterm-rnaseq`) are
 exercised by at least one real task.
 
@@ -90,10 +103,11 @@ agent/verifier pipeline identical to `scripts/run_oracle_all.sh`
 without duplicating any inputs. `scripts/validate_task.py` enforces
 both files.
 
-The first external Harbor run (2026-04-18, `terminus-2` +
-`openai/gpt-5.4-mini`, 1 attempt per task) cleared **15 / 17 tasks in
-1 m 55 s for $0.14** total API spend. Full per-task breakdown and
-failure post-mortems live in
+First external Harbor run (2026-04-18, `terminus-2` +
+`openai/gpt-5.4-mini`, 1 attempt per task) on the initial 17-task
+set cleared **15 / 17 tasks in 1 m 55 s for $0.14** total API spend.
+The 30-task expansion is run via the same workflow; per-run
+breakdowns and failure post-mortems live in
 [`docs/harbor-runs.md`](harbor-runs.md).
 
 Operational note: Harbor's default `--delete` flag runs
@@ -121,12 +135,11 @@ running against the local images in this repo.
 
 ## Next PR
 
-1. Add 4–6 more tasks: paired-end duplicate marking (Pattern C),
-   featureCounts count-matrix-from-bams (needs STAR index at
-   setup-time), DESeq2 top-N DE genes (Pattern C), MSA-conservation
-   positions (MAFFT, Pattern A), SAM → BAM → CRAM round-trip
-   (Pattern A).
-2. Land the first DB-retrieval task (`entrez-gene-summary`) on top of
+1. Land the first DB-retrieval task (`entrez-gene-summary`) on top of
    the live-network pattern once caches and rate-limit guards are
    exercised in CI.
+2. A second RNA-seq-heavy task (featureCounts / DESeq2 top-N DE
+   genes) once the STAR chr22 index is scripted into task setup.
 3. Multi-arch image push to GHCR behind a release tag.
+4. Cross-model Harbor run at N=10 attempts × 5–10 models to surface
+   systematic failure patterns per task.
