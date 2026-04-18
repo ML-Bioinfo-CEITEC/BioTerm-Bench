@@ -1,0 +1,13 @@
+chrom	pos	ref	alt	qual	dp	gt	vtype
+chr22	16050001	A	G	42	25	0/1	snp
+chr22	16050150	T	C	99	40	1/1	snp
+chr22	16050400	CAT	C	37	22	0/1	indel
+chr22	16050612	G	GA	55.5	18	0|1	indel
+chr22	16051001	C	T	28	15	1/0	snp
+chr22	16051340	AAAA	A	NA	12	0/1	indel
+chr22	16051800	G	A	65	NA	1/1	snp
+chr22	16052020	T	G	12	8	0/1	snp
+chr22	16052500	A	ACCC	48	30	1|1	indel
+chr22	16053000	C	G	NA	NA	0/0	snp
+chr22	16053400	G	T	78	41	1/1	snp
+chr22	16053900	TA	T	31	17	0|1	indel
