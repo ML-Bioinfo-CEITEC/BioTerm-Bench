@@ -1,0 +1,8 @@
+{
+  "name": "bioterm-bench-core",
+  "version": "0.1.0",
+  "description": "Terminal bioinformatics tasks for open-model tracking",
+  "tasks_path": "tasks/",
+  "author": "Vojtech Bystry, Petr Simecek",
+  "license": "MIT"
+}

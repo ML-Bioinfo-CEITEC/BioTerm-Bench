@@ -1,0 +1,36 @@
+[project]
+name = "bioterm-bench"
+version = "0.1.0"
+description = "Terminal bioinformatics tasks for open-model tracking (Harbor-compatible dataset)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [
+    { name = "Vojtech Bystry" },
+    { name = "Petr Simecek" },
+]
+dependencies = [
+    "click>=8.1",
+    "tomli>=2.0;python_version<'3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.6",
+]
+
+[project.scripts]
+bioterm-validate = "bioterm_bench.validate_task:main"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+package-dir = { "bioterm_bench" = "scripts" }
+packages = ["bioterm_bench"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"

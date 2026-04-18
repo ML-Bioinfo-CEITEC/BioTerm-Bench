@@ -1,0 +1,85 @@
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  lint:
+    name: lint tasks
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: install helper deps
+        run: pip install click
+
+      - name: syntax-check shell scripts
+        run: |
+          bash -n scripts/build_images.sh
+          bash -n scripts/run_oracle_all.sh
+          bash -n scripts/refresh_db_golds.sh
+
+      - name: validate task directories
+        run: python scripts/validate_task.py
+
+  build-base:
+    name: build bioterm-base (amd64)
+    runs-on: ubuntu-latest
+    needs: lint
+    if: |
+      github.event_name == 'push' ||
+      contains(github.event.pull_request.changed_files, 'docker/bioterm-base/')
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-qemu-action@v3
+
+      - uses: docker/setup-buildx-action@v3
+
+      # CI builds amd64 only; arm64 is verified locally on Apple Silicon.
+      # --load into the CI runner's Docker engine so subsequent sanity
+      # checks can poke at the image without pushing.
+      - name: build bioterm-base:v1 (amd64)
+        uses: docker/build-push-action@v6
+        with:
+          context: docker/bioterm-base
+          platforms: linux/amd64
+          tags: bioterm-base:v1
+          load: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: smoke-test tool versions
+        run: |
+          docker run --rm bioterm-base:v1 samtools --version | head -1
+          docker run --rm bioterm-base:v1 bcftools --version | head -1
+          docker run --rm bioterm-base:v1 ls /opt/references/chr22
+
+  # oracle-all runs once there is task content to exercise. Until then it
+  # would be a no-op, so it's gated behind the presence of at least one
+  # task directory.
+  oracle-all:
+    name: oracle-all
+    runs-on: ubuntu-latest
+    needs: build-base
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - uses: actions/checkout@v4
+      - name: skip if no tasks yet
+        id: has_tasks
+        run: |
+          if [ -z "$(ls -A tasks/ 2>/dev/null | grep -v '^\.')" ]; then
+            echo "no tasks present; skipping oracle-all"
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "skip=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: run oracle-all
+        if: steps.has_tasks.outputs.skip == 'false'
+        run: bash scripts/run_oracle_all.sh
