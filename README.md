@@ -3,9 +3,13 @@
 A laptop-runnable, deterministically-graded, Harbor-compatible benchmark
 of terminal bioinformatics tasks for tracking open-model progress.
 
-> **Status — V1 in progress.** This repository currently holds the
-> infrastructure (Docker base image, validation/build/oracle-run tooling,
-> CI, authoring docs). Task content lands in subsequent PRs.
+> **Status — V1 in progress.** The repository currently ships the three
+> Docker images (`bioterm-base:v1`, `bioterm-variant:v1`,
+> `bioterm-rnaseq:v1`), the validation / build / oracle-run tooling,
+> CI, authoring docs, and **13 deterministic tasks** covering alignment,
+> variant calling, RNA-seq normalization, QC, sequence search, and
+> metadata. Remaining tasks land in subsequent PRs — see
+> [docs/status.md](docs/status.md).
 
 ## What BioTerm-Bench is
 
@@ -14,6 +18,25 @@ RNA-seq DE, public-DB retrieval, sequence search, QC, metadata glue, and
 end-to-end synthesis) that a coding agent must complete in a terminal
 environment. Grading is **deterministic** — bcftools isec, hap.py, set
 comparison, numeric tolerance, or exact file diff. No LLM judges.
+
+The 13 tasks currently shipping in V1 (see
+[docs/status.md](docs/status.md) for the full roadmap):
+
+| task                       | category  | grader    | image            |
+|----------------------------|-----------|-----------|------------------|
+| `bam-sort-index`           | alignment | Pattern A | bioterm-base     |
+| `region-extract`           | alignment | Pattern A | bioterm-base     |
+| `flagstat-report`          | alignment | Pattern A | bioterm-base     |
+| `gtf-to-bed`               | metadata  | Pattern A | bioterm-base     |
+| `id-mapping`               | metadata  | Pattern A | bioterm-base     |
+| `vcf-stats-summary`        | metadata  | Pattern C | bioterm-base     |
+| `fastqc-quality-report`    | qc        | Pattern C | bioterm-base     |
+| `vcf-filter-quality`       | variant   | Pattern D | bioterm-base     |
+| `vcf-split-by-type`        | variant   | Pattern D | bioterm-base     |
+| `mpileup-call-snps`        | variant   | Pattern D | bioterm-base     |
+| `blast-best-hit`           | search    | Pattern A | bioterm-base     |
+| `kmer-presence-grid`       | search    | Pattern A | bioterm-base     |
+| `tpm-normalize`            | rnaseq    | Pattern C | bioterm-rnaseq   |
 
 V1 holds three commitments that override everything else:
 
