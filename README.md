@@ -3,57 +3,44 @@
 A laptop-runnable, deterministically-graded, Harbor-compatible benchmark
 of terminal bioinformatics tasks for tracking open-model progress.
 
-> **Status — V1 complete.** The repository ships the three Docker
+> **Status — V1.1 in progress.** The repository ships the three Docker
 > images (`bioterm-base:v1`, `bioterm-variant:v1`,
 > `bioterm-rnaseq:v1`), the validation / build / oracle-run tooling,
-> CI, authoring docs, the `scripts/new_task.sh` scaffolder, and **30
-> deterministic tasks** covering alignment, variant calling &
-> annotation, RNA-seq normalization, QC, sequence search, and
-> metadata. Harbor runs and roadmap live in
+> CI, authoring docs, and the `scripts/new_task.sh` scaffolder. After
+> the first full Harbor run we removed 13 tasks that every tested model
+> always solved; the pack now has **17 tasks** while we add new harder
+> tasks to reach a differentiating 25. Harbor runs and roadmap live in
 > [docs/status.md](docs/status.md) and
 > [docs/harbor-runs.md](docs/harbor-runs.md).
 
 ## What BioTerm-Bench is
 
-A curated set of **30 bioinformatics tasks** (alignment, variant calling,
-RNA-seq DE, public-DB retrieval, sequence search, QC, metadata glue, and
-end-to-end synthesis) that a coding agent must complete in a terminal
-environment. Grading is **deterministic** — bcftools isec, hap.py, set
-comparison, numeric tolerance, or exact file diff. No LLM judges.
+A curated set of bioinformatics tasks (alignment, variant calling,
+RNA-seq DE, sequence search, QC, metadata glue, and end-to-end
+synthesis) that a coding agent must complete in a terminal environment.
+Grading is **deterministic** — bcftools isec, set comparison, numeric
+tolerance, or exact file diff. No LLM judges.
 
-The 30 tasks currently shipping in V1 (see
+The 17 tasks currently shipping (see
 [docs/status.md](docs/status.md) for the full roadmap):
 
 | task                        | category  | grader    | image           |
 | --------------------------- | --------- | --------- | --------------- |
-| `bam-sort-index`            | alignment | Pattern A | bioterm-base    |
-| `region-extract`            | alignment | Pattern A | bioterm-base    |
 | `flagstat-report`           | alignment | Pattern A | bioterm-base    |
 | `bam-depth-histogram`       | alignment | Pattern C | bioterm-base    |
 | `sam-to-cram-roundtrip`     | alignment | Pattern A | bioterm-base    |
 | `bam-mark-duplicates`       | alignment | Pattern C | bioterm-base    |
 | `insert-size-stats`         | alignment | Pattern C | bioterm-base    |
 | `gtf-to-bed`                | metadata  | Pattern A | bioterm-base    |
-| `gtf-gene-lengths`          | metadata  | Pattern A | bioterm-base    |
-| `id-mapping`                | metadata  | Pattern A | bioterm-base    |
 | `vcf-to-tsv`                | metadata  | Pattern A | bioterm-base    |
-| `vcf-stats-summary`         | metadata  | Pattern C | bioterm-base    |
 | `fasta-rename-headers`      | metadata  | Pattern A | bioterm-base    |
-| `bed-merge-intervals`       | metadata  | Pattern A | bioterm-base    |
 | `fasta-longest-orf`         | metadata  | Pattern A | bioterm-base    |
 | `fastqc-quality-report`     | qc        | Pattern C | bioterm-base    |
 | `seqkit-fasta-stats`        | qc        | Pattern A | bioterm-base    |
-| `fastq-adapter-count`       | qc        | Pattern A | bioterm-base    |
-| `fastq-length-distribution` | qc        | Pattern A | bioterm-base    |
-| `vcf-filter-quality`        | variant   | Pattern D | bioterm-base    |
 | `vcf-split-by-type`         | variant   | Pattern D | bioterm-base    |
-| `mpileup-call-snps`         | variant   | Pattern D | bioterm-base    |
-| `snpeff-annotate-counts`    | variant   | Pattern A | bioterm-variant |
 | `vcf-allele-frequency`      | variant   | Pattern C | bioterm-base    |
-| `vcf-intersect-bed`         | variant   | Pattern D | bioterm-base    |
 | `vcf-normalize`             | variant   | Pattern D | bioterm-base    |
 | `blast-best-hit`            | search    | Pattern A | bioterm-base    |
-| `kmer-presence-grid`        | search    | Pattern A | bioterm-base    |
 | `mafft-msa-identity`        | search    | Pattern C | bioterm-base    |
 | `tpm-normalize`             | rnaseq    | Pattern C | bioterm-rnaseq  |
 
@@ -144,7 +131,7 @@ export OPENAI_API_KEY=sk-...
 harbor run --path tasks/gtf-to-bed \
     --agent terminus-2 -m openai/gpt-5.4-mini --no-delete
 
-# full 17-task run
+# full current pack run
 harbor run --path tasks/ \
     --agent terminus-2 -m openai/gpt-5.4-mini \
     --no-delete -n 4 -k 1
