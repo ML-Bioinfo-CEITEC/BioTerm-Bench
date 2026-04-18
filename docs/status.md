@@ -4,7 +4,7 @@ This file tracks what is shipped, what is next, and what is explicitly
 deferred. It is updated alongside task PRs, not kept in the future
 tense.
 
-## Post-V1 rebalance — why 30 → 17 → 25
+## Post-V1 rebalance — 30 → 17 → 22
 
 The first full Harbor run (k=3, 6 models of varying strength) showed
 that **16 / 30 tasks had zero failed attempts across every model
@@ -14,32 +14,46 @@ Always-pass tasks contribute no information to a leaderboard, so we
 removed 13 of them and kept 3 (`tpm-normalize`, `mafft-msa-identity`,
 `vcf-normalize`) to prevent categories from collapsing to zero.
 
-The pack is now being repopulated with harder tasks (one+ per
-category) to reach a target of 25 differentiating tasks. Interim state:
-**17 tasks shipped** while harder additions are authored and
-difficulty-probed.
+Ten new harder candidate tasks were then authored and difficulty-probed
+with a k=1 × 4-model sweep (nano, mistral-small-2603, gpt-5.4-mini,
+gpt-5.4 full). The probe cost $0.56 of a $25 budget. Five candidates
+were all-pass across the probe and were dropped
+(`blast-reciprocal-best-hits`, `counts-median-of-ratios`,
+`counts-to-deg-ttest`, `fastq-quality-trim`, `seqkit-gc-window`). Five
+candidates were kept — four show clean weak-vs-strong differentiation
+(`bam-clipping-stats`, `fasta-6frame-codon-counts`,
+`gtf-longest-transcript-cds`, `vcf-trio-mendelian`) and one
+(`kmer-jaccard-matrix`) was kept after a spec clarification (id format:
+basename without `.fa`). The final pack is **22 tasks** that
+exercises all six categories and covers a spread of easy/medium/hard
+difficulty.
 
-## Tasks shipped (17)
+## Tasks shipped (22)
 
-| #  | task                        | category  | difficulty | grader    | image            | notes                                          |
-|----|-----------------------------|-----------|------------|-----------|------------------|------------------------------------------------|
-|  1 | `flagstat-report`           | alignment | easy       | Pattern A | bioterm-base     | 5 flagstat metrics, sorted TSV                 |
-|  2 | `bam-depth-histogram`       | alignment | easy       | Pattern C | bioterm-base     | samtools depth -a → mean/median/covered frac   |
-|  3 | `sam-to-cram-roundtrip`     | alignment | easy       | Pattern A | bioterm-base     | BAM → CRAM (+index); grader samtools-views back|
-|  4 | `bam-mark-duplicates`       | alignment | easy       | Pattern C | bioterm-base     | samtools markdup, exact duplicate count         |
-|  5 | `insert-size-stats`         | alignment | easy       | Pattern C | bioterm-base     | mean + stdev insert size from `samtools stats`  |
-|  6 | `gtf-to-bed`                | metadata  | easy       | Pattern A | bioterm-base     | awk/sort exon extraction, 4-key sort           |
-|  7 | `vcf-to-tsv`                | metadata  | easy       | Pattern A | bioterm-base     | pysam extract of CHROM/POS/REF/ALT/QUAL/DP/GT  |
-|  8 | `fasta-rename-headers`      | metadata  | easy       | Pattern A | bioterm-base     | rename FASTA ids from a mapping TSV             |
-|  9 | `fasta-longest-orf`         | metadata  | medium     | Pattern A | bioterm-base     | 6-frame longest ORF, explicit tiebreak          |
-| 10 | `fastqc-quality-report`     | qc        | easy       | Pattern C | bioterm-base     | 5 QC stats parsed out of fastqc_data.txt       |
-| 11 | `seqkit-fasta-stats`        | qc        | easy       | Pattern A | bioterm-base     | per-sequence length / GC% / N%, 2-decimal TSV  |
-| 12 | `vcf-split-by-type`         | variant   | easy       | Pattern D | bioterm-base     | split SNVs / indels, type-purity sanity check  |
-| 13 | `vcf-allele-frequency`      | variant   | easy       | Pattern C | bioterm-base     | AF per record from AD, tol-per-row compare      |
-| 14 | `vcf-normalize`             | variant   | medium     | Pattern D | bioterm-base     | bcftools norm -m -any, split + left-align       |
-| 15 | `blast-best-hit`            | search    | easy       | Pattern A | bioterm-base     | blastp against kinome, deterministic tiebreak  |
-| 16 | `mafft-msa-identity`        | search    | medium     | Pattern C | bioterm-base     | MAFFT + pairwise identity on upper triangle     |
-| 17 | `tpm-normalize`             | rnaseq    | easy       | Pattern C | bioterm-rnaseq   | TPM normalization, 1 % tolerance per cell      |
+| #  | task                           | category  | difficulty | grader    | image            | notes                                          |
+|----|--------------------------------|-----------|------------|-----------|------------------|------------------------------------------------|
+|  1 | `flagstat-report`              | alignment | easy       | Pattern A | bioterm-base     | 5 flagstat metrics, sorted TSV                 |
+|  2 | `bam-depth-histogram`          | alignment | easy       | Pattern C | bioterm-base     | samtools depth -a → mean/median/covered frac   |
+|  3 | `sam-to-cram-roundtrip`        | alignment | easy       | Pattern A | bioterm-base     | BAM → CRAM (+index); grader samtools-views back|
+|  4 | `bam-mark-duplicates`          | alignment | easy       | Pattern C | bioterm-base     | samtools markdup, exact duplicate count         |
+|  5 | `insert-size-stats`            | alignment | easy       | Pattern C | bioterm-base     | mean + stdev insert size from `samtools stats`  |
+|  6 | `bam-clipping-stats`           | alignment | medium     | Pattern C | bioterm-base     | per-read CIGAR soft-clip stats, mean + p90      |
+|  7 | `gtf-to-bed`                   | metadata  | easy       | Pattern A | bioterm-base     | awk/sort exon extraction, 4-key sort           |
+|  8 | `vcf-to-tsv`                   | metadata  | easy       | Pattern A | bioterm-base     | pysam extract of CHROM/POS/REF/ALT/QUAL/DP/GT  |
+|  9 | `fasta-rename-headers`         | metadata  | easy       | Pattern A | bioterm-base     | rename FASTA ids from a mapping TSV             |
+| 10 | `fasta-longest-orf`            | metadata  | medium     | Pattern A | bioterm-base     | 6-frame longest ORF, explicit tiebreak          |
+| 11 | `gtf-longest-transcript-cds`   | metadata  | medium     | Pattern A | bioterm-base     | pick longest coding transcript per gene         |
+| 12 | `fasta-6frame-codon-counts`    | metadata  | medium     | Pattern A | bioterm-base     | codon counts across all 6 reading frames        |
+| 13 | `fastqc-quality-report`        | qc        | easy       | Pattern C | bioterm-base     | 5 QC stats parsed out of fastqc_data.txt       |
+| 14 | `seqkit-fasta-stats`           | qc        | easy       | Pattern A | bioterm-base     | per-sequence length / GC% / N%, 2-decimal TSV  |
+| 15 | `vcf-split-by-type`            | variant   | easy       | Pattern D | bioterm-base     | split SNVs / indels, type-purity sanity check  |
+| 16 | `vcf-allele-frequency`         | variant   | easy       | Pattern C | bioterm-base     | AF per record from AD, tol-per-row compare      |
+| 17 | `vcf-normalize`                | variant   | medium     | Pattern D | bioterm-base     | bcftools norm -m -any, split + left-align       |
+| 18 | `vcf-trio-mendelian`           | variant   | hard       | Pattern C | bioterm-base     | trio Mendelian-violation counts, proband view   |
+| 19 | `blast-best-hit`               | search    | easy       | Pattern A | bioterm-base     | blastp against kinome, deterministic tiebreak  |
+| 20 | `mafft-msa-identity`           | search    | medium     | Pattern C | bioterm-base     | MAFFT + pairwise identity on upper triangle     |
+| 21 | `kmer-jaccard-matrix`          | search    | medium     | Pattern C | bioterm-base     | canonical k=15 Jaccard over 6 small genomes     |
+| 22 | `tpm-normalize`                | rnaseq    | easy       | Pattern C | bioterm-rnaseq   | TPM normalization, 1 % tolerance per cell      |
 
 Every task is validated by two independent gates:
 
@@ -113,7 +127,9 @@ Historical Harbor runs (k=1, `terminus-2` + `openai/gpt-5.4-mini`):
 A follow-up k=3 sweep across 5 additional models (nano,
 mistral-small-2603, gpt-oss-120b, qwen3.5-122b, deepseek-v3.2) drove
 the rebalance described above: 16/30 tasks had zero failed attempts
-across all models. Per-model summaries live in
+across all models. A k=1 × 4-model probe of 10 new harder candidates
+then selected 5 to ship and dropped 5 too-easy ones. Per-model
+summaries and the probe table live in
 [`docs/harbor-runs.md`](harbor-runs.md).
 
 Operational note: Harbor's default `--delete` flag runs

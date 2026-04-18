@@ -3,13 +3,14 @@
 A laptop-runnable, deterministically-graded, Harbor-compatible benchmark
 of terminal bioinformatics tasks for tracking open-model progress.
 
-> **Status — V1.1 in progress.** The repository ships the three Docker
+> **Status — V1.1 complete.** The repository ships the three Docker
 > images (`bioterm-base:v1`, `bioterm-variant:v1`,
 > `bioterm-rnaseq:v1`), the validation / build / oracle-run tooling,
 > CI, authoring docs, and the `scripts/new_task.sh` scaffolder. After
-> the first full Harbor run we removed 13 tasks that every tested model
-> always solved; the pack now has **17 tasks** while we add new harder
-> tasks to reach a differentiating 25. Harbor runs and roadmap live in
+> the first full Harbor k=3 sweep (5 models × 30 tasks) we removed 13
+> tasks that every tested model always solved and added 5 new harder
+> tasks probed for weak-vs-strong model differentiation; the pack now
+> has **22 tasks**. Harbor runs and rationale live in
 > [docs/status.md](docs/status.md) and
 > [docs/harbor-runs.md](docs/harbor-runs.md).
 
@@ -21,28 +22,33 @@ synthesis) that a coding agent must complete in a terminal environment.
 Grading is **deterministic** — bcftools isec, set comparison, numeric
 tolerance, or exact file diff. No LLM judges.
 
-The 17 tasks currently shipping (see
+The 22 tasks currently shipping (see
 [docs/status.md](docs/status.md) for the full roadmap):
 
-| task                        | category  | grader    | image           |
-| --------------------------- | --------- | --------- | --------------- |
-| `flagstat-report`           | alignment | Pattern A | bioterm-base    |
-| `bam-depth-histogram`       | alignment | Pattern C | bioterm-base    |
-| `sam-to-cram-roundtrip`     | alignment | Pattern A | bioterm-base    |
-| `bam-mark-duplicates`       | alignment | Pattern C | bioterm-base    |
-| `insert-size-stats`         | alignment | Pattern C | bioterm-base    |
-| `gtf-to-bed`                | metadata  | Pattern A | bioterm-base    |
-| `vcf-to-tsv`                | metadata  | Pattern A | bioterm-base    |
-| `fasta-rename-headers`      | metadata  | Pattern A | bioterm-base    |
-| `fasta-longest-orf`         | metadata  | Pattern A | bioterm-base    |
-| `fastqc-quality-report`     | qc        | Pattern C | bioterm-base    |
-| `seqkit-fasta-stats`        | qc        | Pattern A | bioterm-base    |
-| `vcf-split-by-type`         | variant   | Pattern D | bioterm-base    |
-| `vcf-allele-frequency`      | variant   | Pattern C | bioterm-base    |
-| `vcf-normalize`             | variant   | Pattern D | bioterm-base    |
-| `blast-best-hit`            | search    | Pattern A | bioterm-base    |
-| `mafft-msa-identity`        | search    | Pattern C | bioterm-base    |
-| `tpm-normalize`             | rnaseq    | Pattern C | bioterm-rnaseq  |
+| task                           | category  | grader    | image           |
+| ------------------------------ | --------- | --------- | --------------- |
+| `flagstat-report`              | alignment | Pattern A | bioterm-base    |
+| `bam-depth-histogram`          | alignment | Pattern C | bioterm-base    |
+| `sam-to-cram-roundtrip`        | alignment | Pattern A | bioterm-base    |
+| `bam-mark-duplicates`          | alignment | Pattern C | bioterm-base    |
+| `insert-size-stats`            | alignment | Pattern C | bioterm-base    |
+| `bam-clipping-stats`           | alignment | Pattern C | bioterm-base    |
+| `gtf-to-bed`                   | metadata  | Pattern A | bioterm-base    |
+| `vcf-to-tsv`                   | metadata  | Pattern A | bioterm-base    |
+| `fasta-rename-headers`         | metadata  | Pattern A | bioterm-base    |
+| `fasta-longest-orf`            | metadata  | Pattern A | bioterm-base    |
+| `gtf-longest-transcript-cds`   | metadata  | Pattern A | bioterm-base    |
+| `fasta-6frame-codon-counts`    | metadata  | Pattern A | bioterm-base    |
+| `fastqc-quality-report`        | qc        | Pattern C | bioterm-base    |
+| `seqkit-fasta-stats`           | qc        | Pattern A | bioterm-base    |
+| `vcf-split-by-type`            | variant   | Pattern D | bioterm-base    |
+| `vcf-allele-frequency`         | variant   | Pattern C | bioterm-base    |
+| `vcf-normalize`                | variant   | Pattern D | bioterm-base    |
+| `vcf-trio-mendelian`           | variant   | Pattern C | bioterm-base    |
+| `blast-best-hit`               | search    | Pattern A | bioterm-base    |
+| `mafft-msa-identity`           | search    | Pattern C | bioterm-base    |
+| `kmer-jaccard-matrix`          | search    | Pattern C | bioterm-base    |
+| `tpm-normalize`                | rnaseq    | Pattern C | bioterm-rnaseq  |
 
 
 V1 holds three commitments that override everything else:

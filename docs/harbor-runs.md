@@ -62,6 +62,106 @@ you have a regression in either the task data or the grader.
 
 ## Run log
 
+### 2026-04-18 — k=3 multi-model sweep on the 30-task pack
+
+Five models sampled at `-k 3 -n 2` on the full 30-task pack (one
+model per job, Option B). Intended as a first pass to check task
+difficulty. Deepseek-v3.2 was **stopped partway** (13/30 tasks, 39
+trials) after the aggregate signal was clear enough to act on. The
+sweep directly motivated the task rebalance described at the top of
+[`docs/status.md`](status.md): **16/30 tasks had zero failed attempts
+across every model**, so 13 of them were dropped in a follow-up
+commit.
+
+| model                                          | trials | pass | mean  | wall    | cost $ |
+|------------------------------------------------|-------:|-----:|------:|---------|-------:|
+| `openai/gpt-5.4-nano`                          |     90 |   78 | 0.867 | 23 min  | 0.2403 |
+| `openrouter/mistralai/mistral-small-2603`      |     90 |   83 | 0.922 | 35 min  | 0.6906 |
+| `openrouter/openai/gpt-oss-120b`               |     90 |   74 | 0.822 | 72 min  | 0.1919 |
+| `openrouter/qwen/qwen3.5-122b-a10b`            |     90 |   89 | 0.989 | 45 min  | 1.5926 |
+| `openrouter/deepseek/deepseek-v3.2` (partial)  |     39 |   38 | 0.974 | —       | 0.3898 |
+
+Tasks that **never failed** across all five models (16) — removed or
+preserved:
+
+- Preserved (one-per-category fallback): `tpm-normalize` (rnaseq-only),
+  `mafft-msa-identity` (non-blast search), `vcf-normalize` (variant).
+- Removed outright (13): `bam-sort-index`, `region-extract`,
+  `bed-merge-intervals`, `gtf-gene-lengths`, `id-mapping`,
+  `vcf-stats-summary`, `fastq-adapter-count`,
+  `fastq-length-distribution`, `kmer-presence-grid`,
+  `mpileup-call-snps`, `snpeff-annotate-counts`,
+  `vcf-filter-quality`, `vcf-intersect-bed`.
+
+Tasks where **at least one model failed** (14, now the "informative"
+core):
+
+- Stable-ish: `mafft-msa-identity`, `vcf-normalize`,
+  `sam-to-cram-roundtrip`, `vcf-split-by-type`,
+  `vcf-allele-frequency`, `vcf-to-tsv`, `tpm-normalize`,
+  `fastqc-quality-report`, `seqkit-fasta-stats`.
+- Differentiating: `bam-depth-histogram`, `bam-mark-duplicates`,
+  `flagstat-report`, `insert-size-stats`, `fasta-longest-orf`,
+  `fasta-rename-headers`, `gtf-to-bed`, `blast-best-hit`.
+
+Main per-model failure modes:
+
+- `gpt-5.4-nano` (78/90) struggled with numeric precision on
+  `bam-depth-histogram` and `fastqc-quality-report` (parsed the
+  wrong module), and with file-format edge cases on
+  `insert-size-stats` and `sam-to-cram-roundtrip`.
+- `mistral-small-2603` (83/90) failed on `gtf-to-bed` exon ordering
+  and `vcf-split-by-type` INFO-parsing edge cases.
+- `gpt-oss-120b` (74/90) was the weakest — multiple failures on
+  `fasta-longest-orf`, `fastqc-quality-report`,
+  `bam-mark-duplicates`, and `fasta-rename-headers` (trailing
+  newline / header-format drift). This model is a useful
+  "lower-bound" probe.
+- `qwen3.5-122b-a10b` (89/90) and `deepseek-v3.2` (38/39) failed only
+  on `blast-best-hit`, specifically the tie-break between two
+  identical-score kinase hits. Suggests the instruction's tie-break
+  chain is still underspecified for high-capacity models.
+
+Artefacts live under `jobs/full30-<model>-k3/`; trajectories and
+config are preserved with `--no-delete`.
+
+### 2026-04-18 — k=1 × 4-model probe of 10 new candidate tasks
+
+Ten newly authored harder tasks were staged under `tasks_probe/` as
+symlinks to `tasks/` and probed at `-k 1 -n 2` against four models
+spanning weak → strong. Total probe cost: **$0.556** (well under the
+$25 allotted budget).
+
+| task                           | nano | mistral-2603 | gpt-5.4-mini | gpt-5.4 | verdict      |
+|--------------------------------|:---:|:---:|:---:|:---:|--------------|
+| `bam-clipping-stats`           | P   | **F** | P | P | kept (weak-differ) |
+| `fasta-6frame-codon-counts`    | **F** | P | P | P | kept (weak-differ) |
+| `gtf-longest-transcript-cds`   | **F** | P | F* | P | kept (weak-differ) |
+| `vcf-trio-mendelian`           | **F** | **F** | **F** | P | kept (strong-only) |
+| `kmer-jaccard-matrix`          | P | P | F† | P | kept after spec fix |
+| `blast-reciprocal-best-hits`   | P | P | P | P | **dropped** (too easy) |
+| `counts-median-of-ratios`      | P | P | P | P | **dropped** (too easy) |
+| `counts-to-deg-ttest`          | P | P | P | P | **dropped** (too easy) |
+| `fastq-quality-trim`           | P | P | P | P | **dropped** (too easy) |
+| `seqkit-gc-window`             | P | P | P | P | **dropped** (too easy) |
+
+- **F\*** (`gpt-5.4-mini` on `gtf-longest-transcript-cds`) was a real
+  error — the model dropped the leading `S` on `SIMG0001` / `SIMT0001`
+  ids. At `k=2` on a follow-up re-probe, mini passed 2/2, so at `k=3`
+  the task will still differentiate the weaker models (`nano` fails
+  deterministically in its single attempt).
+- **F†** (`gpt-5.4-mini` on `kmer-jaccard-matrix`) was traced to spec
+  ambiguity: the model emitted `genome_01.fa` while the grader expected
+  the stripped basename `genome_01`. The instruction now explicitly
+  says "FASTA basenames without the `.fa` extension". A follow-up
+  `k=2` probe confirms mini passes cleanly after the fix; the task
+  was kept to balance the `search` category and because its canonical
+  k-mer logic still has room to trip smaller agents.
+
+Net result: **5 new tasks shipped, 5 dropped** (plus one spec fix).
+Final pack size is **17 + 5 = 22 tasks**. Probe artefacts live under
+`jobs/probe10-*/` and `jobs/probe-kmer-mini-k2/`.
+
 ### 2026-04-18 — `openai/gpt-5.4-mini`, `terminus-2`, full 30 tasks
 
 | metric        | value        |

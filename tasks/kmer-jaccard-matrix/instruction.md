@@ -18,8 +18,10 @@ columns, **no header**:
 
     genome_a    genome_b    jaccard
 
-Emit each unordered pair exactly once, with `genome_a < genome_b`
-ASCII. Rows sorted by `genome_a` ASCII ascending, then `genome_b`
+`genome_a` / `genome_b` are the FASTA **basenames without the `.fa`
+extension** (e.g. `genome_01`, not `genome_01.fa` or the FASTA record
+header). Emit each unordered pair exactly once, with
+`genome_a < genome_b` ASCII. Rows sorted by `genome_a` ASCII ascending, then `genome_b`
 ASCII ascending. `jaccard` must be formatted with exactly 6 decimals
 (e.g. `0.042711`, `1.000000`).
 
