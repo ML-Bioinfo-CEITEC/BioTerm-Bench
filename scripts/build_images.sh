@@ -86,7 +86,7 @@ build_one() {
         --platform "${PLATFORMS}" \
         "${MODE}" \
         -t "${tag}" \
-        "${extra_args[@]}" \
+        ${extra_args[@]+"${extra_args[@]}"} \
         "${context}"
 }
 
