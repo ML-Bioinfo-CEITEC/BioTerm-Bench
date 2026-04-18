@@ -14,15 +14,18 @@
 #   scripts/run_oracle_all.sh
 #   scripts/run_oracle_all.sh --only bam-sort-index
 #   scripts/run_oracle_all.sh --tasks-dir tasks
+#   scripts/run_oracle_all.sh --skip-missing-images
 set -euo pipefail
 
 TASKS_DIR="tasks"
 ONLY=""
+SKIP_MISSING=0
 
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --tasks-dir) TASKS_DIR="$2"; shift 2 ;;
-        --only)      ONLY="$2";      shift 2 ;;
+        --tasks-dir)           TASKS_DIR="$2"; shift 2 ;;
+        --only)                ONLY="$2";      shift 2 ;;
+        --skip-missing-images) SKIP_MISSING=1; shift ;;
         -h|--help)
             grep '^# ' "$0" | sed 's/^# \{0,1\}//'
             exit 0 ;;
@@ -76,6 +79,17 @@ for dir in "${task_dirs[@]}"; do
     fi
 
     echo ">>> ${name} (image: ${image})"
+
+    if ! docker image inspect "${image}" >/dev/null 2>&1; then
+        if [[ "${SKIP_MISSING}" -eq 1 ]]; then
+            echo "skip ${name}: image ${image} not loaded locally (--skip-missing-images)"
+            checked=$((checked - 1))
+            continue
+        fi
+        echo "FAIL ${name}: image ${image} not loaded (docker image inspect failed)"
+        failures=$((failures + 1))
+        continue
+    fi
 
     logs_dir="$(mktemp -d -t bioterm-oracle-XXXXXX)"
     output_dir="$(mktemp -d -t bioterm-output-XXXXXX)"

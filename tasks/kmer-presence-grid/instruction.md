@@ -15,9 +15,10 @@ Produce one output file:
 
       genome_id   kmer   present
 
-  `present` is `1` if the k-mer occurs at least once in the forward
-  strand of any sequence inside that FASTA, else `0`. Case-insensitive
-  match against `ACGT` only (ignore `N` positions).
+  `present` is `1` if the k-mer occurs at least once as a contiguous
+  substring of the concatenation of all sequences inside that FASTA
+  (forward strand, case-insensitive), else `0`. Do not reverse-
+  complement. The k-mers themselves contain only `A C G T`.
 
 Rows must be sorted first by `genome_id` lexicographically, then by
 `kmer` lexicographically. Every (genome, kmer) combination must appear

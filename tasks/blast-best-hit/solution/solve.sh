@@ -21,9 +21,10 @@ with open("/tmp/raw_hits.tsv") as fh:
         qid, sseqid, bitscore, evalue = line.rstrip("\n").split("\t")
         bitscore = float(bitscore)
         evalue = float(evalue)
+        # rank key: higher bitscore, then lower evalue, then smallest sseqid
+        cand_key = (-bitscore, evalue, sseqid)
         prev = best.get(qid)
-        cand = (bitscore, -evalue, sseqid)
-        if prev is None or cand > (prev[0], -prev[1], prev[2]):
+        if prev is None or cand_key < (-prev[0], prev[1], prev[2]):
             best[qid] = (bitscore, evalue, sseqid)
 
 with open("/app/data/queries.fasta") as fh:

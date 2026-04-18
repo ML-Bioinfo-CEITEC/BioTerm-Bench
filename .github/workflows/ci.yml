@@ -24,9 +24,20 @@ jobs:
           bash -n scripts/build_images.sh
           bash -n scripts/run_oracle_all.sh
           bash -n scripts/refresh_db_golds.sh
+          bash -n scripts/new_task.sh
 
       - name: validate task directories
         run: python scripts/validate_task.py
+
+      - name: scaffolder smoke test
+        run: |
+          bash scripts/new_task.sh ci-smoke-stub --category metadata
+          # scaffolded tasks intentionally fail validation until filled in
+          if python scripts/validate_task.py --only ci-smoke-stub; then
+            echo "scaffolder regression: placeholder task passed validation" >&2
+            exit 1
+          fi
+          rm -rf tasks/ci-smoke-stub
 
   build-base:
     name: build bioterm-base (amd64)
@@ -80,6 +91,6 @@ jobs:
           else
             echo "skip=false" >> "$GITHUB_OUTPUT"
           fi
-      - name: run oracle-all
+      - name: run oracle-all (skip tasks whose image is not loaded)
         if: steps.has_tasks.outputs.skip == 'false'
-        run: bash scripts/run_oracle_all.sh
+        run: bash scripts/run_oracle_all.sh --skip-missing-images

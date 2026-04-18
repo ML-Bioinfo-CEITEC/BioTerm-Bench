@@ -13,9 +13,11 @@ Run FastQC on this file and extract five values from the resulting
         "sequence_length_max":  <int>,   // right of the dash (or same as
                                          //   min for a single value)
         "gc_content":           <int>,   // "%GC" integer
-        "per_base_q20_frac":    <float>  // fraction of per-base positions
-                                         //   in the "Per base sequence
-                                         //   quality" module whose Mean
+        "per_base_q20_frac":    <float>  // fraction of rows in the
+                                         //   "Per base sequence quality"
+                                         //   module (after the header
+                                         //   line, one per base position
+                                         //   or bin) whose Mean column
                                          //   is >= 20.0; range [0, 1].
       }
 

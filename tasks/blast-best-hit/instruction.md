@@ -3,7 +3,11 @@ query sequences. A pre-built protein BLAST database, the UniProt human
 kinome in Swiss-Prot, lives at `/opt/references/blast_db/kinome`.
 
 For each query, run `blastp` against that database and report the best
-hit (highest bit score, ties broken by lowest e-value).
+hit. The winning hit is picked by (in this order):
+
+  1. highest `bitscore`,
+  2. lowest `evalue`,
+  3. smallest `sseqid` by ASCII string order.
 
 Produce one output file:
 
