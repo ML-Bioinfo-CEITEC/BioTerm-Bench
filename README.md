@@ -3,14 +3,17 @@
 A laptop-runnable, deterministically-graded, Harbor-compatible benchmark
 of terminal bioinformatics tasks for tracking open-model progress.
 
-> **Status — V1.1 complete.** The repository ships the three Docker
+> **Status — V2 hard-subset frozen.** V1.1 ships the three Docker
 > images (`bioterm-base:v1`, `bioterm-variant:v1`,
 > `bioterm-rnaseq:v1`), the validation / build / oracle-run tooling,
 > CI, authoring docs, and the `scripts/new_task.sh` scaffolder. After
 > the first full Harbor k=3 sweep (5 models × 30 tasks) we removed 13
 > tasks that every tested model always solved, then ran two rounds of
 > k=1 × 4-model difficulty probes on 15 new candidate tasks and kept
-> 8 of them. The pack now has **25 tasks** spread across 6 categories.
+> 8 of them. The stable core has **25 tasks** spread across 6 categories.
+> V2 adds 12 harder, multi-stage candidates and now freezes an 8-task
+> hard subset after a preregistered weak/middle/strong model probe. A separate nine-model
+> e-INFRA panel and a Tectonic preprint are in progress.
 > Harbor runs and rationale live in [docs/status.md](docs/status.md)
 > and [docs/harbor-runs.md](docs/harbor-runs.md).
 
@@ -53,6 +56,41 @@ The 25 tasks currently shipping (see
 | `tpm-normalize`                | rnaseq    | Pattern C | bioterm-rnaseq  |
 | `rnaseq-tpm-top-biotype`       | rnaseq    | Pattern C | bioterm-rnaseq  |
 
+The v2 candidate extension is now frozen as an 8-task hard subset, separate
+from the stable core. Exact fixed-seed regeneration commands are in
+[docs/v2-hard-task-regeneration.md](docs/v2-hard-task-regeneration.md).
+
+| candidate | category | integrated capability |
+| --- | --- | --- |
+| `bam-splice-junction-support` | alignment | CIGAR junctions joined to GTF annotations |
+| `gtf-reconstruct-translate` | metadata | genome/GTF reconstruction, strand, phase, translation |
+| `vcf-diploid-consensus` | variant | phased multiallelic variants applied to both haplotypes |
+| `vcf-trio-compound-het` | variant | trio inheritance and gene-level candidate aggregation |
+| `vcf-multisample-qc` | variant | call rate, heterozygosity, and genotype concordance |
+| `fastq-paired-adapter-qc` | qc | paired reads, adapters, orphans, and cycle summaries |
+| `rnaseq-featurecounts-matrix` | rnaseq | multi-BAM feature assignment and count matrix assembly |
+| `rnaseq-deseq2-contrast` | rnaseq | metadata-aware filtering, contrast, FDR, and ranking |
+| `metagenome-ambiguous-abundance` | search | ambiguous mappings and fractional abundance |
+| `mini-align-call-filter` | synthesis | alignment through normalized, filtered variant calls |
+| `kmer-contamination-mixture` | qc | reference-specific k-mers and mixture estimation |
+| `ortholog-rbh-clusters` | search | reciprocal evidence and deterministic cluster merging |
+
+Frozen retained hard subset from `notes/v2_task_selection.json`:
+
+- `bam-splice-junction-support`
+- `vcf-diploid-consensus`
+- `vcf-trio-compound-het`
+- `vcf-multisample-qc`
+- `rnaseq-featurecounts-matrix`
+- `rnaseq-deseq2-contrast`
+- `kmer-contamination-mixture`
+- `ortholog-rbh-clusters`
+
+The development receipt records 65 scored attempts, 20 scored passes, 45 scored
+failures, and 7 infrastructure/protocol errors across all 12 candidates. The
+retained eight account for 43 scored attempts, 15 passes, 28 failures, and 5
+errors.
+
 
 V1 holds three commitments that override everything else:
 
@@ -63,7 +101,7 @@ V1 holds three commitments that override everything else:
    mammalian WGS, no GPUs, no 100 GB references.
 3. **Harbor-compatible.** BioTerm-Bench is a *dataset*, not a harness.
   Orchestration, logging, agent integration, and parallelism come from
-   [Harbor](https://github.com/anthropics/harbor).
+   [Harbor](https://github.com/harbor-framework/harbor).
 
 ## Repo layout
 
@@ -151,12 +189,37 @@ this repo: Harbor's default `--delete` flag runs
 `docker compose down --rmi all` after every trial, which would wipe the
 `bioterm-*:v1` images from the local Docker engine.
 
-For variance estimation, run each model three times (`-k 3`) and
-average the per-task binary scores.
+For variance estimation, the v2 reporting protocol runs every retained task
+four times (`-k 4`) and reports mean reward, pass@1, and pass@4.
 
 Baseline receipts — cost, wall clock, and per-task pass/fail for the
 reference Harbor runs — live in
 [docs/harbor-runs.md](docs/harbor-runs.md).
+
+### V2 candidate selection and e-INFRA panel
+
+```bash
+# Validate all 12 candidates, then probe with the fixed development panel.
+VALIDATE_ONLY=1 bash scripts/probe_v2_candidates.sh
+RUN_TAG=selection bash scripts/probe_v2_candidates.sh
+
+# Materialize the frozen retained task list from raw Harbor receipts.
+python scripts/select_v2_tasks.py \
+  jobs/probe-v2-selection-qwen3-14b-k2 \
+  jobs/probe-v2-selection-gpt-oss-20b-k2 \
+  jobs/probe-v2-selection-gemma4-26b-a4b-k2
+
+# University provider: see docs/einfra-experiments.md first.
+export EINFRA_AI_TOKEN='...'
+python scripts/run_einfra_panel.py --validate-only
+python scripts/run_einfra_panel.py --smoke
+```
+
+The full e-INFRA panel refuses to start until the completed frozen selection receipt
+exactly matches `configs/v2_retained_tasks.txt`.
+
+Provider cohorts and run dates are reported separately. Shared-service wall
+time is operational metadata, not a model-speed benchmark.
 
 ## Adding a task
 
@@ -177,17 +240,26 @@ The scaffolded task is structurally valid but intentionally fails
 `validate_task.py` (TODO markers in `solve.sh`) until you fill in real
 logic.
 
-## Leaderboard (placeholder)
+## Results
 
-Numbers land once V1 tasks are authored and models are run. Reporting
-format:
+Raw Harbor receipts remain under the ignored local `jobs/` directory. Generate
+paper-ready cohort, model, category, and task tables with
+`scripts/summarize_bioterm_v2.py`; do not combine OpenRouter and e-INFRA into a
+single provider-confounded ranking. The summarizer records provider, run date,
+and score scope and rejects a glob that crosses provider cohorts.
 
-```
-model,overall,alignment,variant,rnaseq,db,search,qc,metadata,synthesis,mean_wallclock_s,mean_tokens
-anthropic/claude-opus-4-7,,,,,,,,,,
-openai/gpt-5,,,,,,,,,,
-deepseek-v3.2-think,,,,,,,,,,
-qwen3-coder-next,,,,,,,,,,
+```bash
+# Current core-25 OpenRouter cohort (the defaults shown explicitly).
+python scripts/summarize_bioterm_v2.py \
+  --pattern 'full25-k4-open-*' --provider openrouter --score-scope core-25
+
+# Retained hard-subset e-INFRA cohort after the panel completes.
+bioterm_hard_tasks=$(sed '/^#/d;/^$/d' configs/v2_retained_tasks.txt | wc -l)
+python scripts/summarize_bioterm_v2.py \
+  --pattern 'einfra-k4-*' --cohort-name einfra_k4_scaling \
+  --expected-trials "$((4 * bioterm_hard_tasks))" --attempts-per-task 4 \
+  --provider einfra --score-scope hard-subset \
+  --out-dir paper/generated/einfra
 ```
 
 ## Authors & license

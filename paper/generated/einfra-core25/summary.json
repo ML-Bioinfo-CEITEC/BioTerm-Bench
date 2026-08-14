@@ -1,0 +1,31 @@
+{
+  "cohort": {
+    "cohort": "einfra_k4_core25",
+    "provider": "einfra",
+    "score_scope": "core-25",
+    "run_dates": "2026-08-13;2026-08-14",
+    "pattern": "einfra-core25-k4-*",
+    "expected_trials": 100,
+    "attempts_per_task": 4,
+    "n_jobs_total": 9,
+    "n_jobs_included": 9,
+    "n_jobs_excluded": 0,
+    "mean_model_pass_at_k": 0.9866666666666668,
+    "mean_model_pass_at_1": 0.9288888888888889,
+    "mean_model_mean_reward": 0.9399214365881031
+  },
+  "included_models": [
+    "einfra-core25-k4-kimi-k3",
+    "einfra-core25-k4-mistral-medium-3.5",
+    "einfra-core25-k4-deepseek-v4-flash-thinking",
+    "einfra-core25-k4-glm-5.2",
+    "einfra-core25-k4-qwen3.5-int4",
+    "einfra-core25-k4-qwen3.5-122b",
+    "einfra-core25-k4-deepseek-v4-flash",
+    "einfra-core25-k4-gpt-oss-120b",
+    "einfra-core25-k4-gemma4"
+  ],
+  "excluded_models": [],
+  "best_model": "Kimi K3",
+  "best_model_pass_at_k": 25
+}

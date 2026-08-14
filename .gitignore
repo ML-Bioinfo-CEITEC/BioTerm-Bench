@@ -216,3 +216,23 @@ build-log/
 
 # Harbor trial output
 jobs/
+
+# Tectonic intermediates (the rendered preprint PDF is intentionally retained)
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+
+# Editor swap files -- .env.swp held a copy of the API token.
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Local agent tooling and scratch output, not part of the benchmark.
+.omx/
+tmp/

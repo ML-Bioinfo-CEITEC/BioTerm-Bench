@@ -1,0 +1,5 @@
+sample_a	sample_b	n_compared	concordance
+S_A	S_B	140	0.8500
+S_A	S_C	108	0.4167
+S_D	S_E	121	0.3554
+S_E	S_F	128	0.2344

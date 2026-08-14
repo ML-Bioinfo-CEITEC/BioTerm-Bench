@@ -1,0 +1,8 @@
+bam-splice-junction-support
+vcf-diploid-consensus
+vcf-trio-compound-het
+vcf-multisample-qc
+rnaseq-featurecounts-matrix
+rnaseq-deseq2-contrast
+kmer-contamination-mixture
+ortholog-rbh-clusters

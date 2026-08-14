@@ -20,6 +20,9 @@ dev = [
     "ruff>=0.6",
 ]
 
+[tool.pytest.ini_options]
+pythonpath = ["."]
+
 [project.scripts]
 bioterm-validate = "bioterm_bench.validate_task:main"
 

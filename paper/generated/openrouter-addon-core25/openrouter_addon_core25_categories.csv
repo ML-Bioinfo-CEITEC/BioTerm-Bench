@@ -1,0 +1,7 @@
+category,n_model_task_cells,mean_reward,mean_reward_ci_low,mean_reward_ci_high,pass_at_k_rate,pass_at_k_count
+alignment,30,0.975,0.925,1.0,1.0,30
+metadata,30,0.9416666666666667,0.8666666666666667,1.0,1.0,30
+qc,15,0.9666666666666667,0.9166666666666666,1.0,1.0,15
+rnaseq,10,0.825,0.6,1.0,0.9,9
+search,15,0.9333333333333333,0.8166666666666667,1.0,1.0,15
+variant,25,0.98,0.95,1.0,1.0,25

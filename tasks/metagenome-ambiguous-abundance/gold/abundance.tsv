@@ -1,0 +1,4 @@
+reference_id	length_bp	unique_reads	ambiguous_weight	weighted_reads	rel_abundance_ppm
+alpha_ref	945	18	8.6667	26.6667	376941.736542
+beta_ref	1090	14	13.6667	27.6667	339053.040203
+gamma_ref	925	12	7.6667	19.6667	284005.223255

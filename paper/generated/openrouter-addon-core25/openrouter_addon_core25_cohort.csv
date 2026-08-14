@@ -1,0 +1,2 @@
+cohort,provider,score_scope,run_dates,pattern,expected_trials,attempts_per_task,n_jobs_total,n_jobs_included,n_jobs_excluded,mean_model_pass_at_k,mean_model_pass_at_1,mean_model_mean_reward
+openrouter_addon_core25,openrouter,core-25,2026-08-13,openrouter-addon-core25-k4-*,100,4,5,5,0,0.992,0.9673333333333334,0.9497777777777777

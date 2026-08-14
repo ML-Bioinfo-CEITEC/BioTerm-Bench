@@ -1,0 +1,10 @@
+slug	model_id	display_name	family	total_params	active_params	context_tokens	max_output_tokens	quantization	reasoning_mode	provider	status_source	notes
+gemma4	openai/gemma4	Gemma 4	google	31B	31B	256000	32000	bf16	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	dense smaller anchor
+gpt-oss-120b	openai/gpt-oss-120b	GPT-OSS-120B	openai-oss	120B	A5.1B	128000	32000	mxfp4	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	provider total; model-card active count
+mistral-medium-3.5	openai/mistral-medium-3.5	Mistral Medium 3.5	mistral	128B	128B	256000	unknown	fp8	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	dense multimodal model
+qwen3.5-122b	openai/qwen3.5-122b	Qwen3.5 122B	qwen	122B	A10B	256000	32000	fp8	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	strong coding/tool model
+deepseek-v4-flash	openai/deepseek-v4-flash	DeepSeek V4 Flash	deepseek	304B	A13B	1000000	64000	fp8	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	provider total; model-card active count; reasoning off
+deepseek-v4-flash-thinking	openai/deepseek-v4-flash-thinking	DeepSeek V4 Flash Thinking	deepseek	304B	A13B	1000000	64000	fp8	thinking	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	same weights; reasoning on
+qwen3.5-int4	openai/qwen3.5-int4	Qwen3.5 Int4	qwen	397B	A17B	256000	32000	int4	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	quantized flagship
+glm-5.2	openai/glm-5.2	GLM 5.2	z-ai	756B	unknown	1000000	48000	fp8	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	large reasoning/tool model
+kimi-k3	openai/kimi-k3	Kimi K3	moonshot	2.8T	A104B	1000000	48000	fp8	default	einfra	https://docs.cerit.io/en/docs/ai-as-a-service/chat-ai	largest panel model; model-card active count

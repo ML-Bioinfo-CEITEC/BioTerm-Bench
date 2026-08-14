@@ -1,0 +1,61 @@
+{
+  "cohort": {
+    "cohort": "openrouter_k4_small",
+    "provider": "openrouter",
+    "score_scope": "core-25",
+    "run_dates": "2026-04-29;2026-04-30;2026-05-03;2026-05-09;2026-05-10;2026-05-11",
+    "pattern": "full25-k4-open-*",
+    "expected_trials": 100,
+    "attempts_per_task": 4,
+    "n_jobs_total": 18,
+    "n_jobs_included": 8,
+    "n_jobs_excluded": 10,
+    "mean_model_pass_at_k": 0.72,
+    "mean_model_pass_at_1": 0.5669128787878788,
+    "mean_model_mean_reward": 0.5577358769594795
+  },
+  "included_models": [
+    "full25-k4-open-gemma4-26b-a4b",
+    "full25-k4-open-qwen35-9b",
+    "full25-k4-open-gemma4-31b-it",
+    "full25-k4-open-gpt-oss-20b",
+    "full25-k4-open-mistral-small-32-24b",
+    "full25-k4-open-qwen3-30b-a3b",
+    "full25-k4-open-qwen3-14b",
+    "full25-k4-open-qwen3-8b"
+  ],
+  "excluded_models": [
+    {
+      "full25-k4-open-glm45-air": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-ministral14b": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-ministral8b": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-mistral-nemo": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-mistral-small-2501": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-mistral-small-2603": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-mistral-small-31-24b": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-qwen25-7b": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-qwen36-flash": "protocol_failure_high_error_rate"
+    },
+    {
+      "full25-k4-open-ministral3b": "unfinished"
+    }
+  ],
+  "best_model": "Gemma 4 26B A4B",
+  "best_model_pass_at_k": 25
+}

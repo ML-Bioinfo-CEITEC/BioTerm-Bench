@@ -1,0 +1,321 @@
+{
+  "tasks": [
+    {
+      "task": "blast-best-hit",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.75,
+      "difficulty": -0.788242777040306,
+      "discrimination": 3.8790627716855504
+    },
+    {
+      "task": "vcf-multisample-qc",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.7857142857142857,
+      "difficulty": -0.8480496600554498,
+      "discrimination": 5.057822904621842
+    },
+    {
+      "task": "vcf-trio-compound-het",
+      "n_models": 14,
+      "n_attempts": 55,
+      "pass_rate": 0.8,
+      "difficulty": -0.8575761422516178,
+      "discrimination": 7.932600756928011
+    },
+    {
+      "task": "rnaseq-featurecounts-matrix",
+      "n_models": 14,
+      "n_attempts": 55,
+      "pass_rate": 0.8363636363636363,
+      "difficulty": -0.9212413633025934,
+      "discrimination": 5.998901169542072
+    },
+    {
+      "task": "vcf-trio-mendelian",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9464285714285714,
+      "difficulty": -1.2531554737352157,
+      "discrimination": 13.645550018155754
+    },
+    {
+      "task": "vcf-diploid-consensus",
+      "n_models": 14,
+      "n_attempts": 54,
+      "pass_rate": 0.7777777777777778,
+      "difficulty": -1.2816037904197588,
+      "discrimination": 1.2398370166311241
+    },
+    {
+      "task": "gtf-to-bed",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.8928571428571429,
+      "difficulty": -1.3236961398173859,
+      "discrimination": 2.8480710056394734
+    },
+    {
+      "task": "bam-depth-histogram",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9464285714285714,
+      "difficulty": -1.349709047489455,
+      "discrimination": 5.297638346819611
+    },
+    {
+      "task": "fastqc-quality-report",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9285714285714286,
+      "difficulty": -1.378550608460804,
+      "discrimination": 3.7011745287283304
+    },
+    {
+      "task": "fasta-longest-orf",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.7857142857142857,
+      "difficulty": -1.3995062533831755,
+      "discrimination": 1.1654410316097517
+    },
+    {
+      "task": "flagstat-report",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.8571428571428571,
+      "difficulty": -1.42692386791603,
+      "discrimination": 1.801507863369937
+    },
+    {
+      "task": "bam-mark-duplicates",
+      "n_models": 14,
+      "n_attempts": 55,
+      "pass_rate": 0.9818181818181818,
+      "difficulty": -1.524880395856709,
+      "discrimination": 6.735021008381251
+    },
+    {
+      "task": "fasta-rename-headers",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9821428571428571,
+      "difficulty": -1.5248865905665066,
+      "discrimination": 6.735171589045178
+    },
+    {
+      "task": "bam-clipping-stats",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9642857142857143,
+      "difficulty": -1.6335533166930836,
+      "discrimination": 3.584199873401471
+    },
+    {
+      "task": "rnaseq-deseq2-contrast",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9107142857142857,
+      "difficulty": -1.6847434181604268,
+      "discrimination": 1.9411534016039211
+    },
+    {
+      "task": "rnaseq-tpm-top-biotype",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.7857142857142857,
+      "difficulty": -1.7382048768034604,
+      "discrimination": 0.8534286481420577
+    },
+    {
+      "task": "ortholog-rbh-clusters",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9464285714285714,
+      "difficulty": -1.7816301994964987,
+      "discrimination": 2.3734328359603554
+    },
+    {
+      "task": "vcf-region-variant-density",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9821428571428571,
+      "difficulty": -2.246531834823288,
+      "discrimination": 2.421239596941706
+    },
+    {
+      "task": "vcf-split-by-type",
+      "n_models": 14,
+      "n_attempts": 55,
+      "pass_rate": 0.9818181818181818,
+      "difficulty": -2.256066466220869,
+      "discrimination": 2.3921177988020155
+    },
+    {
+      "task": "mafft-msa-identity",
+      "n_models": 14,
+      "n_attempts": 55,
+      "pass_rate": 1.0,
+      "difficulty": -2.8875876975224566,
+      "discrimination": 3.088270467709002
+    },
+    {
+      "task": "vcf-allele-frequency",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.89149361975525,
+      "discrimination": 3.1083202148038778
+    },
+    {
+      "task": "gtf-longest-transcript-cds",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.891494022365763,
+      "discrimination": 3.108320054300619
+    },
+    {
+      "task": "tpm-normalize",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.8914940757125396,
+      "discrimination": 3.1083186765817525
+    },
+    {
+      "task": "vcf-normalize",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.891494739503533,
+      "discrimination": 3.1083203779074293
+    },
+    {
+      "task": "insert-size-stats",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.8914950603743628,
+      "discrimination": 3.1083180713482217
+    },
+    {
+      "task": "seqkit-fasta-stats",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.891495147564548,
+      "discrimination": 3.108317143298524
+    },
+    {
+      "task": "kmer-jaccard-matrix",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.8914955610686577,
+      "discrimination": 3.1083186939531475
+    },
+    {
+      "task": "sam-to-cram-roundtrip",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 1.0,
+      "difficulty": -2.8914956345189147,
+      "discrimination": 3.108316129970921
+    },
+    {
+      "task": "fastq-per-base-quality",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9821428571428571,
+      "difficulty": -2.9201020134245765,
+      "discrimination": 1.5956183726832225
+    },
+    {
+      "task": "fasta-6frame-codon-counts",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9107142857142857,
+      "difficulty": -3.031260258856993,
+      "discrimination": 0.8223305189844143
+    },
+    {
+      "task": "vcf-to-tsv",
+      "n_models": 14,
+      "n_attempts": 56,
+      "pass_rate": 0.9107142857142857,
+      "difficulty": -3.0880017128245885,
+      "discrimination": 0.803077654073357
+    },
+    {
+      "task": "kmer-contamination-mixture",
+      "n_models": 14,
+      "n_attempts": 55,
+      "pass_rate": 0.9454545454545454,
+      "difficulty": -4.029544549331775,
+      "discrimination": 0.7131585217360694
+    }
+  ],
+  "models": [
+    {
+      "model": "inkling-small",
+      "ability": 2.0233678972893205
+    },
+    {
+      "model": "muse-glimmer-30b",
+      "ability": 2.023367376756552
+    },
+    {
+      "model": "kimi-k3",
+      "ability": 0.8810316448454001
+    },
+    {
+      "model": "glm-5.2",
+      "ability": 0.49775707184119106
+    },
+    {
+      "model": "qwen3.5-int4",
+      "ability": 0.03489571095078366
+    },
+    {
+      "model": "mistral-medium-3.5",
+      "ability": -0.02249941774888196
+    },
+    {
+      "model": "deepseek-v4-flash-thinking",
+      "ability": -0.10418729275405852
+    },
+    {
+      "model": "gpt56-luna",
+      "ability": -0.2725534997481781
+    },
+    {
+      "model": "deepseek-v4-flash",
+      "ability": -0.49632830651326315
+    },
+    {
+      "model": "qwen36-35b-a3b",
+      "ability": -0.6391727044634635
+    },
+    {
+      "model": "qwen3.5-122b",
+      "ability": -0.7142271696281427
+    },
+    {
+      "model": "gemma4",
+      "ability": -0.8934885494791902
+    },
+    {
+      "model": "nemotron-35-lightning",
+      "ability": -0.9987906207811813
+    },
+    {
+      "model": "gpt-oss-120b",
+      "ability": -1.3191721405668875
+    }
+  ],
+  "converged": true,
+  "n_models": 14,
+  "n_tasks": 32
+}

@@ -1,0 +1,10 @@
+# Tasks retired from the scored extension after evaluation, with the reason.
+# Their trials remain on disk and in the raw receipts; they are excluded from
+# scored aggregates by --exclude-task so the decision is auditable rather than
+# hidden by deleting data.
+#
+# bam-splice-junction-support: solved by 2 of 14 evaluated models (per-task mean
+# reward 0.06 on e-INFRA, 0.05 on OpenRouter) and its item-total correlation is
+# -0.94, i.e. the two passes came from below-median models. It measures
+# something other than the ability the rest of the suite measures.
+bam-splice-junction-support

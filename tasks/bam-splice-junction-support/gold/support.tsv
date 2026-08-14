@@ -1,0 +1,7 @@
+gene_id	transcript_id	junction_index	chrom	intron_start	intron_end	support_reads
+SJG0001	SJT0001.1	1	chrSJ1	160	259	4
+SJG0001	SJT0001.1	2	chrSJ1	320	449	2
+SJG0002	SJT0002.1	1	chrSJ1	1120	919	0
+SJG0002	SJT0002.1	2	chrSJ1	980	799	0
+SJG0003	SJT0003.1	1	chrSJ2	250	329	4
+SJG0004	SJT0004.1	1	chrSJ2	640	719	0

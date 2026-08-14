@@ -1,0 +1,248 @@
+% ECCB poster for BioTerm-Bench v1.
+% A0 portrait. Build:  tectonic poster.tex
+%
+% Figures are the same vector PDFs the paper uses, so the poster cannot drift
+% from the manuscript: regenerate with scripts/refresh_paper_tables.sh.
+\documentclass[a0paper,portrait,20pt]{tikzposter}
+
+\usepackage[utf8]{inputenc}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+
+% Validated categorical palette (all six colour checks pass; worst adjacent CVD
+% separation dE 24.7). Identity is never carried by colour alone on this poster.
+\definecolor{btblue}{HTML}{2A78D6}
+\definecolor{btorange}{HTML}{EB6834}
+\definecolor{btviolet}{HTML}{4A3AA7}
+\definecolor{btink}{HTML}{0B0B0B}
+\definecolor{btmuted}{HTML}{52514E}
+\definecolor{btsurface}{HTML}{FCFCFB}
+\definecolor{btrule}{HTML}{D8D7D2}
+
+\usetheme{Default}
+\usecolorstyle{Default}
+\colorlet{blocktitlebgcolor}{white}
+\colorlet{blocktitlefgcolor}{btink}
+\colorlet{blockbodybgcolor}{white}
+\colorlet{blockbodyfgcolor}{btink}
+\colorlet{backgroundcolor}{btsurface}
+\colorlet{framecolor}{btsurface}
+\colorlet{titlebgcolor}{white}
+\colorlet{titlefgcolor}{btink}
+
+\settitle{
+  \centering
+  \vspace{1.2em}
+  {\Huge\bfseries\color{btink} Can an LLM agent do your routine\\[0.25em]
+   command-line bioinformatics?\par}
+  \vspace{0.7em}
+  {\LARGE\color{btmuted} BioTerm-Bench v1 --- 32 deterministically graded terminal tasks, 14 models, 2 infrastructures\par}
+  \vspace{0.9em}
+  {\Large Petr Simecek \quad Vojtech Bystry\par}
+  \vspace{0.25em}
+  {\large\color{btmuted} Central European Institute of Technology (CEITEC), Masaryk University, Czechia \quad$\cdot$\quad \texttt{simecek@mail.muni.cz}\par}
+  \vspace{0.8em}
+}
+
+% Big number callout.
+\newcommand{\headline}[3]{%
+  \begin{minipage}[t]{0.31\linewidth}
+    \centering
+    {\fontsize{56}{60}\selectfont\bfseries\color{#1} #2\par}
+    \vspace{0.35em}
+    {\large\color{btink} #3\par}
+  \end{minipage}%
+}
+
+\tikzposterlatexaffectionproofoff
+
+\begin{document}
+\maketitle[titletotopverticalspace=10mm]
+
+%% ---------------------------------------------------------------- row 1
+\begin{columns}
+\column{0.34}
+\block{The question}{
+  \large
+  Much of bioinformatics is not discovery. It is converting a GTF to a BED,
+  checking a BAM is coordinate-sorted, normalising counts to TPM --- precisely
+  specified, tedious, easy to get subtly wrong.
+  \vspace{0.6em}
+
+  So: \textbf{which parts can be delegated to an agent, and how often is the
+  result right?}
+  \vspace{0.6em}
+
+  Answering that needs a benchmark that (i)~runs the tools rather than
+  describing them, (ii)~grades deterministically --- no LLM judge --- and
+  (iii)~runs on a laptop or an institutional node, because the data that most
+  needs help often cannot leave the building.
+}
+
+\column{0.32}
+\block{What the benchmark is}{
+  \large
+  \textbf{32 tasks}: a 25-task core plus a 7-task extension of multi-stage
+  workflows. Each gives the agent real files, a container with the usual stack,
+  and an exact output contract. Grading compares the produced artifact against
+  a stored correct answer.
+  \vspace{0.5em}
+
+  \centering
+  \small
+  \begin{tabular}{lr@{\hspace{2em}}lr}
+    \toprule
+    alignment & 7 & search & 5 \\
+    variant & 7 & RNA-seq & 4 \\
+    metadata & 6 & \multicolumn{2}{l}{} \\
+    quality control & 6 & \multicolumn{2}{l}{} \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.4em}
+
+  \raggedright
+  \large Fixed agent (Terminus-2) and harness (Harbor) across all models, so
+  score differences reflect the model, not the scaffolding.
+}
+
+\column{0.34}
+\block{Three headline results}{
+  \vspace{0.2em}
+  \centering
+  \headline{btblue}{0.969}{best mean reward on the core --- \textbf{the original suite is saturated}}
+  \headline{btorange}{44\%}{of failures are well-formed files with \textbf{wrong numbers}}
+  \headline{btviolet}{9/32}{tasks solved on \textbf{every} attempt by \textbf{every} model}
+  \vspace{0.6em}
+}
+\end{columns}
+
+%% ---------------------------------------------------------------- row 2
+\begin{columns}
+\column{0.5}
+\block{Difficulty lives in reliability, not in what a model can eventually do}{
+  \centering
+  \includegraphics[width=0.70\linewidth]{figures/fig_paired_scopes.pdf}
+  \vspace{0.4em}
+
+  \raggedright
+  \large Each row is one model: blue = core, orange = extension.
+  \vspace{0.4em}
+
+  \begin{tcolorbox}[colback=btblue!8,colframe=btblue,boxrule=1.2pt,arc=3mm]
+  \large\textbf{Best-of-four hides the gap.} All five models of the OpenRouter
+  cohort solve \emph{every} extension task within four attempts and are
+  therefore indistinguishable. Under the \textbf{all-four} criterion --- solved
+  on \emph{all} attempts, the one that matters for unattended analysis --- they
+  span \textbf{2/7 to 7/7}.
+  \end{tcolorbox}
+}
+
+\column{0.5}
+\block{How agents fail --- and why it matters}{
+  \centering
+  \includegraphics[width=0.92\linewidth]{figures/fig_failure_modes.pdf}
+  \vspace{0.4em}
+
+  \raggedright
+  \large All 319 scored failures, classified from the verifiers' own reasons.
+  \vspace{0.4em}
+
+  \begin{tcolorbox}[colback=btorange!8,colframe=btorange,boxrule=1.2pt,arc=3mm]
+  \large\textbf{The largest category is the quiet one.} A BED with correct
+  syntax and wrong coordinates, or a flagstat summary with plausible but
+  incorrect counts, propagates silently into whatever consumes it. Spread
+  across ordinary tasks --- \texttt{blast-best-hit}, \texttt{gtf-to-bed},
+  \texttt{flagstat-report} --- not exotic ones.
+  \end{tcolorbox}
+}
+\end{columns}
+
+%% ---------------------------------------------------------------- row 3
+\begin{columns}
+\column{0.5}
+\block{What hardware do you actually need?}{
+  \centering
+  \includegraphics[width=0.78\linewidth]{figures/fig_hardware_vs_score.pdf}
+  \vspace{0.5em}
+
+  \small
+  \begin{tabular}{llr}
+    \toprule
+    Tier & Hardware & Example \\
+    \midrule
+    A & laptop / workstation (4-bit) & Gemma 4, 62\,GB \\
+    B & one datacentre GPU & Qwen3.5 122B, 122\,GB \\
+    C & 2--4 GPU server & DeepSeek V4 Flash, 304\,GB \\
+    D & full 8-GPU node & GLM 5.2, 756\,GB \\
+    E & multi-node cluster & Kimi K3, 2.8\,TB \\
+    \bottomrule
+  \end{tabular}
+  \vspace{0.5em}
+
+  \raggedright
+  \large
+  Bigger is better on average ($\rho=0.77$) but \textbf{saturates above
+  $\sim$130\,GB}: a 62\,GB workstation model outscores a 122\,GB one needing a
+  datacentre GPU.
+}
+
+\column{0.5}
+\block{Cost, openness, and what to delegate}{
+  \centering
+  \includegraphics[width=0.76\linewidth]{figures/fig_cost_capability.pdf}
+  \vspace{0.4em}
+
+  \raggedright
+  \large \textbf{Open weights and low price are independent.} The cheapest run
+  is also tied for the best score; the dearest costs $\sim$13$\times$ more for
+  the same result.
+  \vspace{0.5em}
+
+  \begin{tcolorbox}[colback=btviolet!8,colframe=btviolet,boxrule=1.2pt,arc=3mm]
+  \large\textbf{Delegate today:} format conversion and summarisation ---
+  GTF$\rightarrow$BED, VCF$\rightarrow$TSV, FASTA statistics, flagstat counting
+  --- with spot-checking.\\[0.3em]
+  \textbf{Do not yet:} multi-stage reasoning over biological structure ---
+  splice-junction support, trio-aware and diploid-consensus variant logic.\\[0.3em]
+  \textbf{Rule of thumb:} delegation is safe in proportion to how mechanically
+  checkable the output is.
+  \end{tcolorbox}
+}
+\end{columns}
+
+%% ---------------------------------------------------------------- row 4
+\begin{columns}
+\column{1}
+\block{Take home}{
+  \large
+  \begin{minipage}[t]{0.30\linewidth}
+    \textbf{Routine terminal bioinformatics is largely automatable today}, by
+    models a laboratory can host itself --- a workstation-class 31B model
+    already solves most of the core suite.
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.30\linewidth}
+    \textbf{Report mean reward and all-attempts, not best-of-$n$.} Best-of-four
+    describes a workflow with an oracle telling you which run was right. You do
+    not have one --- that is why you wanted the agent.
+  \end{minipage}\hfill
+  \begin{minipage}[t]{0.34\linewidth}
+    \textbf{Check the output, not the score.} When these agents fail, the most
+    common single outcome is a plausible, well-formed file containing wrong
+    numbers --- the failure mode least likely to be caught downstream.
+  \end{minipage}
+  \vspace{0.9em}
+
+  \centering
+  {\Large\textbf{Freely available:} \texttt{github.com/ML-Bioinfo-CEITEC/BioTerm-Bench}}
+  \vspace{0.5em}
+
+  {\small\color{btmuted} Computational resources were provided by the e-INFRA CZ
+  project (ID:90254), supported by the Ministry of Education, Youth and Sports
+  of the Czech Republic.}
+}
+\end{columns}
+
+\end{document}

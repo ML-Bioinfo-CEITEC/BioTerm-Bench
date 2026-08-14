@@ -1,0 +1,5 @@
+transcript_id	gene_id	strand	cds_length	peptide_length	peptide
+RTT0001.1	RTG0001	+	30	10	MELNQKPGFA
+RTT0002.1	RTG0002	+	27	9	MVHSPTRQL
+RTT0003.1	RTG0003	-	24	8	MDSYRKTA
+RTT0004.1	RTG0004	-	18	6	MNPQRL

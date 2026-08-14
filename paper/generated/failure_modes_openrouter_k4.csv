@@ -1,0 +1,320 @@
+job,trial,task,bucket,reason
+full25-k4-open-gemma4-26b-a4b,fasta-longest-orf__GtgvMuL,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-gemma4-26b-a4b,fastqc-quality-report__vK4XHYe,fastqc-quality-report,wrong_value,per_base_q20_frac actual=0.25165562913907286 gold=0.9090909090909091 (rel_tol=0.05)
+full25-k4-open-gemma4-26b-a4b,vcf-region-variant-density__HgQNpfF,vcf-region-variant-density,malformed,header must be exactly 'chrom	start	end	n_snv	n_indel	density_per_kb'; got 'chrom	Start	End	n_snv	n_indel	density_per_kb'
+full25-k4-open-gemma4-31b-it,blast-best-hit__Cthu3YE,blast-best-hit,wrong_value,query query_01: actual=A2RU49 gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-gemma4-31b-it,blast-best-hit__LLvYdTp,blast-best-hit,wrong_value,query query_01: actual=A2RU49 gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-gemma4-31b-it,blast-best-hit__XYa7WUW,blast-best-hit,wrong_value,query query_01: actual=A2RU49 gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-gemma4-31b-it,blast-best-hit__tZ9Jfjq,blast-best-hit,wrong_value,query query_01: actual=A2RU49 gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-gemma4-31b-it,fasta-longest-orf__SosRjK3,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-gemma4-31b-it,fastqc-quality-report__gYQe3oB,fastqc-quality-report,wrong_value,per_base_q20_frac actual=0.2634730538922156 gold=0.9090909090909091 (rel_tol=0.05)
+full25-k4-open-gemma4-31b-it,fastqc-quality-report__tmH6dob,fastqc-quality-report,wrong_value,per_base_q20_frac actual=0.321534 gold=0.9090909090909091 (rel_tol=0.05)
+full25-k4-open-gemma4-31b-it,fastqc-quality-report__vT3F4nK,fastqc-quality-report,wrong_value,per_base_q20_frac actual=0.289694 gold=0.9090909090909091 (rel_tol=0.05)
+full25-k4-open-gpt-oss-20b,bam-clipping-stats__PShkjp2,bam-clipping-stats,wrong_value,n_with_any_clip: actual=0 gold=71
+full25-k4-open-gpt-oss-20b,bam-clipping-stats__bcMTe4b,bam-clipping-stats,missing,missing /app/output/stats.json
+full25-k4-open-gpt-oss-20b,bam-clipping-stats__vdSrGAs,bam-clipping-stats,wrong_value,n_primary_mapped: actual=0 gold=240
+full25-k4-open-gpt-oss-20b,bam-depth-histogram__DK2Bybt,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-gpt-oss-20b,bam-depth-histogram__cfxNBCA,bam-depth-histogram,missing,missing /app/output/coverage.json
+full25-k4-open-gpt-oss-20b,bam-depth-histogram__qbHyfW6,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-gpt-oss-20b,bam-mark-duplicates__wfHFCHh,bam-mark-duplicates,malformed,"/app/output/counts.json is not valid JSON: Expecting ',' delimiter: line 3 column 1 (char 21)"
+full25-k4-open-gpt-oss-20b,blast-best-hit__Rama9Ev,blast-best-hit,wrong_value,query query_01: actual=sp gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-gpt-oss-20b,blast-best-hit__oTQLyXU,blast-best-hit,wrong_value,"query set mismatch actual=[] expected=['query_01', 'query_02', 'query_03', 'query_04', 'query_05']"
+full25-k4-open-gpt-oss-20b,blast-best-hit__tqNde2q,blast-best-hit,wrong_value,"query set mismatch actual=[] expected=['query_01', 'query_02', 'query_03', 'query_04', 'query_05']"
+full25-k4-open-gpt-oss-20b,fasta-6frame-codon-counts__nmpnWqL,fasta-6frame-codon-counts,missing,missing /app/output/codon_counts.tsv
+full25-k4-open-gpt-oss-20b,fasta-longest-orf__7GP27ut,fasta-longest-orf,missing,missing /app/output/orf.tsv
+full25-k4-open-gpt-oss-20b,fasta-longest-orf__JyCZupZ,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-gpt-oss-20b,fasta-longest-orf__VQBV8WP,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-gpt-oss-20b,fasta-rename-headers__drRVot5,fasta-rename-headers,missing,missing /app/output/renamed.fa
+full25-k4-open-gpt-oss-20b,fastqc-quality-report__Au5YFa6,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-gpt-oss-20b,fastqc-quality-report__VqjyiHo,fastqc-quality-report,missing,missing /app/output/qc_summary.json
+full25-k4-open-gpt-oss-20b,fastqc-quality-report__tZmDEjR,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-gpt-oss-20b,fastqc-quality-report__ufzPHD4,fastqc-quality-report,wrong_value,per_base_q20_frac actual=0.0 gold=0.9090909090909091 (rel_tol=0.05)
+full25-k4-open-gpt-oss-20b,flagstat-report__8FSrtAf,flagstat-report,malformed,/app/output/metrics.tsv line 2 not exactly 2 tab-columns: '40 + 0 primary duplicates'
+full25-k4-open-gpt-oss-20b,flagstat-report__DxnvJ5e,flagstat-report,wrong_value,total_reads actual= gold=360
+full25-k4-open-gpt-oss-20b,flagstat-report__L4fbb6f,flagstat-report,wrong_value,"metric set mismatch actual=['duplicates', 'supplementary'] expected=['duplicates', 'mapped', 'properly_paired', 'supplementary', 'total_reads']"
+full25-k4-open-gpt-oss-20b,gtf-longest-transcript-cds__j2RBvCu,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-gpt-oss-20b,gtf-longest-transcript-cds__qPNiAbN,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-gpt-oss-20b,gtf-longest-transcript-cds__sZyv5J8,gtf-longest-transcript-cds,wrong_value,row 1 differs
+full25-k4-open-gpt-oss-20b,gtf-to-bed__GXi8L87,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-gpt-oss-20b,gtf-to-bed__Gz29sFy,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-gpt-oss-20b,gtf-to-bed__RGa5Eym,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-gpt-oss-20b,insert-size-stats__7RqHXD3,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-gpt-oss-20b,rnaseq-tpm-top-biotype__3TYPsUC,rnaseq-tpm-top-biotype,missing,missing /app/output/top_biotype.tsv
+full25-k4-open-gpt-oss-20b,rnaseq-tpm-top-biotype__nHHgRVD,rnaseq-tpm-top-biotype,malformed,header must be exactly 'gene_id	gene_name	max_tpm'
+full25-k4-open-gpt-oss-20b,rnaseq-tpm-top-biotype__xTyZhPx,rnaseq-tpm-top-biotype,missing,missing /app/output/top_biotype.tsv
+full25-k4-open-gpt-oss-20b,seqkit-fasta-stats__GBMcHm5,seqkit-fasta-stats,wrong_value,output differs from gold at line 2:
+full25-k4-open-gpt-oss-20b,seqkit-fasta-stats__Wa2LHm7,seqkit-fasta-stats,missing,output is empty
+full25-k4-open-gpt-oss-20b,seqkit-fasta-stats__ndNTwYk,seqkit-fasta-stats,wrong_value,output differs from gold at line 2:
+full25-k4-open-gpt-oss-20b,vcf-allele-frequency__bjFiDCb,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-gpt-oss-20b,vcf-allele-frequency__cC6L8Pv,vcf-allele-frequency,missing,"row-set mismatch: 9 missing, 0 extra"
+full25-k4-open-gpt-oss-20b,vcf-allele-frequency__qzzx6W4,vcf-allele-frequency,missing,"row-set mismatch: 9 missing, 0 extra"
+full25-k4-open-gpt-oss-20b,vcf-region-variant-density__N9NirM9,vcf-region-variant-density,missing,missing /app/output/density.tsv
+full25-k4-open-gpt-oss-20b,vcf-region-variant-density__T9zXF48,vcf-region-variant-density,wrong_value,"row 2 chr1: ints actual=(43817, 48358, 0, 0) gold=(43817, 48358, 13, 2)"
+full25-k4-open-gpt-oss-20b,vcf-split-by-type__daTUuvh,vcf-split-by-type,missing,missing /app/output/snps.vcf.gz.tbi
+full25-k4-open-gpt-oss-20b,vcf-to-tsv__AyJLjQx,vcf-to-tsv,wrong_value,output differs from gold at line 2:
+full25-k4-open-gpt-oss-20b,vcf-to-tsv__Q62VCj7,vcf-to-tsv,wrong_value,output differs from gold at line 2:
+full25-k4-open-gpt-oss-20b,vcf-to-tsv__SvxCQze,vcf-to-tsv,wrong_value,output differs from gold at line 2:
+full25-k4-open-gpt-oss-20b,vcf-to-tsv__hNTQ78f,vcf-to-tsv,missing,output is empty
+full25-k4-open-gpt-oss-20b,vcf-trio-mendelian__5dfS9NN,vcf-trio-mendelian,missing,missing /app/output/summary.json
+full25-k4-open-gpt-oss-20b,vcf-trio-mendelian__BqF3njs,vcf-trio-mendelian,malformed,/app/output/summary.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-gpt-oss-20b,vcf-trio-mendelian__UEYS2P3,vcf-trio-mendelian,missing,missing /app/output/summary.json
+full25-k4-open-mistral-small-32-24b,bam-clipping-stats__43jXy4n,bam-clipping-stats,missing,missing /app/output/stats.json
+full25-k4-open-mistral-small-32-24b,bam-clipping-stats__ZjxBr9e,bam-clipping-stats,wrong_value,n_primary_mapped: actual=39 gold=240
+full25-k4-open-mistral-small-32-24b,bam-clipping-stats__gX9aQh7,bam-clipping-stats,missing,missing /app/output/stats.json
+full25-k4-open-mistral-small-32-24b,bam-clipping-stats__wQ5bVu3,bam-clipping-stats,wrong_value,n_with_any_clip: actual=40 gold=71
+full25-k4-open-mistral-small-32-24b,bam-depth-histogram__BRsu8u5,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-mistral-small-32-24b,bam-depth-histogram__NyxrYrs,bam-depth-histogram,wrong_value,median_depth actual=0 gold=16 (must be exact)
+full25-k4-open-mistral-small-32-24b,bam-depth-histogram__ddQtSi2,bam-depth-histogram,missing,missing /app/output/coverage.json
+full25-k4-open-mistral-small-32-24b,bam-mark-duplicates__GeYE8HG,bam-mark-duplicates,wrong_value,duplicates actual=0 gold=86
+full25-k4-open-mistral-small-32-24b,bam-mark-duplicates__H2yc5kp,bam-mark-duplicates,wrong_value,duplicates actual=0 gold=86
+full25-k4-open-mistral-small-32-24b,bam-mark-duplicates__nzgrXC9,bam-mark-duplicates,malformed,/app/output/counts.json is not valid JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+full25-k4-open-mistral-small-32-24b,blast-best-hit__Q43dJ2k,blast-best-hit,malformed,"/app/output/best_hits.tsv line 1: expected 2 columns, got 1"
+full25-k4-open-mistral-small-32-24b,fasta-longest-orf__2qWeggw,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-mistral-small-32-24b,fasta-longest-orf__eSD2Moi,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-mistral-small-32-24b,fasta-longest-orf__k9Xj4U8,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 1"
+full25-k4-open-mistral-small-32-24b,fasta-longest-orf__u58GbPi,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-mistral-small-32-24b,fastq-per-base-quality__Vag4sjh,fastq-per-base-quality,malformed,header must be exactly 'pos	n	mean_q	median_q'
+full25-k4-open-mistral-small-32-24b,fastq-per-base-quality__mcnxXNs,fastq-per-base-quality,wrong_value,row count mismatch: actual=300 gold=150
+full25-k4-open-mistral-small-32-24b,fastqc-quality-report__3L3xHmp,fastqc-quality-report,missing,missing /app/output/qc_summary.json
+full25-k4-open-mistral-small-32-24b,fastqc-quality-report__3zXKyP2,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 21 (char 20)
+full25-k4-open-mistral-small-32-24b,fastqc-quality-report__JFiGo93,fastqc-quality-report,malformed,"total_sequences must be int, got str"
+full25-k4-open-mistral-small-32-24b,fastqc-quality-report__NZrXSaW,fastqc-quality-report,malformed,"total_sequences must be int, got str"
+full25-k4-open-mistral-small-32-24b,flagstat-report__9cx5i2A,flagstat-report,wrong_value,duplicates actual= gold=40
+full25-k4-open-mistral-small-32-24b,flagstat-report__dgMPgLt,flagstat-report,wrong_value,mapped actual=280 gold=340
+full25-k4-open-mistral-small-32-24b,flagstat-report__nkU7KVh,flagstat-report,malformed,/app/output/metrics.tsv line 1 not exactly 2 tab-columns: 'duplicates40'
+full25-k4-open-mistral-small-32-24b,flagstat-report__xNZc5QQ,flagstat-report,malformed,/app/output/metrics.tsv line 1 not exactly 2 tab-columns: 'duplicates\\t40'
+full25-k4-open-mistral-small-32-24b,gtf-longest-transcript-cds__5Zv7Bqs,gtf-longest-transcript-cds,wrong_value,row count: actual=29 gold=38
+full25-k4-open-mistral-small-32-24b,gtf-to-bed__DPVbhyJ,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-mistral-small-32-24b,gtf-to-bed__vn3o2vm,gtf-to-bed,malformed,"/app/output/exons.bed line 1: expected 6 tab-columns, got 1"
+full25-k4-open-mistral-small-32-24b,gtf-to-bed__zxLcAvU,gtf-to-bed,malformed,"/app/output/exons.bed line 1: expected 6 tab-columns, got 9"
+full25-k4-open-mistral-small-32-24b,insert-size-stats__GBTGxaC,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+full25-k4-open-mistral-small-32-24b,insert-size-stats__k3ZbUN8,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-mistral-small-32-24b,insert-size-stats__wTfYap7,insert-size-stats,malformed,stdev_insert is not numeric: 'stdev'
+full25-k4-open-mistral-small-32-24b,kmer-jaccard-matrix__3KaSfbV,kmer-jaccard-matrix,wrong_value,pair order differs
+full25-k4-open-mistral-small-32-24b,kmer-jaccard-matrix__VMPRfG3,kmer-jaccard-matrix,wrong_value,row count: actual=7 gold=15
+full25-k4-open-mistral-small-32-24b,kmer-jaccard-matrix__smbFJK3,kmer-jaccard-matrix,wrong_value,"row 1 (genome_01,genome_02): actual=0.125245 gold=0.130846 tol=1e-05"
+full25-k4-open-mistral-small-32-24b,rnaseq-tpm-top-biotype__8EnaSCK,rnaseq-tpm-top-biotype,missing,missing /app/output/top_biotype.tsv
+full25-k4-open-mistral-small-32-24b,rnaseq-tpm-top-biotype__9FTPyAj,rnaseq-tpm-top-biotype,malformed,header must be exactly 'gene_id	gene_name	max_tpm'
+full25-k4-open-mistral-small-32-24b,seqkit-fasta-stats__gAtFQCo,seqkit-fasta-stats,missing,output is empty
+full25-k4-open-mistral-small-32-24b,tpm-normalize__iYD5wLY,tpm-normalize,wrong_value,"columns differ: actual=['gene_id', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', 'length_bp', 'sample_1', 'sample_2', 'sample_3', 'sample_4'] gold=['gene_id', 'sample_1', 'sample_2', 'sample_3', 'sample_4']"
+full25-k4-open-mistral-small-32-24b,tpm-normalize__zQm7kTo,tpm-normalize,missing,missing /app/output/tpm.tsv
+full25-k4-open-mistral-small-32-24b,vcf-allele-frequency__2DmBxmh,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-mistral-small-32-24b,vcf-allele-frequency__FRNcr6F,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-mistral-small-32-24b,vcf-allele-frequency__V45gkhC,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-mistral-small-32-24b,vcf-allele-frequency__YYL37vF,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-mistral-small-32-24b,vcf-region-variant-density__CF4Nmcc,vcf-region-variant-density,malformed,header must be exactly 'chrom	start	end	n_snv	n_indel	density_per_kb'; got 'chr1	43817	48358			'
+full25-k4-open-mistral-small-32-24b,vcf-region-variant-density__EVWWCby,vcf-region-variant-density,wrong_value,"row 6 chr3: ints actual=(18674, 19849, 6, 4) gold=(18674, 19849, 7, 5)"
+full25-k4-open-mistral-small-32-24b,vcf-region-variant-density__Qf4C87p,vcf-region-variant-density,wrong_value,"row 2 chr1: ints actual=(43817, 48358, 13, 1) gold=(43817, 48358, 13, 2)"
+full25-k4-open-mistral-small-32-24b,vcf-split-by-type__TCUUPJQ,vcf-split-by-type,malformed,bcftools isec snps.vcf.gz vs snps.vcf.gz failed: Failed to open /app/output/snps.vcf.gz: unknown file type
+full25-k4-open-mistral-small-32-24b,vcf-split-by-type__cm9tiJn,vcf-split-by-type,malformed,"bcftools isec snps.vcf.gz vs snps.vcf.gz failed: [E::bcf_hdr_parse] Could not parse the header, sample line not found"
+full25-k4-open-mistral-small-32-24b,vcf-split-by-type__fiaPEfR,vcf-split-by-type,malformed,bcftools isec snps.vcf.gz vs snps.vcf.gz failed: Failed to open /app/output/snps.vcf.gz: not compressed with bgzip
+full25-k4-open-mistral-small-32-24b,vcf-split-by-type__tg84eUE,vcf-split-by-type,malformed,bcftools isec snps.vcf.gz vs snps.vcf.gz failed: Failed to open /app/output/snps.vcf.gz: unknown file type
+full25-k4-open-mistral-small-32-24b,vcf-to-tsv__6HfeBf5,vcf-to-tsv,wrong_value,output differs from gold at line 2:
+full25-k4-open-mistral-small-32-24b,vcf-to-tsv__QCQQ7Bb,vcf-to-tsv,wrong_value,"header mismatch: got ['chr22', '16050001', 'A', 'G', '42', '25', '0/1', 'snp'], want ['chrom', 'pos', 'ref', 'alt', 'qual', 'dp', 'gt', 'vtype']"
+full25-k4-open-mistral-small-32-24b,vcf-trio-mendelian__4ocLRuu,vcf-trio-mendelian,wrong_value,n_sites: actual=19 gold=425
+full25-k4-open-mistral-small-32-24b,vcf-trio-mendelian__CuigSow,vcf-trio-mendelian,missing,missing /app/output/summary.json
+full25-k4-open-mistral-small-32-24b,vcf-trio-mendelian__fHgzeNt,vcf-trio-mendelian,wrong_value,n_sites: actual=509 gold=425
+full25-k4-open-mistral-small-32-24b,vcf-trio-mendelian__mest6To,vcf-trio-mendelian,wrong_value,n_sites: actual=0 gold=425
+full25-k4-open-qwen3-14b,bam-clipping-stats__Uksozow,bam-clipping-stats,malformed,/app/output/stats.json is not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-14b,bam-depth-histogram__87AB5Vk,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-14b,bam-depth-histogram__LP7M75R,bam-depth-histogram,wrong_value,median_depth actual=0 gold=16 (must be exact)
+full25-k4-open-qwen3-14b,bam-mark-duplicates__8StaJV6,bam-mark-duplicates,wrong_value,duplicates actual=380 gold=86
+full25-k4-open-qwen3-14b,bam-mark-duplicates__abXZrF7,bam-mark-duplicates,wrong_value,"keys N/A != required ['duplicates', 'primary_total']"
+full25-k4-open-qwen3-14b,bam-mark-duplicates__ovXfMpP,bam-mark-duplicates,wrong_value,duplicates actual=0 gold=86
+full25-k4-open-qwen3-14b,bam-mark-duplicates__x4obtgP,bam-mark-duplicates,wrong_value,duplicates actual=0 gold=86
+full25-k4-open-qwen3-14b,blast-best-hit__3y9sssN,blast-best-hit,wrong_value,query query_01: actual=sp gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-qwen3-14b,blast-best-hit__AEQ6tQk,blast-best-hit,wrong_value,"query set mismatch actual=[] expected=['query_01', 'query_02', 'query_03', 'query_04', 'query_05']"
+full25-k4-open-qwen3-14b,blast-best-hit__RNNooWQ,blast-best-hit,wrong_value,query query_01: actual=sp gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-qwen3-14b,blast-best-hit__gwtFmST,blast-best-hit,wrong_value,query query_01: actual=sp gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-qwen3-14b,fasta-longest-orf__68DmHC2,fasta-longest-orf,missing,missing /app/output/orf.tsv
+full25-k4-open-qwen3-14b,fasta-longest-orf__XWXRWbN,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-qwen3-14b,fasta-longest-orf__c5g2JXy,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-qwen3-14b,fasta-longest-orf__zkCjksv,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-qwen3-14b,fasta-rename-headers__pF7saYA,fasta-rename-headers,wrong_value,line 1 actual='>gene_B' gold='>gene_A'
+full25-k4-open-qwen3-14b,fastq-per-base-quality__fqHbJnd,fastq-per-base-quality,malformed,header must be exactly 'pos	n	mean_q	median_q'
+full25-k4-open-qwen3-14b,fastq-per-base-quality__r9pKxsB,fastq-per-base-quality,malformed,header must be exactly 'pos	n	mean_q	median_q'
+full25-k4-open-qwen3-14b,fastqc-quality-report__QvVbPLn,fastqc-quality-report,wrong_value,per_base_q20_frac actual=1.0 gold=0.9090909090909091 (rel_tol=0.05)
+full25-k4-open-qwen3-14b,fastqc-quality-report__qxBWkHi,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 21 (char 20)
+full25-k4-open-qwen3-14b,flagstat-report__9caNLaR,flagstat-report,wrong_value,mapped actual=0 gold=340
+full25-k4-open-qwen3-14b,flagstat-report__J8mWzic,flagstat-report,wrong_value,mapped actual=0 gold=340
+full25-k4-open-qwen3-14b,flagstat-report__Tjboqso,flagstat-report,malformed,/app/output/metrics.tsv line 1 not exactly 2 tab-columns: '40\t0\t240\t60\t360'
+full25-k4-open-qwen3-14b,flagstat-report__pUrqPiC,flagstat-report,wrong_value,mapped actual=0 gold=340
+full25-k4-open-qwen3-14b,gtf-longest-transcript-cds__3jDUuRB,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-14b,gtf-longest-transcript-cds__VVW6jjG,gtf-longest-transcript-cds,wrong_value,row 1 differs
+full25-k4-open-qwen3-14b,gtf-to-bed__8gzfcV3,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-14b,insert-size-stats__4YanvCE,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-14b,insert-size-stats__Asn3RF8,insert-size-stats,malformed,mean_insert is not numeric: 'Numbers.\ntotal\nsequences:\n600\nsorted:\nfragments:\nfragments:\nmapped:\nmapped\nunmapped:\nproperly\npaired:\nduplicated:\nMQ0:\nQC\nalignments:\nalignments:\nlength:\nfirst\nlast\nmapped:\nmapped\ntrimmed:\nduplicated:\n0\nrate:\nlength:\nfirst\nlast\nlength:\nfirst\nlast\nquality:\nsize\nsize\noriented\noriented\nwith\non\nof'
+full25-k4-open-qwen3-14b,insert-size-stats__tKj5Mw4,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting value: line 2 column 18 (char 19)
+full25-k4-open-qwen3-14b,kmer-jaccard-matrix__mgNofoN,kmer-jaccard-matrix,wrong_value,"row 1 (genome_01,genome_02): actual=0.125245 gold=0.130846 tol=1e-05"
+full25-k4-open-qwen3-14b,mafft-msa-identity__7VSr8rg,mafft-msa-identity,malformed,/app/output/identity.tsv header must be 'seq_a\tseq_b\tidentity'
+full25-k4-open-qwen3-14b,rnaseq-tpm-top-biotype__Hth4BCo,rnaseq-tpm-top-biotype,missing,missing /app/output/top_biotype.tsv
+full25-k4-open-qwen3-14b,rnaseq-tpm-top-biotype__ZkyZpYd,rnaseq-tpm-top-biotype,malformed,header must be exactly 'gene_id	gene_name	max_tpm'
+full25-k4-open-qwen3-14b,rnaseq-tpm-top-biotype__an5E7C7,rnaseq-tpm-top-biotype,malformed,header must be exactly 'gene_id	gene_name	max_tpm'
+full25-k4-open-qwen3-14b,seqkit-fasta-stats__S4vwRAy,seqkit-fasta-stats,missing,output is empty
+full25-k4-open-qwen3-14b,seqkit-fasta-stats__sLgnbhm,seqkit-fasta-stats,missing,missing /app/output/stats.tsv
+full25-k4-open-qwen3-14b,tpm-normalize__R97JJTy,tpm-normalize,wrong_value,"columns differ: actual=['ENSG00000001', '266608.0929387040ENSG00000001', '60971.3603921476ENSG00000001', '36651.9144945897ENSG00000001', '374389.5283399283'] gold=['gene_id', 'sample_1', 'sample_2', 'sample_3', 'sample_4']"
+full25-k4-open-qwen3-14b,vcf-allele-frequency__PW4xXAU,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-14b,vcf-allele-frequency__hcfPnVP,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-14b,vcf-allele-frequency__wY2eokr,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-14b,vcf-allele-frequency__z5fqfzj,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-14b,vcf-region-variant-density__fdU9Lm8,vcf-region-variant-density,wrong_value,row count mismatch: actual=60 gold=30
+full25-k4-open-qwen3-14b,vcf-region-variant-density__pg5ExfE,vcf-region-variant-density,malformed,header must be exactly 'chrom	start	end	n_snv	n_indel	density_per_kb'; got 'chr1	43817	48358			0	0	0.0'
+full25-k4-open-qwen3-14b,vcf-split-by-type__2G2VBpE,vcf-split-by-type,missing,missing /app/output/snps.vcf.gz.tbi
+full25-k4-open-qwen3-14b,vcf-split-by-type__KjddEYi,vcf-split-by-type,missing,missing /app/output/snps.vcf.gz.tbi
+full25-k4-open-qwen3-14b,vcf-to-tsv__JG7HSJM,vcf-to-tsv,wrong_value,output differs from gold at line 2:
+full25-k4-open-qwen3-14b,vcf-to-tsv__XbdN2sd,vcf-to-tsv,malformed,line 2: pos 'filters' not integer
+full25-k4-open-qwen3-14b,vcf-to-tsv__kVbkRZW,vcf-to-tsv,wrong_value,output differs from gold at line 2:
+full25-k4-open-qwen3-14b,vcf-trio-mendelian__37LWJrk,vcf-trio-mendelian,wrong_value,n_sites: actual=0 gold=425
+full25-k4-open-qwen3-14b,vcf-trio-mendelian__69MKHVh,vcf-trio-mendelian,missing,missing /app/output/summary.json
+full25-k4-open-qwen3-14b,vcf-trio-mendelian__ZzYZF6x,vcf-trio-mendelian,malformed,/app/output/summary.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,bam-clipping-stats__MhCQg4T,bam-clipping-stats,missing,missing /app/output/stats.json
+full25-k4-open-qwen3-30b-a3b,bam-clipping-stats__r2tLh3R,bam-clipping-stats,malformed,/app/output/stats.json is not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,bam-clipping-stats__y9Ke4V4,bam-clipping-stats,wrong_value,p90_total_clip: actual=11.0 gold=14.0 tol=0.001
+full25-k4-open-qwen3-30b-a3b,bam-depth-histogram__DK9upii,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 16 (char 15)
+full25-k4-open-qwen3-30b-a3b,bam-depth-histogram__jfrhjww,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,bam-depth-histogram__y9PhnwS,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,bam-mark-duplicates__9YHSwJm,bam-mark-duplicates,malformed,/app/output/counts.json is not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,bam-mark-duplicates__tJdpzax,bam-mark-duplicates,malformed,"duplicates must be an integer, got str"
+full25-k4-open-qwen3-30b-a3b,blast-best-hit__2e3yAUC,blast-best-hit,wrong_value,"query set mismatch actual=[] expected=['query_01', 'query_02', 'query_03', 'query_04', 'query_05']"
+full25-k4-open-qwen3-30b-a3b,blast-best-hit__V5RvCgp,blast-best-hit,wrong_value,query query_01: actual=sp gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-qwen3-30b-a3b,blast-best-hit__txAVRfc,blast-best-hit,malformed,"/app/output/best_hits.tsv line 1: expected 2 columns, got 1"
+full25-k4-open-qwen3-30b-a3b,fasta-6frame-codon-counts__8XQ4dpM,fasta-6frame-codon-counts,missing,missing /app/output/codon_counts.tsv
+full25-k4-open-qwen3-30b-a3b,fasta-6frame-codon-counts__RhrXcZD,fasta-6frame-codon-counts,missing,missing /app/output/codon_counts.tsv
+full25-k4-open-qwen3-30b-a3b,fasta-6frame-codon-counts__eH84L99,fasta-6frame-codon-counts,missing,missing /app/output/codon_counts.tsv
+full25-k4-open-qwen3-30b-a3b,fasta-longest-orf__98UH9sx,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 0"
+full25-k4-open-qwen3-30b-a3b,fasta-longest-orf__RzCpGUR,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 0"
+full25-k4-open-qwen3-30b-a3b,fasta-longest-orf__dQFNt6P,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 1"
+full25-k4-open-qwen3-30b-a3b,fasta-longest-orf__px7D4CB,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 124"
+full25-k4-open-qwen3-30b-a3b,fasta-rename-headers__7vuRBKB,fasta-rename-headers,wrong_value,length mismatch actual=0 gold=24
+full25-k4-open-qwen3-30b-a3b,fasta-rename-headers__VPSL8VK,fasta-rename-headers,wrong_value,length mismatch actual=0 gold=24
+full25-k4-open-qwen3-30b-a3b,fastq-per-base-quality__hjRknhT,fastq-per-base-quality,wrong_value,row 2 pos=0: median_q actual=31.0 gold=36.0 tol=0.001
+full25-k4-open-qwen3-30b-a3b,fastqc-quality-report__CKXegUK,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,fastqc-quality-report__JrgjtwF,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 21 (char 20)
+full25-k4-open-qwen3-30b-a3b,fastqc-quality-report__RxQ4oTv,fastqc-quality-report,malformed,"total_sequences must be int, got str"
+full25-k4-open-qwen3-30b-a3b,fastqc-quality-report__wiNHCPG,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,flagstat-report__GvbjMqz,flagstat-report,wrong_value,"metric set mismatch actual=['0', '280', '340', '40', '60'] expected=['duplicates', 'mapped', 'properly_paired', 'supplementary', 'total_reads']"
+full25-k4-open-qwen3-30b-a3b,flagstat-report__MAKfrfC,flagstat-report,wrong_value,"metric set mismatch actual=['duplicates', 'mapped', 'properly_paired', 'supplementary'] expected=['duplicates', 'mapped', 'properly_paired', 'supplementary', 'total_reads']"
+full25-k4-open-qwen3-30b-a3b,flagstat-report__NZ9GhaR,flagstat-report,wrong_value,"metric set mismatch actual=['duplicates', 'mapped', 'supplementary', 'total_reads'] expected=['duplicates', 'mapped', 'properly_paired', 'supplementary', 'total_reads']"
+full25-k4-open-qwen3-30b-a3b,gtf-longest-transcript-cds__65rErv2,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-30b-a3b,gtf-longest-transcript-cds__AN9EoNZ,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-30b-a3b,gtf-longest-transcript-cds__WPQx4Cz,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-30b-a3b,gtf-to-bed__3KfaM4E,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-30b-a3b,gtf-to-bed__3ZPkari,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-30b-a3b,gtf-to-bed__cHbHqdu,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-30b-a3b,gtf-to-bed__jShAtcj,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-30b-a3b,insert-size-stats__QLjqHT9,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting value: line 1 column 17 (char 16)
+full25-k4-open-qwen3-30b-a3b,insert-size-stats__nSw967k,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-30b-a3b,insert-size-stats__r7iJfcS,insert-size-stats,malformed,mean_insert is not numeric: 'size'
+full25-k4-open-qwen3-30b-a3b,insert-size-stats__s7b86Ga,insert-size-stats,malformed,mean_insert is not numeric: ''
+full25-k4-open-qwen3-30b-a3b,kmer-jaccard-matrix__MqT2FGQ,kmer-jaccard-matrix,missing,missing /app/output/jaccard.tsv
+full25-k4-open-qwen3-30b-a3b,mafft-msa-identity__iujUNZC,mafft-msa-identity,missing,missing /app/output/identity.tsv
+full25-k4-open-qwen3-30b-a3b,rnaseq-tpm-top-biotype__225vQCj,rnaseq-tpm-top-biotype,wrong_value,row count mismatch: actual=0 gold=30
+full25-k4-open-qwen3-30b-a3b,rnaseq-tpm-top-biotype__dx5rrJn,rnaseq-tpm-top-biotype,malformed,header must be exactly 'gene_id	gene_name	max_tpm'
+full25-k4-open-qwen3-30b-a3b,seqkit-fasta-stats__WR9b7Dr,seqkit-fasta-stats,missing,output is empty
+full25-k4-open-qwen3-30b-a3b,seqkit-fasta-stats__suWoV2F,seqkit-fasta-stats,wrong_value,"header mismatch: got ['seq_A', '500', '47.80', '0.00'], want ['seq_id', 'length', 'gc_percent', 'n_percent']"
+full25-k4-open-qwen3-30b-a3b,seqkit-fasta-stats__xc7sfce,seqkit-fasta-stats,missing,missing /app/output/stats.tsv
+full25-k4-open-qwen3-30b-a3b,tpm-normalize__6r5BXCR,tpm-normalize,malformed,could not parse /app/output/tpm.tsv: No columns to parse from file
+full25-k4-open-qwen3-30b-a3b,tpm-normalize__NThkHs3,tpm-normalize,malformed,could not parse /app/output/tpm.tsv: No columns to parse from file
+full25-k4-open-qwen3-30b-a3b,tpm-normalize__NXrEuxY,tpm-normalize,malformed,could not parse /app/output/tpm.tsv: No columns to parse from file
+full25-k4-open-qwen3-30b-a3b,vcf-allele-frequency__Ae9ZuLe,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-30b-a3b,vcf-allele-frequency__nE3eYVG,vcf-allele-frequency,missing,"row-set mismatch: 1 missing, 0 extra"
+full25-k4-open-qwen3-30b-a3b,vcf-allele-frequency__xNtD2UG,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-30b-a3b,vcf-region-variant-density__5K6vKtf,vcf-region-variant-density,wrong_value,row count mismatch: actual=60 gold=30
+full25-k4-open-qwen3-30b-a3b,vcf-region-variant-density__pBYeyk6,vcf-region-variant-density,wrong_value,row 2: chrom actual='' gold='chr1'
+full25-k4-open-qwen3-30b-a3b,vcf-region-variant-density__sUN89Pm,vcf-region-variant-density,malformed,header must be exactly 'chrom	start	end	n_snv	n_indel	density_per_kb'; got 'chr1	43817	48358		15	3.30324'
+full25-k4-open-qwen3-30b-a3b,vcf-split-by-type__MewYfgt,vcf-split-by-type,missing,snps.vcf.gz mismatch: extra=0 missing=234
+full25-k4-open-qwen3-30b-a3b,vcf-split-by-type__N7HcERb,vcf-split-by-type,missing,snps.vcf.gz mismatch: extra=81 missing=0
+full25-k4-open-qwen3-30b-a3b,vcf-split-by-type__kdnB43o,vcf-split-by-type,missing,missing /app/output/snps.vcf.gz
+full25-k4-open-qwen3-30b-a3b,vcf-split-by-type__wV5iBeW,vcf-split-by-type,missing,snps.vcf.gz mismatch: extra=81 missing=0
+full25-k4-open-qwen3-30b-a3b,vcf-to-tsv__JAddneq,vcf-to-tsv,missing,missing /app/output/variants.tsv
+full25-k4-open-qwen3-30b-a3b,vcf-to-tsv__Len3mri,vcf-to-tsv,malformed,"line 2: expected 8 tab-columns, got 1"
+full25-k4-open-qwen3-30b-a3b,vcf-to-tsv__c5ozKKm,vcf-to-tsv,malformed,line 2: pos '[2]POS' not integer
+full25-k4-open-qwen3-30b-a3b,vcf-to-tsv__o5GdJJz,vcf-to-tsv,malformed,"line 2: expected 8 tab-columns, got 1"
+full25-k4-open-qwen3-30b-a3b,vcf-trio-mendelian__FiueJo6,vcf-trio-mendelian,wrong_value,n_sites: actual=0 gold=425
+full25-k4-open-qwen3-30b-a3b,vcf-trio-mendelian__QKLYpdM,vcf-trio-mendelian,wrong_value,n_sites: actual=0 gold=425
+full25-k4-open-qwen3-30b-a3b,vcf-trio-mendelian__ZSU6VzJ,vcf-trio-mendelian,malformed,/app/output/summary.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-8b,bam-clipping-stats__C7jVwgu,bam-clipping-stats,wrong_value,n_with_any_clip: actual=0 gold=71
+full25-k4-open-qwen3-8b,bam-clipping-stats__aEW3JMK,bam-clipping-stats,wrong_value,"keys ['0', '240'] != required ['mean_total_clip', 'n_primary_mapped', 'n_with_any_clip', 'p90_total_clip']"
+full25-k4-open-qwen3-8b,bam-clipping-stats__oykLcJS,bam-clipping-stats,missing,missing /app/output/stats.json
+full25-k4-open-qwen3-8b,bam-depth-histogram__JNaWcMa,bam-depth-histogram,missing,missing /app/output/coverage.json
+full25-k4-open-qwen3-8b,bam-depth-histogram__Zvq4zU9,bam-depth-histogram,malformed,output JSON not parseable: Expecting value: line 1 column 37 (char 36)
+full25-k4-open-qwen3-8b,bam-depth-histogram__fMQqvRw,bam-depth-histogram,wrong_value,max_depth actual=0 gold=32 (must be exact)
+full25-k4-open-qwen3-8b,bam-mark-duplicates__6MippAT,bam-mark-duplicates,malformed,/app/output/counts.json is not valid JSON: Extra data: line 1 column 13 (char 12)
+full25-k4-open-qwen3-8b,bam-mark-duplicates__ALEMze9,bam-mark-duplicates,wrong_value,duplicates actual=0 gold=86
+full25-k4-open-qwen3-8b,bam-mark-duplicates__jVTnCeh,bam-mark-duplicates,malformed,/app/output/counts.json is not valid JSON: Expecting value: line 1 column 17 (char 16)
+full25-k4-open-qwen3-8b,bam-mark-duplicates__yQ5y8ud,bam-mark-duplicates,wrong_value,duplicates actual=0 gold=86
+full25-k4-open-qwen3-8b,blast-best-hit__66j5w2z,blast-best-hit,malformed,"/app/output/best_hits.tsv line 1: expected 2 columns, got 1"
+full25-k4-open-qwen3-8b,blast-best-hit__SDX6DTC,blast-best-hit,malformed,"/app/output/best_hits.tsv line 1: expected 2 columns, got 1"
+full25-k4-open-qwen3-8b,blast-best-hit__iHWqYki,blast-best-hit,malformed,"/app/output/best_hits.tsv line 1: expected 2 columns, got 1"
+full25-k4-open-qwen3-8b,fasta-6frame-codon-counts__o82aP5F,fasta-6frame-codon-counts,wrong_value,line 1 differs
+full25-k4-open-qwen3-8b,fasta-longest-orf__CTM3JXA,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-qwen3-8b,fasta-longest-orf__iYzvLsL,fasta-longest-orf,missing,missing /app/output/orf.tsv
+full25-k4-open-qwen3-8b,fasta-longest-orf__oeFc9xW,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 1"
+full25-k4-open-qwen3-8b,fasta-longest-orf__xjW3843,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 0"
+full25-k4-open-qwen3-8b,fasta-rename-headers__e6dGGwr,fasta-rename-headers,wrong_value,line 1 actual='>contig_000 length=120 assembly=bioterm_v1' gold='>gene_A'
+full25-k4-open-qwen3-8b,fasta-rename-headers__mRSnuiY,fasta-rename-headers,wrong_value,length mismatch actual=0 gold=24
+full25-k4-open-qwen3-8b,fastq-per-base-quality__4v6rRAc,fastq-per-base-quality,missing,missing /app/output/per_base_quality.tsv
+full25-k4-open-qwen3-8b,fastq-per-base-quality__VohaQRa,fastq-per-base-quality,missing,missing /app/output/per_base_quality.tsv
+full25-k4-open-qwen3-8b,fastq-per-base-quality__oq2SF5S,fastq-per-base-quality,missing,missing /app/output/per_base_quality.tsv
+full25-k4-open-qwen3-8b,fastq-per-base-quality__qGNKoD9,fastq-per-base-quality,malformed,header must be exactly 'pos	n	mean_q	median_q'
+full25-k4-open-qwen3-8b,fastqc-quality-report__ELXrYXo,fastqc-quality-report,malformed,output JSON not parseable: Expecting value: line 1 column 21 (char 20)
+full25-k4-open-qwen3-8b,fastqc-quality-report__MtcR7dj,fastqc-quality-report,malformed,output JSON not parseable: Extra data: line 1 column 5 (char 4)
+full25-k4-open-qwen3-8b,fastqc-quality-report__WMfSQ8N,fastqc-quality-report,malformed,"total_sequences must be int, got str"
+full25-k4-open-qwen3-8b,flagstat-report__3wqDwAg,flagstat-report,wrong_value,"metric set mismatch actual=[] expected=['duplicates', 'mapped', 'properly_paired', 'supplementary', 'total_reads']"
+full25-k4-open-qwen3-8b,flagstat-report__7prKRaL,flagstat-report,wrong_value,duplicates actual=0 gold=40
+full25-k4-open-qwen3-8b,flagstat-report__HqTrLCP,flagstat-report,malformed,/app/output/metrics.tsv line 1 not exactly 2 tab-columns: 'duplicates\t\tmapped\t\tproperly_paired\t\tsupplementary\t\ttotal_reads\t\t'
+full25-k4-open-qwen3-8b,flagstat-report__vkwb8Co,flagstat-report,wrong_value,"metric set mismatch actual=[] expected=['duplicates', 'mapped', 'properly_paired', 'supplementary', 'total_reads']"
+full25-k4-open-qwen3-8b,gtf-longest-transcript-cds__UfwzXjV,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-8b,gtf-longest-transcript-cds__VEZi5KV,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-8b,gtf-longest-transcript-cds__e2H6pQM,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-8b,gtf-longest-transcript-cds__yyPUMTw,gtf-longest-transcript-cds,wrong_value,row count: actual=0 gold=38
+full25-k4-open-qwen3-8b,gtf-to-bed__78aN2rW,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-8b,gtf-to-bed__Dur76Dr,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-8b,gtf-to-bed__YJTFKEs,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-8b,gtf-to-bed__tGKRiuL,gtf-to-bed,wrong_value,row count mismatch: actual=0 gold=29
+full25-k4-open-qwen3-8b,insert-size-stats__dwiapi8,insert-size-stats,missing,missing /app/output/insert.json
+full25-k4-open-qwen3-8b,insert-size-stats__qNCWdGB,insert-size-stats,missing,missing /app/output/insert.json
+full25-k4-open-qwen3-8b,insert-size-stats__wUB6BnA,insert-size-stats,malformed,/app/output/insert.json not valid JSON: Expecting value: line 1 column 17 (char 16)
+full25-k4-open-qwen3-8b,insert-size-stats__zuJ3K7c,insert-size-stats,wrong_value,mean_insert actual=0.0 gold=350.8 |diff|>1.0
+full25-k4-open-qwen3-8b,kmer-jaccard-matrix__aVqX5oj,kmer-jaccard-matrix,malformed,bad row 'genome_01genome_02' in /app/output/jaccard.tsv
+full25-k4-open-qwen3-8b,mafft-msa-identity__M7gF3zt,mafft-msa-identity,missing,missing /app/output/identity.tsv
+full25-k4-open-qwen3-8b,mafft-msa-identity__Q3zMwJo,mafft-msa-identity,missing,missing /app/output/identity.tsv
+full25-k4-open-qwen3-8b,mafft-msa-identity__vUfWdTj,mafft-msa-identity,missing,missing /app/output/identity.tsv
+full25-k4-open-qwen3-8b,rnaseq-tpm-top-biotype__A9tZJhJ,rnaseq-tpm-top-biotype,missing,missing /app/output/top_biotype.tsv
+full25-k4-open-qwen3-8b,rnaseq-tpm-top-biotype__MTNDY3H,rnaseq-tpm-top-biotype,malformed,header must be exactly 'gene_id	gene_name	max_tpm'
+full25-k4-open-qwen3-8b,rnaseq-tpm-top-biotype__TP9rZ8a,rnaseq-tpm-top-biotype,missing,missing /app/output/top_biotype.tsv
+full25-k4-open-qwen3-8b,rnaseq-tpm-top-biotype__aWWcNTx,rnaseq-tpm-top-biotype,malformed,header must be exactly 'gene_id	gene_name	max_tpm'
+full25-k4-open-qwen3-8b,sam-to-cram-roundtrip__bRMjnrF,sam-to-cram-roundtrip,missing,missing or empty /app/output/reads.cram
+full25-k4-open-qwen3-8b,sam-to-cram-roundtrip__u3sSgLr,sam-to-cram-roundtrip,missing,missing or empty /app/output/reads.cram
+full25-k4-open-qwen3-8b,seqkit-fasta-stats__jMKHyK5,seqkit-fasta-stats,missing,output is empty
+full25-k4-open-qwen3-8b,tpm-normalize__PSXEjjE,tpm-normalize,malformed,could not parse /app/output/tpm.tsv: No columns to parse from file
+full25-k4-open-qwen3-8b,tpm-normalize__gT8Rg5h,tpm-normalize,malformed,could not parse /app/output/tpm.tsv: No columns to parse from file
+full25-k4-open-qwen3-8b,vcf-allele-frequency__7VYeGto,vcf-allele-frequency,missing,"row-set mismatch: 9 missing, 9 extra"
+full25-k4-open-qwen3-8b,vcf-allele-frequency__JcQsizs,vcf-allele-frequency,missing,"row-set mismatch: 9 missing, 0 extra"
+full25-k4-open-qwen3-8b,vcf-allele-frequency__epRxqUG,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-8b,vcf-allele-frequency__on6t9m8,vcf-allele-frequency,malformed,/app/output/af.tsv header must be 'CHROM\tPOS\tAF'
+full25-k4-open-qwen3-8b,vcf-region-variant-density__EGuZEgF,vcf-region-variant-density,missing,missing /app/output/density.tsv
+full25-k4-open-qwen3-8b,vcf-split-by-type__NRrkwD2,vcf-split-by-type,missing,snps.vcf.gz mismatch: extra=0 missing=234
+full25-k4-open-qwen3-8b,vcf-split-by-type__SVN9dEa,vcf-split-by-type,missing,missing /app/output/snps.vcf.gz
+full25-k4-open-qwen3-8b,vcf-split-by-type__jkvCf93,vcf-split-by-type,malformed,bcftools isec snps.vcf.gz vs snps.vcf.gz failed: Failed to open /app/output/snps.vcf.gz: unknown file type
+full25-k4-open-qwen3-8b,vcf-split-by-type__rZbGmFd,vcf-split-by-type,missing,snps.vcf.gz mismatch: extra=0 missing=234
+full25-k4-open-qwen3-8b,vcf-to-tsv__7VKHu6A,vcf-to-tsv,wrong_value,"header mismatch: got ['chr22', '16050001', 'A', 'G', '42', '25', 'GT', '0/1/GT', 'snp'], want ['chrom', 'pos', 'ref', 'alt', 'qual', 'dp', 'gt', 'vtype']"
+full25-k4-open-qwen3-8b,vcf-to-tsv__8HgrWEk,vcf-to-tsv,wrong_value,"header mismatch: got ['chr22 16050001 A G 42 25 GT snp'], want ['chrom', 'pos', 'ref', 'alt', 'qual', 'dp', 'gt', 'vtype']"
+full25-k4-open-qwen3-8b,vcf-to-tsv__SYuBMXE,vcf-to-tsv,malformed,"line 2: expected 8 tab-columns, got 1"
+full25-k4-open-qwen3-8b,vcf-to-tsv__eEeXPth,vcf-to-tsv,wrong_value,"header mismatch: got ['chr22 16050001 A G 42 NA GT snp'], want ['chrom', 'pos', 'ref', 'alt', 'qual', 'dp', 'gt', 'vtype']"
+full25-k4-open-qwen3-8b,vcf-trio-mendelian__Ch72rvT,vcf-trio-mendelian,malformed,/app/output/summary.json not valid JSON: Expecting value: line 1 column 1 (char 0)
+full25-k4-open-qwen3-8b,vcf-trio-mendelian__WCDHW3W,vcf-trio-mendelian,missing,missing /app/output/summary.json
+full25-k4-open-qwen3-8b,vcf-trio-mendelian__htueLoK,vcf-trio-mendelian,malformed,/app/output/summary.json not valid JSON: Expecting value: line 1 column 13 (char 12)
+full25-k4-open-qwen3-8b,vcf-trio-mendelian__vaRfico,vcf-trio-mendelian,wrong_value,n_sites: actual=2 gold=425
+full25-k4-open-qwen35-9b,bam-clipping-stats__W7W2vKw,bam-clipping-stats,wrong_value,mean_total_clip: actual=3.1083 gold=2.45 tol=0.001
+full25-k4-open-qwen35-9b,blast-best-hit__wLFEpR9,blast-best-hit,wrong_value,query query_01: actual=PDK2_HUMAN gold=sp|A2RU49|HYKK_HUMAN
+full25-k4-open-qwen35-9b,fasta-longest-orf__24QboKP,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-qwen35-9b,fasta-longest-orf__Egahyjb,fasta-longest-orf,malformed,"expected 2 non-empty lines (header + 1 ORF), got 1"
+full25-k4-open-qwen35-9b,fasta-longest-orf__d2REv29,fasta-longest-orf,wrong_value,row mismatch
+full25-k4-open-qwen35-9b,fastqc-quality-report__7d8XEyM,fastqc-quality-report,wrong_value,per_base_q20_frac actual=0.6129032258064516 gold=0.9090909090909091 (rel_tol=0.05)
+full25-k4-open-qwen35-9b,gtf-to-bed__gyBYFEs,gtf-to-bed,malformed,"/app/output/exons.bed line 1: expected 6 tab-columns, got 1"
+full25-k4-open-qwen35-9b,rnaseq-tpm-top-biotype__AgmNxnV,rnaseq-tpm-top-biotype,wrong_value,row 2: gene_id actual='ENSG100010' gold='ENSG100204'
+full25-k4-open-qwen35-9b,rnaseq-tpm-top-biotype__aJV3hME,rnaseq-tpm-top-biotype,wrong_value,row 2: gene_id actual='ENSG100010' gold='ENSG100204'
+full25-k4-open-qwen35-9b,vcf-trio-mendelian__GXUG4hC,vcf-trio-mendelian,wrong_value,n_sites: actual=455 gold=425
+full25-k4-open-qwen35-9b,vcf-trio-mendelian__YVMVP7R,vcf-trio-mendelian,wrong_value,n_sites: actual=455 gold=425
+full25-k4-open-qwen35-9b,vcf-trio-mendelian__pfEazHi,vcf-trio-mendelian,wrong_value,n_violations: actual=254 gold=25

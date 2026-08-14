@@ -1,0 +1,11 @@
+{
+  "adapter_pairs": 69,
+  "adapter_pairs_both_mates": 17,
+  "orphan_r1": 18,
+  "orphan_r2": 14,
+  "proper_pairs": 260,
+  "q30_frac_r1": 0.6867,
+  "q30_frac_r2": 0.4388,
+  "total_r1": 278,
+  "total_r2": 274
+}

@@ -22,7 +22,7 @@ jobs:
           python-version: "3.12"
 
       - name: install helper deps
-        run: pip install click
+        run: pip install click pytest
 
       - name: syntax-check shell scripts
         run: |
@@ -30,6 +30,10 @@ jobs:
           bash -n scripts/run_oracle_all.sh
           bash -n scripts/refresh_db_golds.sh
           bash -n scripts/new_task.sh
+          bash -n scripts/probe_v2_candidates.sh
+
+      - name: run unit tests
+        run: pytest -q
 
       - name: validate task directories
         run: python scripts/validate_task.py

@@ -398,3 +398,158 @@ k=3 run (`tasks/`, `-k 3`, `-n 2`, `--no-delete`), **three** models only.
 
 **Models:** `openrouter/google/gemma-4-26b-a4b-it`,
 `openrouter/openai/gpt-oss-20b`, `openrouter/qwen/qwen3.5-35b-a3b`.
+
+## Compact open-weight sweep, k=4
+
+**Goal:** test whether smaller open-weight / open-available models can now
+saturate the 25-task pack, while keeping the wall clock near one work day.
+This run uses classic averages, not the stricter "all attempts must pass"
+interpretation.
+
+**Manifest:** `configs/k4_open_8h_models.tsv`
+
+**Runner:** `scripts/run_open_models_k4_8h.sh`
+
+**Summarizer:** `scripts/summarize_k4_sweep.py`
+
+**Default batch:** 9 OpenRouter models, `25 tasks x 4 attempts = 100`
+trials per model, for 900 trials total. Models under 7B parameters are
+excluded after `ministral-3b-2512` proved unsuitable for the benchmark.
+
+- `openrouter/mistralai/mistral-small-3.2-24b-instruct`
+- `openrouter/openai/gpt-oss-20b`
+- `openrouter/qwen/qwen3-8b`
+- `openrouter/qwen/qwen3-14b`
+- `openrouter/qwen/qwen3-30b-a3b`
+- `openrouter/qwen/qwen3.5-9b`
+- `openrouter/nvidia/nemotron-nano-9b-v2`
+- `openrouter/mistralai/ministral-8b-2512`
+- `openrouter/mistralai/ministral-14b-2512`
+
+**Optional overflow batch:** set `INCLUDE_OVERFLOW=1` to append:
+
+- `openrouter/qwen/qwen3.5-27b`
+- `openrouter/qwen/qwen3.5-35b-a3b`
+- `openrouter/nvidia/nemotron-3-nano-30b-a3b`
+- `openrouter/google/gemma-3-27b-it`
+
+**Job name prefix:** `full25-k4-open-*`
+
+**Logs:** `jobs/k4-open-8h-master.log` and per-model
+`jobs/full25-k4-open-<slug>.log`.
+
+**Metric definitions:**
+
+- `mean_reward`: classic mean reward over all 100 attempts.
+- `pass@1`: task success rate using the first attempt only.
+- `pass@4`: task success rate if any of the four attempts succeeds.
+- The headline metrics intentionally do **not** count a task as failed just
+  because one of four attempts failed.
+
+**Console workflow:**
+
+```bash
+cd /Users/petr/projects/other/BioTerm-Bench
+tmux new -s bioterm-k4
+bash scripts/run_open_models_k4_8h.sh
+```
+
+Detach from `tmux` without stopping the run: press `Ctrl-b`, then `d`.
+
+Reattach:
+
+```bash
+tmux attach -t bioterm-k4
+```
+
+Watch progress from another terminal:
+
+```bash
+tail -f jobs/k4-open-8h-master.log
+```
+
+Validate the manifest without running Harbor:
+
+```bash
+VALIDATE_ONLY=1 bash scripts/run_open_models_k4_8h.sh
+```
+
+Run a one-model smoke test:
+
+```bash
+ONLY_MODELS=gpt-oss-20b bash scripts/run_open_models_k4_8h.sh
+```
+
+Resume after interruption; completed jobs are skipped by default:
+
+```bash
+SKIP_COMPLETED=1 bash scripts/run_open_models_k4_8h.sh
+```
+
+Start from a specific manifest slug:
+
+```bash
+START_FROM=qwen3-14b bash scripts/run_open_models_k4_8h.sh
+```
+
+Run only selected manifest slugs:
+
+```bash
+ONLY_MODELS=ministral3b,qwen3-8b bash scripts/run_open_models_k4_8h.sh
+```
+
+Run with overflow models:
+
+```bash
+INCLUDE_OVERFLOW=1 bash scripts/run_open_models_k4_8h.sh
+```
+
+Summarize after jobs finish:
+
+```bash
+python3 scripts/summarize_k4_sweep.py
+```
+
+This writes:
+
+- `jobs/k4-open-8h-models.csv`
+- `jobs/k4-open-8h-tasks.csv`
+
+## V2 hard-task and e-INFRA protocol (2026-08-12)
+
+The completed small-model k=4 runs exposed a ceiling on the core-25 pack.
+BioTerm-Bench v2 therefore stages 12 multi-stage candidates and selects 6–8 by
+a fixed development probe rather than retaining every authored task.
+
+Development panel (two attempts per candidate):
+
+| role | exact model ID |
+| --- | --- |
+| weak | `openrouter/qwen/qwen3-14b` |
+| middle | `openrouter/openai/gpt-oss-20b` |
+| strong | `openrouter/google/gemma-4-26b-a4b-it` |
+
+The selector requires both a pass and failure and a pooled scored pass rate in
+`[0.10, 0.80]`; Harbor exceptions and missing verifier rewards are errors, not
+scored failures. The generated receipt is `notes/v2_task_selection.json`.
+
+Resume behavior was exercised against the completed 24-trial GPT-OSS
+development job with `harbor job resume --job-path`: Harbor reported 24/24 and
+the number of per-trial result files remained exactly 24 before and after the
+command. The manifest runner uses the same resume operation for incomplete
+e-INFRA jobs.
+
+The e-INFRA scaling cohort uses exact IDs, k=4, Terminus-2, one sequential model
+job, and at most two concurrent trials. It is reported separately from
+OpenRouter because provider, deployment, and run date differ. The e-INFRA
+service is shared, so its wall time is recorded only as operational metadata.
+See `docs/einfra-experiments.md` for credential handling, monitoring, and resume
+rules.
+
+### Existing anomaly exclusion
+
+`full25-k4-open-mistral-small-31-24b` is not a zero-capability result. All 100
+attempts ended in `AgentTimeoutError`; the job accumulated 278,873,813 input
+tokens and $99.10745103 reported cost. The v2 analysis excludes it from model
+score tables under the protocol-error rule while retaining it in error
+accounting.

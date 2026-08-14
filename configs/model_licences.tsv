@@ -1,0 +1,10 @@
+# Weight availability of each evaluated model, used for figure encoding.
+# Confirmed by the authors 2026-08-13: GPT-5.6 Luna (OpenAI) is the only
+# proprietary model in the OpenRouter cohort; the other four are open-weight.
+# access: open-weight | proprietary
+slug	access
+nemotron-35-lightning	open-weight
+inkling-small	open-weight
+muse-glimmer-30b	open-weight
+qwen36-35b-a3b	open-weight
+gpt56-luna	proprietary

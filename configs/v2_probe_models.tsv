@@ -1,0 +1,4 @@
+slug	model_id	role
+qwen3-14b	openrouter/qwen/qwen3-14b	weak
+gpt-oss-20b	openrouter/openai/gpt-oss-20b	middle
+gemma4-26b-a4b	openrouter/google/gemma-4-26b-a4b-it	strong

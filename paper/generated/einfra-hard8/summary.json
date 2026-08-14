@@ -1,0 +1,31 @@
+{
+  "cohort": {
+    "cohort": "einfra_k4_hard8",
+    "provider": "einfra",
+    "score_scope": "hard-subset",
+    "run_dates": "2026-08-12;2026-08-13;2026-08-14",
+    "pattern": "einfra-k4-*",
+    "expected_trials": 32,
+    "attempts_per_task": 4,
+    "n_jobs_total": 9,
+    "n_jobs_included": 9,
+    "n_jobs_excluded": 0,
+    "mean_model_pass_at_k": 0.9365079365079365,
+    "mean_model_pass_at_1": 0.8015873015873016,
+    "mean_model_mean_reward": 0.8437231492787048
+  },
+  "included_models": [
+    "einfra-k4-deepseek-v4-flash-thinking",
+    "einfra-k4-deepseek-v4-flash",
+    "einfra-k4-glm-5.2",
+    "einfra-k4-kimi-k3",
+    "einfra-k4-mistral-medium-3.5",
+    "einfra-k4-qwen3.5-int4",
+    "einfra-k4-gemma4",
+    "einfra-k4-qwen3.5-122b",
+    "einfra-k4-gpt-oss-120b"
+  ],
+  "excluded_models": [],
+  "best_model": "Deepseek V4 Flash Thinking",
+  "best_model_pass_at_k": 7
+}

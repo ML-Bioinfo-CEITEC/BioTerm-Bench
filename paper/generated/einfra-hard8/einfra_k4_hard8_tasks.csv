@@ -1,0 +1,8 @@
+task,category,difficulty,n_models_scored,mean_reward,models_pass_at_k,models_pass_at_k_rate,models_fail_at_k,task_floor,task_ceiling,discrimination
+kmer-contamination-mixture,qc,hard,9,0.9166666666666666,9,1.0,0,False,True,
+ortholog-rbh-clusters,search,hard,9,0.9444444444444444,9,1.0,0,False,True,
+rnaseq-deseq2-contrast,rnaseq,hard,9,0.8611111111111112,8,0.8888888888888888,1,False,False,-0.12499999999999999
+rnaseq-featurecounts-matrix,rnaseq,hard,9,0.8333333333333334,8,0.8888888888888888,1,False,False,0.8838834764831843
+vcf-diploid-consensus,variant,hard,9,0.7314814814814814,8,0.8888888888888888,1,False,False,0.8838834764831843
+vcf-multisample-qc,qc,hard,9,0.8055555555555556,9,1.0,0,False,True,
+vcf-trio-compound-het,variant,hard,9,0.7685185185185186,8,0.8888888888888888,1,False,False,0.8838834764831843

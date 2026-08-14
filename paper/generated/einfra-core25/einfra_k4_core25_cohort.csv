@@ -1,0 +1,2 @@
+cohort,provider,score_scope,run_dates,pattern,expected_trials,attempts_per_task,n_jobs_total,n_jobs_included,n_jobs_excluded,mean_model_pass_at_k,mean_model_pass_at_1,mean_model_mean_reward
+einfra_k4_core25,einfra,core-25,2026-08-13;2026-08-14,einfra-core25-k4-*,100,4,9,9,0,0.9866666666666668,0.9288888888888889,0.9399214365881031

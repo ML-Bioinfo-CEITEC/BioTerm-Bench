@@ -1,0 +1,2 @@
+cohort,provider,score_scope,run_dates,pattern,expected_trials,attempts_per_task,n_jobs_total,n_jobs_included,n_jobs_excluded,mean_model_pass_at_k,mean_model_pass_at_1,mean_model_mean_reward
+openrouter_addon_hard8,openrouter,hard-subset,2026-08-12;2026-08-13,openrouter-addon-hard8-k4-*,32,4,5,5,0,1.0,0.8857142857142858,0.8785714285714284

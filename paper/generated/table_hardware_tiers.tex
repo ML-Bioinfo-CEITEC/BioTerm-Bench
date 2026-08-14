@@ -1,0 +1,15 @@
+\begin{tabular}{llrrl}
+\toprule
+Model & Total (active) & Precision & Weights (GB) & Hardware needed \\
+\midrule
+GPT-OSS-120B & 120B (A5.1B) & \texttt{mxfp4} & 60 & B: one datacentre GPU \\
+Gemma 4 & 31B (31B) & \texttt{bf16} & 62 & A: laptop or workstation \\
+Qwen3.5 122B & 122B (A10B) & \texttt{fp8} & 122 & B: one datacentre GPU \\
+Mistral Medium 3.5 & 128B (128B) & \texttt{fp8} & 128 & B: one datacentre GPU \\
+Qwen3.5 Int4 & 397B (A17B) & \texttt{int4} & 198 & C: 2--4 GPU server \\
+DeepSeek V4 Flash & 304B (A13B) & \texttt{fp8} & 304 & C: 2--4 GPU server \\
+DeepSeek V4 Flash Thinking & 304B (A13B) & \texttt{fp8} & 304 & C: 2--4 GPU server \\
+GLM 5.2 & 756B & \texttt{fp8} & 756 & D: full 8-GPU node \\
+Kimi K3 & 2.8T (A104B) & \texttt{fp8} & 2800 & E: multi-node cluster \\
+\bottomrule
+\end{tabular}

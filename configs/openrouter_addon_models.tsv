@@ -1,0 +1,6 @@
+slug	model_id	display_name
+nemotron-35-lightning	nvidia/nemotron-3.5-lightning	Nemotron 3.5 Lightning
+inkling-small	thinkingmachines/inkling-small	Inkling Small
+muse-glimmer-30b	meta/muse-glimmer-30b	Muse Glimmer 30B
+qwen36-35b-a3b	qwen/qwen3.6-35b-a3b	Qwen 3.6 35B A3B
+gpt56-luna	openai/gpt-5.6-luna	GPT-5.6 Luna

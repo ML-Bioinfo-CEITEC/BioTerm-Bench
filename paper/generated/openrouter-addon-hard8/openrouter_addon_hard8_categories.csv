@@ -1,0 +1,5 @@
+category,n_model_task_cells,mean_reward,mean_reward_ci_low,mean_reward_ci_high,pass_at_k_rate,pass_at_k_count
+qc,10,0.875,0.7,1.0,1.0,10
+rnaseq,10,0.9,0.725,1.0,1.0,10
+search,5,0.95,0.85,1.0,1.0,5
+variant,10,0.825,0.625,1.0,1.0,10

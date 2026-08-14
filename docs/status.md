@@ -4,6 +4,45 @@ This file tracks what is shipped, what is next, and what is explicitly
 deferred. It is updated alongside task PRs, not kept in the future
 tense.
 
+## V2 candidate extension — 2026-08-12
+
+The core-25 pack now has a ceiling problem for current small models: completed
+k=4 jobs include Gemma 4 26B-A4B at 0.95 mean reward and Qwen3.5 9B at 0.86,
+with both solving every core task at least once. V2 therefore stages 12 harder
+multi-stage candidates spanning alignment, metadata, variant, RNA-seq, QC,
+search, and synthesis.
+
+Candidates are not promoted by author judgment. After structural validation and
+oracle success, Qwen3 14B, GPT-OSS 20B, and Gemma 4 26B-A4B probe each task twice.
+The mechanical selector retains candidates with both a pass and a failure
+and pooled pass rate from 0.10 through 0.80, preferring category balance when
+more than eight qualify. Infrastructure errors are excluded from the pass-rate
+denominator and reported separately. The exact protocol is frozen in
+`notes/experiment-design.md`.
+
+The frozen receipt in `notes/v2_task_selection.json` keeps **8 / 12** candidates:
+
+- `bam-splice-junction-support` — alignment — 1/4 scored passes, 2 errors
+- `vcf-diploid-consensus` — variant — 1/6 scored passes, 0 errors
+- `vcf-trio-compound-het` — variant — 1/5 scored passes, 1 error
+- `vcf-multisample-qc` — qc — 2/5 scored passes, 1 error
+- `rnaseq-featurecounts-matrix` — rnaseq — 2/6 scored passes, 0 errors
+- `rnaseq-deseq2-contrast` — rnaseq — 2/5 scored passes, 1 error
+- `kmer-contamination-mixture` — qc — 2/6 scored passes, 0 errors
+- `ortholog-rbh-clusters` — search — 4/6 scored passes, 0 errors
+
+Across all 12 candidates the development panel produced 65 scored attempts with
+20 passes, 45 failures, and 7 errors. Across the retained eight it produced 43
+scored attempts with 15 passes, 28 failures, and 5 errors. The four rejected
+tasks were three zero-pass candidates (`gtf-reconstruct-translate`,
+`fastq-paired-adapter-qc`, `mini-align-call-filter`) and one all-pass candidate
+(`metagenome-ambiguous-abundance`).
+
+The confirmatory experiment reports two cohorts under the same Terminus-2 and
+k=4 protocol: the existing small OpenRouter cohort and a separately labeled
+nine-model e-INFRA scaling cohort. Exact provider IDs and dates are retained;
+shared-service latency is not interpreted as intrinsic model speed.
+
 ## Post-V1 rebalance — 30 → 17 → 22 → 25
 
 The first full Harbor run (k=3, 6 models of varying strength) showed

@@ -1,0 +1,18 @@
+chrSJ1	SIM	gene	100	509	.	+	.	gene_id "SJG0001";
+chrSJ1	SIM	transcript	100	509	.	+	.	gene_id "SJG0001"; transcript_id "SJT0001.1";
+chrSJ1	SIM	exon	100	159	.	+	.	gene_id "SJG0001"; transcript_id "SJT0001.1"; exon_number "1";
+chrSJ1	SIM	exon	260	319	.	+	.	gene_id "SJG0001"; transcript_id "SJT0001.1"; exon_number "2";
+chrSJ1	SIM	exon	450	509	.	+	.	gene_id "SJG0001"; transcript_id "SJT0001.1"; exon_number "3";
+chrSJ1	SIM	gene	800	1119	.	-	.	gene_id "SJG0002";
+chrSJ1	SIM	transcript	800	1119	.	-	.	gene_id "SJG0002"; transcript_id "SJT0002.1";
+chrSJ1	SIM	exon	800	849	.	-	.	gene_id "SJG0002"; transcript_id "SJT0002.1"; exon_number "1";
+chrSJ1	SIM	exon	920	979	.	-	.	gene_id "SJG0002"; transcript_id "SJT0002.1"; exon_number "2";
+chrSJ1	SIM	exon	1050	1119	.	-	.	gene_id "SJG0002"; transcript_id "SJT0002.1"; exon_number "3";
+chrSJ2	SIM	gene	200	389	.	+	.	gene_id "SJG0003";
+chrSJ2	SIM	transcript	200	389	.	+	.	gene_id "SJG0003"; transcript_id "SJT0003.1";
+chrSJ2	SIM	exon	200	249	.	+	.	gene_id "SJG0003"; transcript_id "SJT0003.1"; exon_number "1";
+chrSJ2	SIM	exon	330	389	.	+	.	gene_id "SJG0003"; transcript_id "SJT0003.1"; exon_number "2";
+chrSJ2	SIM	gene	600	759	.	+	.	gene_id "SJG0004";
+chrSJ2	SIM	transcript	600	759	.	+	.	gene_id "SJG0004"; transcript_id "SJT0004.1";
+chrSJ2	SIM	exon	600	639	.	+	.	gene_id "SJG0004"; transcript_id "SJT0004.1"; exon_number "1";
+chrSJ2	SIM	exon	720	759	.	+	.	gene_id "SJG0004"; transcript_id "SJT0004.1"; exon_number "2";

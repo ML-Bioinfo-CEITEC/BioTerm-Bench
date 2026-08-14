@@ -1,0 +1,27 @@
+{
+  "cohort": {
+    "cohort": "openrouter_addon_hard8",
+    "provider": "openrouter",
+    "score_scope": "hard-subset",
+    "run_dates": "2026-08-12;2026-08-13",
+    "pattern": "openrouter-addon-hard8-k4-*",
+    "expected_trials": 32,
+    "attempts_per_task": 4,
+    "n_jobs_total": 5,
+    "n_jobs_included": 5,
+    "n_jobs_excluded": 0,
+    "mean_model_pass_at_k": 1.0,
+    "mean_model_pass_at_1": 0.8857142857142858,
+    "mean_model_mean_reward": 0.8785714285714284
+  },
+  "included_models": [
+    "openrouter-addon-hard8-k4-gpt56-luna",
+    "openrouter-addon-hard8-k4-inkling-small",
+    "openrouter-addon-hard8-k4-muse-glimmer-30b",
+    "openrouter-addon-hard8-k4-qwen36-35b-a3b",
+    "openrouter-addon-hard8-k4-nemotron-35-lightning"
+  ],
+  "excluded_models": [],
+  "best_model": "GPT-5.6 Luna",
+  "best_model_pass_at_k": 7
+}

@@ -1,0 +1,2 @@
+cohort,provider,score_scope,run_dates,pattern,expected_trials,attempts_per_task,n_jobs_total,n_jobs_included,n_jobs_excluded,mean_model_pass_at_k,mean_model_pass_at_1,mean_model_mean_reward
+openrouter_k4_small,openrouter,core-25,2026-04-29;2026-04-30;2026-05-03;2026-05-09;2026-05-10;2026-05-11,full25-k4-open-*,100,4,18,8,10,0.72,0.5669128787878788,0.5577358769594795
