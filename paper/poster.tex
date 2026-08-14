@@ -1,248 +1,409 @@
-% ECCB poster for BioTerm-Bench v1.
-% A0 portrait. Build:  tectonic poster.tex
+% =====================================================================
+%  BioTerm-Bench v1 -- ECCB conference poster, A0 portrait (841 x 1189 mm).
 %
-% Figures are the same vector PDFs the paper uses, so the poster cannot drift
-% from the manuscript: regenerate with scripts/refresh_paper_tables.sh.
-\documentclass[a0paper,portrait,20pt]{tikzposter}
+%  Build:   make poster        (runs xelatex twice; tectonic also works)
+%
+%  Figures are poster-scale redraws produced by
+%  scripts/make_poster_figures.py from the same CSV/JSON receipts that back
+%  the manuscript, and both tables are \input from paper/generated/, so the
+%  poster cannot drift from main.tex: rerun scripts/refresh_paper_tables.sh
+%  and then scripts/make_poster_figures.py.
+%
+%  Institutional logos: drop figures/logo-ceitec.pdf and figures/logo-muni.pdf
+%  (PDF/EPS, or PNG at >=300 dpi) beside the figures and they are picked up
+%  automatically. Until then a typographic lockup stands in.
+% =====================================================================
+\documentclass[final]{article}
 
-\usepackage[utf8]{inputenc}
-\usepackage{booktabs}
-\usepackage{graphicx}
+\usepackage[paperwidth=841mm,paperheight=1189mm,
+            left=30mm,right=30mm,top=24mm,bottom=20mm]{geometry}
 \usepackage{amsmath}
+\usepackage{fontspec}
+\usepackage{unicode-math}
 \usepackage{xcolor}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
 \usepackage{tcolorbox}
+\usepackage{qrcode}
+\usepackage{microtype}
+\tcbuselibrary{skins}
 
-% Validated categorical palette (all six colour checks pass; worst adjacent CVD
-% separation dE 24.7). Identity is never carried by colour alone on this poster.
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\fboxsep}{0pt}
+
+% ------------------------------------------------------------------ palette
+% Data colours are exactly the manuscript's validated categorical set, so the
+% poster's accents and its figures are the same three hues.
 \definecolor{btblue}{HTML}{2A78D6}
 \definecolor{btorange}{HTML}{EB6834}
 \definecolor{btviolet}{HTML}{4A3AA7}
-\definecolor{btink}{HTML}{0B0B0B}
-\definecolor{btmuted}{HTML}{52514E}
-\definecolor{btsurface}{HTML}{FCFCFB}
-\definecolor{btrule}{HTML}{D8D7D2}
+\definecolor{btink}{HTML}{14181F}
+\definecolor{btmuted}{HTML}{5A5F66}
+\definecolor{btnavy}{HTML}{102A43}
+\definecolor{btrule}{HTML}{E2E4E7}
+\definecolor{btpage}{HTML}{F4F5F7}
+\definecolor{btwash}{HTML}{EDF2FA}
 
-\usetheme{Default}
-\usecolorstyle{Default}
-\colorlet{blocktitlebgcolor}{white}
-\colorlet{blocktitlefgcolor}{btink}
-\colorlet{blockbodybgcolor}{white}
-\colorlet{blockbodyfgcolor}{btink}
-\colorlet{backgroundcolor}{btsurface}
-\colorlet{framecolor}{btsurface}
-\colorlet{titlebgcolor}{white}
-\colorlet{titlefgcolor}{btink}
+\pagecolor{btpage}
 
-\settitle{
-  \centering
-  \vspace{1.2em}
-  {\Huge\bfseries\color{btink} Can an LLM agent do your routine\\[0.25em]
-   command-line bioinformatics?\par}
-  \vspace{0.7em}
-  {\LARGE\color{btmuted} BioTerm-Bench v1 --- 32 deterministically graded terminal tasks, 14 models, 2 infrastructures\par}
-  \vspace{0.9em}
-  {\Large Petr Simecek \quad Vojtech Bystry\par}
-  \vspace{0.25em}
-  {\large\color{btmuted} Central European Institute of Technology (CEITEC), Masaryk University, Czechia \quad$\cdot$\quad \texttt{simecek@mail.muni.cz}\par}
-  \vspace{0.8em}
+% ------------------------------------------------------------------- fonts
+% Poppins (display) + Carlito (text). Both are free:
+%   Poppins  -- https://fonts.google.com/specimen/Poppins
+%   Carlito  -- fonts-crosextra-carlito / https://fonts.google.com/specimen/Carlito
+% If either is missing the poster still builds, in TeX Gyre Heros throughout.
+\IfFontExistsTF{Carlito}
+  {\setmainfont{Carlito}[Ligatures=TeX]}
+  {\setmainfont{TeX Gyre Heros}[Ligatures=TeX]}
+\setmathfont{Latin Modern Math}
+\IfFontExistsTF{Poppins-Medium.ttf}
+  {\newfontfamily\dsp{Poppins}[Ligatures=TeX,
+     UprightFont=*-Medium, BoldFont=*-Bold, ItalicFont=*-MediumItalic]
+   \newfontfamily\dsplight{Poppins}[Ligatures=TeX, UprightFont=*-Light]}
+  {\newfontfamily\dsp{TeX Gyre Heros}[Ligatures=TeX]
+   \newfontfamily\dsplight{TeX Gyre Heros}[Ligatures=TeX]}
+\newfontfamily\mono{DejaVu Sans Mono}[Scale=0.80]
+
+\newcommand{\sz}[2]{\fontsize{#1}{#2}\selectfont}
+\newcommand{\body}{\sz{21}{29}}
+\newcommand{\bodysm}{\sz{18.5}{25}}
+\newcommand{\bodyxs}{\sz{16}{21.5}}
+
+\newcommand{\x}{\,\text{\dsp\textbf{×}}\,}
+\newcommand{\arr}{\,\textrightarrow\,}
+
+% --------------------------------------------------------------- components
+% A card: white, hairline, soft shadow. The shadow is what makes the grid read
+% as layered rather than as a wall of boxes.
+\tcbset{
+  card/.style={
+    enhanced, arc=4mm, colback=white, colframe=btrule, boxrule=0.7pt,
+    left=11mm, right=11mm, top=8mm, bottom=8mm, boxsep=0mm,
+    before skip=0pt, after skip=0pt,
+    drop fuzzy shadow={black!15},
+    before upper={\raggedright},
+  },
+  note/.style={
+    enhanced, arc=3mm, boxrule=0pt, leftrule=2.8mm,
+    left=7mm, right=7mm, top=6.5mm, bottom=6.5mm, boxsep=0mm,
+    before skip=0pt, after skip=0pt,
+    before upper={\raggedright},
+  },
 }
 
-% Big number callout.
-\newcommand{\headline}[3]{%
-  \begin{minipage}[t]{0.31\linewidth}
-    \centering
-    {\fontsize{56}{60}\selectfont\bfseries\color{#1} #2\par}
-    \vspace{0.35em}
-    {\large\color{btink} #3\par}
-  \end{minipage}%
+% Accent rule + title. This is the only heading level on the poster.
+\newcommand{\cardhead}[2][btblue]{%
+  {\color{#1}\rule{22mm}{2mm}}\par\vspace{4.5mm}%
+  {\dsp\bfseries\sz{35}{43}\color{btink}\raggedright\hyphenpenalty=10000
+   \exhyphenpenalty=10000 #2\par}\vspace{6.5mm}%
 }
 
-\tikzposterlatexaffectionproofoff
+\newcommand{\lead}[1]{{\dsp\bfseries\color{btink}#1}}
+\newcommand{\src}[1]{{\bodyxs\color{btmuted}\raggedright #1\par}}
 
+% Tables are \input from paper/generated/, so a regenerated table can never
+% disagree with the manuscript.
+\newcommand{\fittable}[1]{%
+  \par\nointerlineskip
+  \begingroup
+  \setlength{\tabcolsep}{3.5mm}\renewcommand{\arraystretch}{1.34}
+  \resizebox{\linewidth}{!}{\input{#1}}%
+  \endgroup\par}
+
+% Always close the paragraph: a bare \includegraphics leaves horizontal mode
+% open and the next line of prose is set on the figure's own baseline.
+\newcommand{\posfig}[1]{\par\nointerlineskip
+  \includegraphics[width=\linewidth]{#1}\par}
+
+% One big finding in the dark band, and its caption underneath.
+\newcommand{\keystat}[3]{%
+  \begin{minipage}[t]{#1}\vspace{0pt}\raggedright
+    {\dsp\bfseries\sz{90}{90}\color{#2}#3\par}\vspace{5mm}
+  \end{minipage}}
+\newcommand{\statcap}[2]{%
+  \begin{minipage}[t]{#1}\vspace{0pt}\raggedright
+    {\bodysm\color{white}#2\par}\end{minipage}}
+
+% Column stack. Fixed height with \vfill between cards so all three columns
+% end flush at the footer regardless of how much prose each one holds;
+% \colh is the one number to retune if content is added or removed.
+\newlength{\colh}\setlength{\colh}{729mm}
+\newenvironment{poscol}[1]
+  {\begin{minipage}[t][\colh][s]{#1}\vspace{0pt}\raggedright}
+  {\vspace{0pt}\end{minipage}}
+\newcommand{\cardgap}{\vfill}
+
+% =====================================================================
 \begin{document}
-\maketitle[titletotopverticalspace=10mm]
 
-%% ---------------------------------------------------------------- row 1
-\begin{columns}
-\column{0.34}
-\block{The question}{
-  \large
+% ------------------------------------------------------------------ header
+% The MUNI|CEITEC lockup is a single wide artwork, so it gets its own line
+% above the title rather than a column beside it.
+\IfFileExists{figures/logo-muni-ceitec.pdf}
+  {\hfill\includegraphics[height=25mm]{figures/logo-muni-ceitec.pdf}\par
+   \vspace{9mm}}
+  {\hfill{\dsp\bfseries\sz{40}{40}\color{btink}MUNI \textbar{} CEITEC}\par
+   \vspace{9mm}}
+
+{\dsp\bfseries\sz{62}{72}\color{btink}\raggedright
+ BioTerm-Bench: A Harbor-Compatible Benchmark for Tracking\\
+ Open-Model Progress on Terminal Bioinformatics Tasks\par}
+
+\vspace{6mm}
+{\dsp\sz{40}{50}\color{btblue}\raggedright
+ Can an LLM agent do your routine command-line bioinformatics?\par}
+
+\vspace{7mm}
+{\color{btink}\rule{\linewidth}{1.2mm}}\\[5mm]
+{\dsp\sz{29}{36}\color{btink}Petr Simecek \quad\textbullet\quad
+ \textbf{Vojtech Bystry}}\enspace
+{\dsp\bfseries\sz{19}{19}\color{btblue}PRESENTING}%
+\hfill
+{\dsplight\sz{24}{31}\color{btmuted}Central European Institute of Technology
+ (CEITEC), Masaryk University, Brno, Czechia}
+
+\vspace{10mm}
+
+% ------------------------------------------------------- key findings band
+\begin{tcolorbox}[enhanced, arc=4mm, colback=btnavy, colframe=btnavy,
+                  left=14mm, right=14mm, top=9mm, bottom=9mm, boxsep=0mm,
+                  before skip=0pt, after skip=0pt, drop fuzzy shadow={black!22}]
+  \keystat{0.225\linewidth}{white}{32}\hfill
+  \keystat{0.225\linewidth}{white}{14}\hfill
+  \keystat{0.225\linewidth}{btblue}{92\%}\hfill
+  \keystat{0.21\linewidth}{btorange}{44\%}
+
+  \statcap{0.225\linewidth}{self-contained terminal tasks, each graded by
+    \textbf{comparison with a stored correct answer}}\hfill
+  \statcap{0.225\linewidth}{models evaluated on both parts of the suite,
+    across \textbf{two independent infrastructures}}\hfill
+  \statcap{0.225\linewidth}{of individual attempts solved by \textbf{Gemma 4
+    31B} --- a model that fits a laptop at four bits}\hfill
+  \statcap{0.21\linewidth}{of failures are well-formed files carrying
+    \textbf{wrong numbers} --- the mode nothing downstream catches}
+\end{tcolorbox}
+
+\vspace{11mm}
+
+% ================================================================== columns
+\newlength{\colw}\setlength{\colw}{0.3153\linewidth}
+
+% ------------------------------------------------------------------ COL 1
+\begin{poscol}{\colw}
+
+\begin{tcolorbox}[card]
+  \cardhead{The question}
+  {\body
   Much of bioinformatics is not discovery. It is converting a GTF to a BED,
-  checking a BAM is coordinate-sorted, normalising counts to TPM --- precisely
-  specified, tedious, easy to get subtly wrong.
-  \vspace{0.6em}
+  checking that a BAM is coordinate-sorted, normalising counts to TPM ---
+  precisely specified, tedious, easy to get subtly wrong.\par
+  \vspace{5mm}
+  \lead{Which parts can be delegated to an agent, and how often is the
+  result right?}\par
+  \vspace{5mm}
+  Answering that needs a benchmark that runs the tools rather than describing
+  them, grades deterministically rather than with an LLM judge, and runs on a
+  laptop or an institutional node --- because the data that most needs help
+  often cannot leave the building. Human genomic data under controlled access
+  generally cannot be sent to public generative-AI services, so the agent has
+  to run where the data already sits.\par}
+\end{tcolorbox}
 
-  So: \textbf{which parts can be delegated to an agent, and how often is the
-  result right?}
-  \vspace{0.6em}
+\cardgap
 
-  Answering that needs a benchmark that (i)~runs the tools rather than
-  describing them, (ii)~grades deterministically --- no LLM judge --- and
-  (iii)~runs on a laptop or an institutional node, because the data that most
-  needs help often cannot leave the building.
-}
+\begin{tcolorbox}[card]
+  \cardhead[btviolet]{What BioTerm-Bench is}
+  {\body
+  \textbf{32 deterministic tasks} --- a 25-task core plus a 7-task extension of
+  multi-stage workflows. Each hands the agent real input files, a container
+  with the usual stack, and an \textbf{exact output contract}.\par
+  \vspace{5mm}
+  Grading compares the produced artifact with a stored correct answer.
+  \lead{No model ever judges another model's output.}\par}
+  \vspace{8mm}
 
-\column{0.32}
-\block{What the benchmark is}{
-  \large
-  \textbf{32 tasks}: a 25-task core plus a 7-task extension of multi-stage
-  workflows. Each gives the agent real files, a container with the usual stack,
-  and an exact output contract. Grading compares the produced artifact against
-  a stored correct answer.
-  \vspace{0.5em}
-
-  \centering
-  \small
-  \begin{tabular}{lr@{\hspace{2em}}lr}
+  {\bodysm
+  \setlength{\tabcolsep}{0pt}\renewcommand{\arraystretch}{1.42}
+  \begin{tabular}{@{}p{0.34\linewidth}p{0.66\linewidth}@{}}
     \toprule
-    alignment & 7 & search & 5 \\
-    variant & 7 & RNA-seq & 4 \\
-    metadata & 6 & \multicolumn{2}{l}{} \\
-    quality control & 6 & \multicolumn{2}{l}{} \\
+    alignment       & BAM depth, duplicate marking     \\
+    variant         & allele frequencies, trio Mendelian \\
+    metadata        & GTF\arr BED, longest ORF          \\
+    quality control & per-base quality, FastQC summaries \\
+    search          & best BLAST hit, \emph{k}-mer Jaccard \\
+    RNA-seq         & TPM normalisation, DE contrasts   \\
     \bottomrule
-  \end{tabular}
-  \vspace{0.4em}
+  \end{tabular}\par}
+  \vspace{8mm}
 
-  \raggedright
-  \large Fixed agent (Terminus-2) and harness (Harbor) across all models, so
-  score differences reflect the model, not the scaffolding.
-}
+  {\body Runs under \textbf{Harbor}, the Terminal-Bench harness, with the agent
+  held fixed at \textbf{Terminus-2}, so score differences reflect the model and
+  not the scaffolding. Four attempts per task, and every fixture is small
+  enough to rebuild and rerun on a laptop.\par}
+\end{tcolorbox}
 
-\column{0.34}
-\block{Three headline results}{
-  \vspace{0.2em}
-  \centering
-  \headline{btblue}{0.969}{best mean reward on the core --- \textbf{the original suite is saturated}}
-  \headline{btorange}{44\%}{of failures are well-formed files with \textbf{wrong numbers}}
-  \headline{btviolet}{9/32}{tasks solved on \textbf{every} attempt by \textbf{every} model}
-  \vspace{0.6em}
-}
-\end{columns}
+\cardgap
 
-%% ---------------------------------------------------------------- row 2
-\begin{columns}
-\column{0.5}
-\block{Difficulty lives in reliability, not in what a model can eventually do}{
-  \centering
-  \includegraphics[width=0.70\linewidth]{figures/fig_paired_scopes.pdf}
-  \vspace{0.4em}
+\begin{tcolorbox}[card]
+  \cardhead[btorange]{The 25-task core is solved --- and that is recent}
+  {\body \textbf{Gemma 4 31B} --- hostable on a laptop at four bits --- gets
+  \textbf{92\,\%} of individual attempts right, and three models in the wider
+  panel answer all 25 correctly on every scored attempt.\par}
+  \vspace{8mm}
+  \fittable{generated/poster_table_headline.tex}
+  \vspace{6mm}
+  \src{OpenRouter cohort, four attempts per task, 100 trials per model.
+    ``all scored'' = solved on \emph{every} scored attempt; all denominators
+    are explicit scored-task counts.}
+  \vspace{7mm}
+  {\body \lead{This says more about the moment than about the tasks.} Every
+  model in the panel was released within the last twelve months; the same 25
+  tasks run eighteen months ago would not have produced this table, and nine of
+  the 32 are now failed by nobody at all.\par
+  \vspace{5mm}
+  The core keeps its value as a \textbf{continuity score} --- a record of what
+  became routinely automatable, and how fast --- while the harder pack carries
+  the discriminative load.\par}
+\end{tcolorbox}
 
-  \raggedright
-  \large Each row is one model: blue = core, orange = extension.
-  \vspace{0.4em}
+\end{poscol}%
+\hfill
+% ------------------------------------------------------------------ COL 2
+\begin{poscol}{\colw}
 
-  \begin{tcolorbox}[colback=btblue!8,colframe=btblue,boxrule=1.2pt,arc=3mm]
-  \large\textbf{Best-of-four hides the gap.} All five models of the OpenRouter
-  cohort solve \emph{every} extension task within four attempts and are
-  therefore indistinguishable. Under the \textbf{all-four} criterion --- solved
-  on \emph{all} attempts, the one that matters for unattended analysis --- they
-  span \textbf{2/7 to 7/7}.
+\begin{tcolorbox}[card]
+  \cardhead{Difficulty lives in reliability,\\not in solvability}
+  \posfig{figures/pfig_paired_scopes.pdf}
+  \vspace{4mm}
+  \src{Every model evaluated on both parts of the suite; one row per model.}
+  \vspace{8mm}
+  \begin{tcolorbox}[note, colback=btwash, colframe=btblue]
+    {\body\lead{Best-of-four hides the gap.} All five models of the OpenRouter
+    cohort solve \emph{every} extension task within four attempts, so
+    best-of-four calls them identical. Under the \textbf{all-four} criterion ---
+    the one that matters when nobody re-runs the job --- the same five span
+    \textbf{2 of 7 to 7 of 7} --- and a laboratory running each once gets a
+    correct artifact on 100\,\% of attempts from one and 57\,\% from another.\par}
   \end{tcolorbox}
-}
+\end{tcolorbox}
 
-\column{0.5}
-\block{How agents fail --- and why it matters}{
-  \centering
-  \includegraphics[width=0.92\linewidth]{figures/fig_failure_modes.pdf}
-  \vspace{0.4em}
+\cardgap
 
-  \raggedright
-  \large All 319 scored failures, classified from the verifiers' own reasons.
-  \vspace{0.4em}
-
-  \begin{tcolorbox}[colback=btorange!8,colframe=btorange,boxrule=1.2pt,arc=3mm]
-  \large\textbf{The largest category is the quiet one.} A BED with correct
-  syntax and wrong coordinates, or a flagstat summary with plausible but
-  incorrect counts, propagates silently into whatever consumes it. Spread
-  across ordinary tasks --- \texttt{blast-best-hit}, \texttt{gtf-to-bed},
-  \texttt{flagstat-report} --- not exotic ones.
+\begin{tcolorbox}[card]
+  \cardhead[btorange]{How agents fail --- and why it matters}
+  \posfig{figures/pfig_failure_modes.pdf}
+  \vspace{4mm}
+  \src{All 319 scored failures in the included core cohort, classified from
+    the verifiers' own reasons.}
+  \vspace{8mm}
+  \begin{tcolorbox}[note, colback=btorange!7, colframe=btorange]
+    {\body\lead{The largest category is the quiet one.} A BED file with correct
+    syntax and wrong coordinates, or a flagstat summary with plausible but
+    incorrect counts, propagates silently into whatever consumes it. The loud
+    56\% announce themselves --- a downstream tool refuses to read them. The
+    quiet 44\% do not, and they are spread across ordinary tasks rather than
+    exotic ones.\par}
   \end{tcolorbox}
-}
-\end{columns}
+\end{tcolorbox}
 
-%% ---------------------------------------------------------------- row 3
-\begin{columns}
-\column{0.5}
-\block{What hardware do you actually need?}{
-  \centering
-  \includegraphics[width=0.78\linewidth]{figures/fig_hardware_vs_score.pdf}
-  \vspace{0.5em}
+\end{poscol}%
+\hfill
+% ------------------------------------------------------------------ COL 3
+\begin{poscol}{\colw}
 
-  \small
-  \begin{tabular}{llr}
-    \toprule
-    Tier & Hardware & Example \\
-    \midrule
-    A & laptop / workstation (4-bit) & Gemma 4, 62\,GB \\
-    B & one datacentre GPU & Qwen3.5 122B, 122\,GB \\
-    C & 2--4 GPU server & DeepSeek V4 Flash, 304\,GB \\
-    D & full 8-GPU node & GLM 5.2, 756\,GB \\
-    E & multi-node cluster & Kimi K3, 2.8\,TB \\
-    \bottomrule
-  \end{tabular}
-  \vspace{0.5em}
+\begin{tcolorbox}[card]
+  \cardhead[btviolet]{What hardware do you actually need?}
+  \posfig{figures/pfig_hardware_vs_score.pdf}
+  \vspace{5mm}
+  \fittable{generated/poster_table_hardware.tex}
+  \vspace{6mm}
+  \src{Weight memory is total parameters at the served precision --- a floor
+    that excludes KV cache and runtime overhead. Letters mark the tier; tier A
+    assumes 4-bit quantisation.}
+  \vspace{6mm}
+  {\body A \textbf{62\,GB workstation} model outscores a 122\,GB one needing a
+  datacentre GPU.\par}
+\end{tcolorbox}
 
-  \raggedright
-  \large
-  Bigger is better on average ($\rho=0.77$) but \textbf{saturates above
-  $\sim$130\,GB}: a 62\,GB workstation model outscores a 122\,GB one needing a
-  datacentre GPU.
-}
+\cardgap
 
-\column{0.5}
-\block{Cost, openness, and what to delegate}{
-  \centering
-  \includegraphics[width=0.76\linewidth]{figures/fig_cost_capability.pdf}
-  \vspace{0.4em}
+\begin{tcolorbox}[card]
+  \cardhead{Price is not capability}
+  \posfig{figures/pfig_cost_capability.pdf}
+  \vspace{6mm}
+  {\body The whole extension sweep cost \textbf{\$0.13--\$1.64} per model, and
+  the cheapest run ties for the best score. Price follows parameter count and
+  provider margin --- not the licence.\par}
+\end{tcolorbox}
 
-  \raggedright
-  \large \textbf{Open weights and low price are independent.} The cheapest run
-  is also tied for the best score; the dearest costs $\sim$13$\times$ more for
-  the same result.
-  \vspace{0.5em}
+\cardgap
 
-  \begin{tcolorbox}[colback=btviolet!8,colframe=btviolet,boxrule=1.2pt,arc=3mm]
-  \large\textbf{Delegate today:} format conversion and summarisation ---
-  GTF$\rightarrow$BED, VCF$\rightarrow$TSV, FASTA statistics, flagstat counting
-  --- with spot-checking.\\[0.3em]
-  \textbf{Do not yet:} multi-stage reasoning over biological structure ---
-  splice-junction support, trio-aware and diploid-consensus variant logic.\\[0.3em]
-  \textbf{Rule of thumb:} delegation is safe in proportion to how mechanically
-  checkable the output is.
-  \end{tcolorbox}
-}
-\end{columns}
+\begin{tcolorbox}[card]
+  \cardhead[btviolet]{Research infrastructure is the enabling layer}
+  {\body \textbf{Nine of the fourteen models here were served by e-INFRA CZ},
+  which offers LLM inference to \textbf{ELIXIR CZ} members on institutional
+  hardware. That is what makes agentic analysis possible for controlled-access
+  human data: the model runs \emph{inside the administrative boundary} and
+  nothing is exported.\par
+  \vspace{5mm}
+  It is also sufficient. A tier B or C model hosted this way reaches the
+  \textbf{top of the observed score range} --- no frontier API required.\par}
+\end{tcolorbox}
 
-%% ---------------------------------------------------------------- row 4
-\begin{columns}
-\column{1}
-\block{Take home}{
-  \large
-  \begin{minipage}[t]{0.30\linewidth}
-    \textbf{Routine terminal bioinformatics is largely automatable today}, by
-    models a laboratory can host itself --- a workstation-class 31B model
-    already solves most of the core suite.
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.30\linewidth}
-    \textbf{Report mean reward and all-attempts, not best-of-$n$.} Best-of-four
-    describes a workflow with an oracle telling you which run was right. You do
-    not have one --- that is why you wanted the agent.
-  \end{minipage}\hfill
-  \begin{minipage}[t]{0.34\linewidth}
-    \textbf{Check the output, not the score.} When these agents fail, the most
-    common single outcome is a plausible, well-formed file containing wrong
-    numbers --- the failure mode least likely to be caught downstream.
+\end{poscol}
+
+\vspace{11mm}
+
+% ------------------------------------------------------------------ footer
+\begin{tcolorbox}[card, left=14mm, right=14mm, top=11mm, bottom=11mm]
+  {\dsp\bfseries\sz{35}{43}\color{btink}What to delegate today\par}
+  \vspace{8mm}
+
+  \newcommand{\adv}[3]{%
+    \begin{minipage}[t]{0.288\linewidth}\vspace{0pt}\raggedright
+      {\dsp\bfseries\sz{25}{32}\color{#1}#2\par}\vspace{4mm}
+      {\body\color{btink}#3\par}
+    \end{minipage}}
+
+  \adv{btblue}{Delegate, with spot-checks}{Format conversion and summarisation
+    --- GTF\arr BED, VCF\arr TSV, FASTA statistics, flagstat-style counting.
+    Reliable from the strongest models --- but also where weaker ones fail
+    most, so check the artifact.}\hfill
+  \adv{btviolet}{Delegate, then verify}{Tasks solved most of the time and
+    plausibly wrong otherwise. Run it twice and diff --- cheap insurance
+    against the failure mode nothing downstream will flag.}\hfill
+  \adv{btorange}{Not yet}{Multi-stage reasoning over biological structure ---
+    splice-junction support, trio-aware and diploid-consensus variant logic.
+    One such task was solved by only 2 of 14 models.}
+
+  \vspace{9mm}
+  {\color{btrule}\rule{\linewidth}{0.8mm}}\\[8mm]
+
+  \begin{minipage}[t]{0.695\linewidth}\vspace{0pt}\raggedright
+    {\body\lead{Rule of thumb:} delegation is safe in proportion to how
+    mechanically checkable the output is --- a BED file can be checked by
+    re-deriving a handful of rows, a variant set with a subtle inheritance
+    error cannot be checked without redoing the analysis.\par
+    \vspace{5mm}
+    \lead{And report mean reward and all-attempts, not best-of-\emph{n}.}
+    Best-of-\emph{n} describes a workflow with an oracle telling you which run
+    was right. You do not have one --- that is why you wanted the agent.\par}
+    \vspace{7mm}
+    {\bodysm\color{btmuted}Computational resources, and the served models
+      themselves, were provided by the \textbf{e-INFRA CZ} project (ID:90254),
+      supported by the Ministry of Education, Youth and Sports of the Czech
+      Republic. Tasks, images, graders, runners and every analysis script are
+      released under Apache~2.0.\par}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[t]{0.265\linewidth}\vspace{0pt}
+    \raggedleft
+    {\dsp\bfseries\sz{18}{24}\color{btink}%
+     github.com/ML-Bioinfo-CEITEC/BioTerm-Bench\par}
+    \vspace{6mm}
+    \qrcode[height=50mm,level=M]{https://github.com/ML-Bioinfo-CEITEC/BioTerm-Bench}
   \end{minipage}
-  \vspace{0.9em}
-
-  \centering
-  {\Large\textbf{Freely available:} \texttt{github.com/ML-Bioinfo-CEITEC/BioTerm-Bench}}
-  \vspace{0.5em}
-
-  {\small\color{btmuted} Computational resources were provided by the e-INFRA CZ
-  project (ID:90254), supported by the Ministry of Education, Youth and Sports
-  of the Czech Republic.}
-}
-\end{columns}
+\end{tcolorbox}
 
 \end{document}
