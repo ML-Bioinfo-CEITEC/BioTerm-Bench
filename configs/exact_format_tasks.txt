@@ -1,0 +1,6 @@
+# These contracts explicitly require source-string preservation or fixed
+# decimal formatting. A numeric perturbation is not contract-equivalent.
+kmer-contamination-mixture
+seqkit-fasta-stats
+vcf-multisample-qc
+vcf-to-tsv

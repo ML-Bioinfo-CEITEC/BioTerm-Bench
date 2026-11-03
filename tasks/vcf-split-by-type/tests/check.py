@@ -9,8 +9,8 @@ from pathlib import Path
 
 SNPS = Path("/app/output/snps.vcf.gz")
 INDELS = Path("/app/output/indels.vcf.gz")
-GOLD_SNPS = Path("/gold/snps.vcf.gz")
-GOLD_INDELS = Path("/gold/indels.vcf.gz")
+GOLD_SNPS = Path("/tests/gold/snps.vcf.gz")
+GOLD_INDELS = Path("/tests/gold/indels.vcf.gz")
 
 
 def fail(msg: str) -> None:

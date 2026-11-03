@@ -9,7 +9,7 @@ from pathlib import Path
 import pandas as pd
 
 OUT = Path("/app/output/tpm.tsv")
-GOLD = Path("/gold/tpm.tsv")
+GOLD = Path("/tests/gold/tpm.tsv")
 COUNTS = Path("/app/data/counts.tsv")
 
 REL = 0.01

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/best_hits.tsv")
-GOLD = Path("/gold/best_hits.tsv")
+GOLD = Path("/tests/gold/best_hits.tsv")
 QUERIES = Path("/app/data/queries.fasta")
 
 

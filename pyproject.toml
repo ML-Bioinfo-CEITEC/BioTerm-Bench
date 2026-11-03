@@ -16,12 +16,18 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = [
+    "matplotlib>=3.7",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "pysam>=0.22",
     "pytest>=8.0",
     "ruff>=0.6",
+    "scipy>=1.11",
 ]
 
 [tool.pytest.ini_options]
-pythonpath = ["."]
+pythonpath = [".", "scripts"]
+testpaths = ["tests"]
 
 [project.scripts]
 bioterm-validate = "bioterm_bench.validate_task:main"

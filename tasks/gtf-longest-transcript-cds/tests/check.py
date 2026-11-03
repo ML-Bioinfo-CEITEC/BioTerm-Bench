@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/longest_cds.tsv")
-GOLD = Path("/gold/longest_cds.tsv")
+GOLD = Path("/tests/gold/longest_cds.tsv")
 
 
 def fail(msg: str) -> None:

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/stats.tsv")
-GOLD = Path("/gold/stats.tsv")
+GOLD = Path("/tests/gold/stats.tsv")
 HEADER = ["seq_id", "length", "gc_percent", "n_percent"]
 
 

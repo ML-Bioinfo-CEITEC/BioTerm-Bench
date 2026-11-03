@@ -1,0 +1,51 @@
+deployment	provider	model_id	api_model_id	display_name	api_base	provenance	added_at	notes
+ei-command-a	einfra	openai/command-a	command-a	Command A	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549221+00:00	concrete chat model
+ei-deepseek-v4-flash	einfra	openai/deepseek-v4-flash	deepseek-v4-flash	Deepseek V4 Flash	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549271+00:00	concrete chat model
+ei-deepseek-v4-flash-thinking	einfra	openai/deepseek-v4-flash-thinking	deepseek-v4-flash-thinking	Deepseek V4 Flash Thinking	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549287+00:00	concrete chat model
+ei-gemma4	einfra	openai/gemma4	gemma4	Gemma4	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549298+00:00	concrete chat model
+ei-glm-5-2	einfra	openai/glm-5.2	glm-5.2	Glm 5.2	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549312+00:00	concrete chat model
+ei-glm-5-3-flash	einfra	openai/glm-5.3-flash	glm-5.3-flash	Glm 5.3 Flash	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549323+00:00	concrete chat model
+ei-gpt-oss-120b	einfra	openai/gpt-oss-120b	gpt-oss-120b	Gpt Oss 120B	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549334+00:00	concrete chat model
+ei-kimi-k3	einfra	openai/kimi-k3	kimi-k3	Kimi K3	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549347+00:00	concrete chat model
+ei-mistral-medium-3-5	einfra	openai/mistral-medium-3.5	mistral-medium-3.5	Mistral Medium 3.5	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549362+00:00	concrete chat model
+ei-qwen3-5-int4	einfra	openai/qwen3.5-int4	qwen3.5-int4	Qwen3.5 Int4	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549405+00:00	concrete chat model
+ei-qwen3-8-27b	einfra	openai/qwen3.8-27b	qwen3.8-27b	Qwen3.8 27B	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549418+00:00	concrete chat model
+ei-qwen3-8-flash-next	einfra	openai/qwen3.8-flash-next	qwen3.8-flash-next	Qwen3.8 Flash Next	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-27T20:25:08.549431+00:00	concrete chat model
+or-deepseek-deepseek-v3-2	openrouter	openrouter/deepseek/deepseek-v3.2	deepseek/deepseek-v3.2	Deepseek V3.2		historical local Harbor receipt	2026-08-27T20:25:11.567354+00:00	available at panel sync
+or-google-gemma-4-26b-a4b-it	openrouter	openrouter/google/gemma-4-26b-a4b-it	google/gemma-4-26b-a4b-it	Gemma 4 26B A4B It		historical local Harbor receipt	2026-08-27T20:25:11.567377+00:00	available at panel sync
+or-google-gemma-4-31b-it	openrouter	openrouter/google/gemma-4-31b-it	google/gemma-4-31b-it	Gemma 4 31B It		historical local Harbor receipt	2026-08-27T20:25:11.567382+00:00	available at panel sync
+or-meta-muse-glimmer-30b	openrouter	openrouter/meta/muse-glimmer-30b	meta/muse-glimmer-30b	Muse Glimmer 30B		historical local Harbor receipt	2026-08-27T20:25:11.567387+00:00	available at panel sync
+or-minimax-minimax-m2-7	openrouter	openrouter/minimax/minimax-m2.7	minimax/minimax-m2.7	Minimax M2.7		historical local Harbor receipt	2026-08-27T20:25:11.567391+00:00	available at panel sync
+or-mistralai-ministral-14b-2512	openrouter	openrouter/mistralai/ministral-14b-2512	mistralai/ministral-14b-2512	Ministral 14B 2512		historical local Harbor receipt	2026-08-27T20:25:11.567394+00:00	available at panel sync
+or-mistralai-ministral-3b-2512	openrouter	openrouter/mistralai/ministral-3b-2512	mistralai/ministral-3b-2512	Ministral 3B 2512		historical local Harbor receipt	2026-08-27T20:25:11.567398+00:00	available at panel sync
+or-mistralai-ministral-8b-2512	openrouter	openrouter/mistralai/ministral-8b-2512	mistralai/ministral-8b-2512	Ministral 8B 2512		historical local Harbor receipt	2026-08-27T20:25:11.567402+00:00	available at panel sync
+or-mistralai-mistral-nemo	openrouter	openrouter/mistralai/mistral-nemo	mistralai/mistral-nemo	Mistral Nemo		historical local Harbor receipt	2026-08-27T20:25:11.567406+00:00	available at panel sync
+or-mistralai-mistral-small-24b-instruct-2501	openrouter	openrouter/mistralai/mistral-small-24b-instruct-2501	mistralai/mistral-small-24b-instruct-2501	Mistral Small 24B Instruct 2501		historical local Harbor receipt	2026-08-27T20:25:11.567411+00:00	available at panel sync
+or-mistralai-mistral-small-2603	openrouter	openrouter/mistralai/mistral-small-2603	mistralai/mistral-small-2603	Mistral Small 2603		historical local Harbor receipt	2026-08-27T20:25:11.567416+00:00	available at panel sync
+or-mistralai-mistral-small-3-1-24b-instruct	openrouter	openrouter/mistralai/mistral-small-3.1-24b-instruct	mistralai/mistral-small-3.1-24b-instruct	Mistral Small 3.1 24B Instruct		historical local Harbor receipt	2026-08-27T20:25:11.567421+00:00	available at panel sync
+or-mistralai-mistral-small-3-2-24b-instruct	openrouter	openrouter/mistralai/mistral-small-3.2-24b-instruct	mistralai/mistral-small-3.2-24b-instruct	Mistral Small 3.2 24B Instruct		historical local Harbor receipt	2026-08-27T20:25:11.567425+00:00	available at panel sync
+or-moonshotai-kimi-k2-5	openrouter	openrouter/moonshotai/kimi-k2.5	moonshotai/kimi-k2.5	Kimi K2.5		historical local Harbor receipt	2026-08-27T20:25:11.567432+00:00	available at panel sync
+or-nvidia-nemotron-3-super-120b-a12b	openrouter	openrouter/nvidia/nemotron-3-super-120b-a12b	nvidia/nemotron-3-super-120b-a12b	Nemotron 3 Super 120B A12B		historical local Harbor receipt	2026-08-27T20:25:11.567436+00:00	available at panel sync
+or-nvidia-nemotron-3-5-lightning	openrouter	openrouter/nvidia/nemotron-3.5-lightning	nvidia/nemotron-3.5-lightning	Nemotron 3.5 Lightning		historical local Harbor receipt	2026-08-27T20:25:11.567441+00:00	available at panel sync
+or-nvidia-nemotron-nano-9b-v2	openrouter	openrouter/nvidia/nemotron-nano-9b-v2	nvidia/nemotron-nano-9b-v2	Nemotron Nano 9B V2		historical local Harbor receipt	2026-08-27T20:25:11.567446+00:00	unavailable at panel sync; retain and retry later
+or-openai-gpt-5-6-luna	openrouter	openrouter/openai/gpt-5.6-luna	openai/gpt-5.6-luna	Gpt 5.6 Luna		historical local Harbor receipt	2026-08-27T20:25:11.567451+00:00	available at panel sync
+or-openai-gpt-oss-120b	openrouter	openrouter/openai/gpt-oss-120b	openai/gpt-oss-120b	Gpt Oss 120B		historical local Harbor receipt	2026-08-27T20:25:11.567455+00:00	available at panel sync
+or-openai-gpt-oss-20b	openrouter	openrouter/openai/gpt-oss-20b	openai/gpt-oss-20b	Gpt Oss 20B		historical local Harbor receipt	2026-08-27T20:25:11.567460+00:00	available at panel sync
+or-qwen-qwen-2-5-7b-instruct	openrouter	openrouter/qwen/qwen-2.5-7b-instruct	qwen/qwen-2.5-7b-instruct	Qwen 2.5 7B Instruct		historical local Harbor receipt	2026-08-27T20:25:11.567465+00:00	available at panel sync
+or-qwen-qwen3-14b	openrouter	openrouter/qwen/qwen3-14b	qwen/qwen3-14b	Qwen3 14B		historical local Harbor receipt	2026-08-27T20:25:11.567470+00:00	available at panel sync
+or-qwen-qwen3-30b-a3b	openrouter	openrouter/qwen/qwen3-30b-a3b	qwen/qwen3-30b-a3b	Qwen3 30B A3B		historical local Harbor receipt	2026-08-27T20:25:11.567474+00:00	available at panel sync
+or-qwen-qwen3-32b	openrouter	openrouter/qwen/qwen3-32b	qwen/qwen3-32b	Qwen3 32B		historical local Harbor receipt	2026-08-27T20:25:11.567479+00:00	available at panel sync
+or-qwen-qwen3-8b	openrouter	openrouter/qwen/qwen3-8b	qwen/qwen3-8b	Qwen3 8B		historical local Harbor receipt	2026-08-27T20:25:11.567484+00:00	available at panel sync
+or-qwen-qwen3-5-122b-a10b	openrouter	openrouter/qwen/qwen3.5-122b-a10b	qwen/qwen3.5-122b-a10b	Qwen3.5 122B A10B		historical local Harbor receipt	2026-08-27T20:25:11.567489+00:00	available at panel sync
+or-qwen-qwen3-5-35b-a3b	openrouter	openrouter/qwen/qwen3.5-35b-a3b	qwen/qwen3.5-35b-a3b	Qwen3.5 35B A3B		historical local Harbor receipt	2026-08-27T20:25:11.567494+00:00	available at panel sync
+or-qwen-qwen3-5-9b	openrouter	openrouter/qwen/qwen3.5-9b	qwen/qwen3.5-9b	Qwen3.5 9B		historical local Harbor receipt	2026-08-27T20:25:11.567499+00:00	available at panel sync
+or-qwen-qwen3-6-35b-a3b	openrouter	openrouter/qwen/qwen3.6-35b-a3b	qwen/qwen3.6-35b-a3b	Qwen3.6 35B A3B		historical local Harbor receipt	2026-08-27T20:25:11.567504+00:00	available at panel sync
+or-qwen-qwen3-6-flash	openrouter	openrouter/qwen/qwen3.6-flash	qwen/qwen3.6-flash	Qwen3.6 Flash		historical local Harbor receipt	2026-08-27T20:25:11.567509+00:00	available at panel sync
+or-qwen-qwen3-8-27b	openrouter	openrouter/qwen/qwen3.8-27b	qwen/qwen3.8-27b	Qwen3.8 27B		historical local Harbor receipt	2026-08-27T20:25:11.567514+00:00	available at panel sync
+or-thinkingmachines-inkling-small	openrouter	openrouter/thinkingmachines/inkling-small	thinkingmachines/inkling-small	Inkling Small		historical local Harbor receipt	2026-08-27T20:25:11.567519+00:00	available at panel sync
+or-z-ai-glm-4-5-air	openrouter	openrouter/z-ai/glm-4.5-air	z-ai/glm-4.5-air	Glm 4.5 Air		historical local Harbor receipt	2026-08-27T20:25:11.567525+00:00	available at panel sync
+or-z-ai-glm-5	openrouter	openrouter/z-ai/glm-5	z-ai/glm-5	Glm 5		historical local Harbor receipt	2026-08-27T20:25:11.567530+00:00	available at panel sync
+or-z-ai-glm-5-1	openrouter	openrouter/z-ai/glm-5.1	z-ai/glm-5.1	Glm 5.1		historical local Harbor receipt	2026-08-27T20:25:11.567535+00:00	available at panel sync
+ei-nrp	einfra	openai/nrp	nrp	Nrp	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-28T15:36:01.633321+00:00	concrete chat model
+ei-glm-5	einfra	openai/glm-5	glm-5	Glm 5	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-29T08:40:11.720903+00:00	concrete chat model
+ei-glm-5-3	einfra	openai/glm-5.3	glm-5.3	Glm 5.3	https://llm.ai.e-infra.cz/v1/	live e-INFRA /v1/models	2026-08-29T08:40:11.720930+00:00	concrete chat model

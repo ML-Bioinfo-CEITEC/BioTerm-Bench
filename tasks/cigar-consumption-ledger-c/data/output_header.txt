@@ -1,0 +1,2 @@
+read_id	cigar	reference_span	query_consumed	aligned_bases	inserted_bases	deleted_bases	skipped_bases	clipped_bases
+Row order: input record order.

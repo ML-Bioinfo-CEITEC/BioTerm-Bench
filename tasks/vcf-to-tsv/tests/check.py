@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/variants.tsv")
-GOLD = Path("/gold/variants.tsv")
+GOLD = Path("/tests/gold/variants.tsv")
 HEADER = ["chrom", "pos", "ref", "alt", "qual", "dp", "gt", "vtype"]
 VALID_VTYPE = {"snp", "indel"}
 

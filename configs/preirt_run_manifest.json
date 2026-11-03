@@ -1,0 +1,23 @@
+{
+  "agent": "terminus-2",
+  "attempts_initial": 1,
+  "attempts_maximum": 3,
+  "checksum_file": "configs/preirt_task_checksums.tsv",
+  "excluded_tasks": [
+    "fastq-paired-adapter-qc",
+    "mini-align-call-filter"
+  ],
+  "frozen_at": "2026-08-25T19:22:36.492692+00:00",
+  "image_digests": {
+    "bioterm-base:v1": "sha256:1fbe12243fad9ef648aeb398b0146ef189d6751f0736543eed0fcbd5c13ed017",
+    "bioterm-rnaseq:v1": "sha256:5295f9369cbebd61a28af61c211ea6719e70dc82407d0aa58301f9527ac76b5c"
+  },
+  "included_task_count": 113,
+  "openrouter_budget_usd": 150,
+  "panel_file": "configs/preirt_panel.tsv",
+  "retired_tasks": [
+    "bam-splice-junction-support"
+  ],
+  "task_file": "configs/preirt_tasks_113.txt",
+  "task_universe_count": 115
+}

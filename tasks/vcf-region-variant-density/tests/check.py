@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/density.tsv")
-GOLD = Path("/gold/density.tsv")
+GOLD = Path("/tests/gold/density.tsv")
 TOL = 1e-4
 HEADER = "chrom\tstart\tend\tn_snv\tn_indel\tdensity_per_kb"
 

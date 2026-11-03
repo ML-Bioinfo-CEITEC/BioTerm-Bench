@@ -1,0 +1,2 @@
+seq_id	start_1based	strand	forward_sequence	log2_score
+Row order: sequence ID, start, then strand, all ascending.

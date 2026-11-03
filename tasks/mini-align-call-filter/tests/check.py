@@ -9,7 +9,7 @@ from pathlib import Path
 
 OUT = Path("/app/output/final.vcf.gz")
 OUT_TBI = Path("/app/output/final.vcf.gz.tbi")
-GOLD = Path("/gold/final.vcf.gz")
+GOLD = Path("/tests/gold/final.vcf.gz")
 TARGETS = Path("/app/data/targets.bed")
 
 

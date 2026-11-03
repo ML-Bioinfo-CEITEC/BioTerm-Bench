@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/de_hits.tsv")
-GOLD = Path("/gold/de_hits.tsv")
+GOLD = Path("/tests/gold/de_hits.tsv")
 
 HEADER = ["gene_id", "gene_name", "baseMean", "log2FoldChange", "padj"]
 TOL_BASE = 1e-3

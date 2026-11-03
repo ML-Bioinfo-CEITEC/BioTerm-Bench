@@ -7,9 +7,9 @@ import sys
 from pathlib import Path
 
 SUMMARY_OUT = Path("/app/output/summary.json")
-SUMMARY_GOLD = Path("/gold/summary.json")
+SUMMARY_GOLD = Path("/tests/gold/summary.json")
 ORPHAN_OUT = Path("/app/output/orphans.tsv")
-ORPHAN_GOLD = Path("/gold/orphans.tsv")
+ORPHAN_GOLD = Path("/tests/gold/orphans.tsv")
 REQUIRED = {
     "adapter_pairs",
     "adapter_pairs_both_mates",

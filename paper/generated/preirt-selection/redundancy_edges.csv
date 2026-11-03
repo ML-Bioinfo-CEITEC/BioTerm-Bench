@@ -1,0 +1,16 @@
+task_a,task_b,response_correlation
+bam-clipping-stats,bam-depth-histogram,0.9999999999999996
+bam-clipping-stats,bam-mark-duplicates,0.9999999999999996
+bam-depth-histogram,bam-mark-duplicates,0.9999999999999996
+canonical-kmer-counts-a,canonical-kmer-counts-d,1.0
+canonical-kmer-counts-d,taxonomy-score-lca-d,1.0
+genotype-sample-qc-a,genotype-sample-qc-c,0.9999999999999996
+genotype-sample-qc-c,pairwise-ld-r2-c,0.9999999999999996
+gtf-merged-exonic-length,gtf-merged-exonic-length-nohint,1.0
+pairwise-ld-r2-b,pairwise-ld-r2-c,0.9999999999999996
+reciprocal-interval-overlap-a,reciprocal-interval-overlap-c,0.9315516419063741
+taxonomy-score-lca-b,taxonomy-score-lca-d,1.0
+vcf-allele-frequency,vcf-leftalign-concordance,0.9370425713316363
+vcf-allele-frequency,vcf-trio-mendelian,0.9370425713316362
+vcf-leftalign-concordance,vcf-trio-mendelian,0.9999999999999998
+vcf-phase-blocks,vcf-trio-compound-het,1.0

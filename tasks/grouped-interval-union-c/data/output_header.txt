@@ -1,0 +1,2 @@
+group	input_intervals	merged_blocks	raw_length	union_length	duplicated_length
+Row order: group alphabetically.

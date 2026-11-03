@@ -1,7 +1,7 @@
 {
-  "name": "bioterm-bench-core",
-  "version": "0.1.0",
-  "description": "Terminal bioinformatics tasks for open-model tracking",
+  "name": "bioterm-bench",
+  "version": "1.0.0",
+  "description": "Fifty deterministically graded terminal bioinformatics tasks",
   "tasks_path": "tasks/",
   "author": "Vojtech Bystry, Petr Simecek",
   "license": "Apache-2.0"

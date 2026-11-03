@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/codon_counts.tsv")
-GOLD = Path("/gold/codon_counts.tsv")
+GOLD = Path("/tests/gold/codon_counts.tsv")
 
 
 def fail(msg: str) -> None:

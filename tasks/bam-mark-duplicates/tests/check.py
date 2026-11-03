@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/counts.json")
-GOLD = Path("/gold/counts.json")
+GOLD = Path("/tests/gold/counts.json")
 REQUIRED = {"duplicates", "primary_total"}
 
 

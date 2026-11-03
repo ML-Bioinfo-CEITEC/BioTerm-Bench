@@ -9,7 +9,7 @@ from pathlib import Path
 
 OUT = Path("/app/output/norm.vcf.gz")
 TBI = Path("/app/output/norm.vcf.gz.tbi")
-GOLD = Path("/gold/norm.vcf.gz")
+GOLD = Path("/tests/gold/norm.vcf.gz")
 
 
 def fail(msg: str) -> None:

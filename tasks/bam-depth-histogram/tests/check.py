@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/coverage.json")
-GOLD = Path("/gold/coverage.json")
+GOLD = Path("/tests/gold/coverage.json")
 
 EXACT_INT_KEYS = ("ref_length", "median_depth", "max_depth")
 FLOAT_KEYS = ("mean_depth", "fraction_covered")

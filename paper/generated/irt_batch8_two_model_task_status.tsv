@@ -1,0 +1,53 @@
+task	family	level	gpt_oss_120b	qwen3_8_27b	provisional_status
+gc-window-skew-a	gc-window-skew	1	0	1	USABLE: discriminates
+gc-window-skew-b	gc-window-skew	2	1	1	CEILING: both pass
+gc-window-skew-c	gc-window-skew	3	0	1	USABLE: discriminates
+gc-window-skew-d	gc-window-skew	4	0	1	USABLE: discriminates
+canonical-kmer-counts-a	canonical-kmer-counts	1	1	1	CEILING: both pass
+canonical-kmer-counts-b	canonical-kmer-counts	2	0	1	USABLE: discriminates
+canonical-kmer-counts-c	canonical-kmer-counts	3	1	1	CEILING: both pass
+canonical-kmer-counts-d	canonical-kmer-counts	4	0	1	USABLE: discriminates
+pwm-bidirectional-scan-a	pwm-bidirectional-scan	1	1	1	CEILING: both pass
+pwm-bidirectional-scan-b	pwm-bidirectional-scan	2	1	1	CEILING: both pass
+pwm-bidirectional-scan-c	pwm-bidirectional-scan	3	0	1	USABLE: discriminates
+pwm-bidirectional-scan-d	pwm-bidirectional-scan	4	0	1	USABLE: discriminates
+grouped-interval-union-a	grouped-interval-union	1	0	1	USABLE: discriminates
+grouped-interval-union-b	grouped-interval-union	2	0	0	FLOOR: both fail
+grouped-interval-union-c	grouped-interval-union	3	0	1	USABLE: discriminates
+grouped-interval-union-d	grouped-interval-union	4	0	0	FLOOR: both fail
+reciprocal-interval-overlap-a	reciprocal-interval-overlap	1	0	1	USABLE: discriminates
+reciprocal-interval-overlap-b	reciprocal-interval-overlap	2	0	1	USABLE: discriminates
+reciprocal-interval-overlap-c	reciprocal-interval-overlap	3	0	1	USABLE: discriminates
+reciprocal-interval-overlap-d	reciprocal-interval-overlap	4	0	1	USABLE: discriminates
+cigar-consumption-ledger-a	cigar-consumption-ledger	1	0	1	USABLE: discriminates
+cigar-consumption-ledger-b	cigar-consumption-ledger	2	0	1	USABLE: discriminates
+cigar-consumption-ledger-c	cigar-consumption-ledger	3	0	1	USABLE: discriminates
+cigar-consumption-ledger-d	cigar-consumption-ledger	4	1	1	CEILING: both pass
+pileup-threshold-consensus-a	pileup-threshold-consensus	1	0	0	INVALID CONTRACT
+pileup-threshold-consensus-b	pileup-threshold-consensus	2	0	0	INVALID CONTRACT
+pileup-threshold-consensus-c	pileup-threshold-consensus	3	0	0	INVALID CONTRACT
+pileup-threshold-consensus-d	pileup-threshold-consensus	4	0	0	INVALID CONTRACT
+genotype-sample-qc-a	genotype-sample-qc	1	0	1	USABLE: discriminates
+genotype-sample-qc-b	genotype-sample-qc	2	0	1	USABLE: discriminates
+genotype-sample-qc-c	genotype-sample-qc	3	1	1	CEILING: both pass
+genotype-sample-qc-d	genotype-sample-qc	4	0	1	USABLE: discriminates
+pairwise-ld-r2-a	pairwise-ld-r2	1	0	1	USABLE: discriminates
+pairwise-ld-r2-b	pairwise-ld-r2	2	0	1	USABLE: discriminates
+pairwise-ld-r2-c	pairwise-ld-r2	3	0	1	USABLE: discriminates
+pairwise-ld-r2-d	pairwise-ld-r2	4	1	1	CEILING: both pass
+hwe-exact-test-a	hwe-exact-test	1	0	1	USABLE: discriminates
+hwe-exact-test-b	hwe-exact-test	2	0	1	USABLE: discriminates
+hwe-exact-test-c	hwe-exact-test	3	0	0	FLOOR: both fail
+hwe-exact-test-d	hwe-exact-test	4	0	1	USABLE: discriminates
+deseq-median-ratio-a	deseq-median-ratio	1	0	0	INVALID CONTRACT
+deseq-median-ratio-b	deseq-median-ratio	2	0	0	INVALID CONTRACT
+deseq-median-ratio-c	deseq-median-ratio	3	0	0	INVALID CONTRACT
+deseq-median-ratio-d	deseq-median-ratio	4	0	0	INVALID CONTRACT
+taxonomy-score-lca-a	taxonomy-score-lca	1	1	1	CEILING: both pass
+taxonomy-score-lca-b	taxonomy-score-lca	2	1	1	CEILING: both pass
+taxonomy-score-lca-c	taxonomy-score-lca	3	1	1	CEILING: both pass
+taxonomy-score-lca-d	taxonomy-score-lca	4	1	1	CEILING: both pass
+umi-directed-adjacency-a	umi-directed-adjacency	1	0	0	INVALID CONTRACT
+umi-directed-adjacency-b	umi-directed-adjacency	2	0	0	INVALID CONTRACT
+umi-directed-adjacency-c	umi-directed-adjacency	3	0	0	INVALID CONTRACT
+umi-directed-adjacency-d	umi-directed-adjacency	4	0	0	INVALID CONTRACT

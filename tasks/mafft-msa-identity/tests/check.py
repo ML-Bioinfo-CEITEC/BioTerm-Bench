@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/identity.tsv")
-GOLD = Path("/gold/identity.tsv")
+GOLD = Path("/tests/gold/identity.tsv")
 TOL = 5e-3     # 0.5% abs tolerance on identity
 
 

@@ -1,0 +1,7 @@
+chrom	side	position	n_reads
+chr1	L	50000	7
+chr1	R	50487	3
+chr1	L	119999	6
+chr1	R	120482	3
+chr1	L	199999	4
+chr1	R	200479	4

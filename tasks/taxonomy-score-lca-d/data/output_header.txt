@@ -1,0 +1,2 @@
+query	best_score	retained_hits	lca_taxon	lca_rank
+Row order: input query order.

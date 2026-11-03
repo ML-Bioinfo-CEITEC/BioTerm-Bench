@@ -1,0 +1,4 @@
+chrom_a	chrom_b	orientation	n_pairs	start_a	end_a
+A1	B1	-	3	53	57
+A2	B3	+	3	2	4
+A2	B2	+	4	48	53

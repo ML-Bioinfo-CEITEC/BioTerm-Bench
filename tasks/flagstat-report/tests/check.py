@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/metrics.tsv")
-GOLD = Path("/gold/metrics.tsv")
+GOLD = Path("/tests/gold/metrics.tsv")
 
 REQUIRED = {"total_reads", "mapped", "properly_paired", "duplicates", "supplementary"}
 

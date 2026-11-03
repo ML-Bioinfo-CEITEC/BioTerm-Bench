@@ -8,7 +8,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/qc_summary.json")
-GOLD = Path("/gold/qc_summary.json")
+GOLD = Path("/tests/gold/qc_summary.json")
 
 INT_KEYS = ("total_sequences", "sequence_length_min", "sequence_length_max", "gc_content")
 FLOAT_KEYS = ("per_base_q20_frac",)

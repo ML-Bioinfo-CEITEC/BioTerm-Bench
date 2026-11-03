@@ -1,0 +1,2 @@
+seq_id	start_1based	end_1based	gc_fraction	gc_skew
+Row order: input sequence order, then increasing window start.

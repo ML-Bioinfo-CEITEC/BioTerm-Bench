@@ -3,19 +3,14 @@
 A laptop-runnable, deterministically-graded, Harbor-compatible benchmark
 of terminal bioinformatics tasks for tracking open-model progress.
 
-> **Status — V2 hard-subset frozen.** V1.1 ships the three Docker
-> images (`bioterm-base:v1`, `bioterm-variant:v1`,
-> `bioterm-rnaseq:v1`), the validation / build / oracle-run tooling,
-> CI, authoring docs, and the `scripts/new_task.sh` scaffolder. After
-> the first full Harbor k=3 sweep (5 models × 30 tasks) we removed 13
-> tasks that every tested model always solved, then ran two rounds of
-> k=1 × 4-model difficulty probes on 15 new candidate tasks and kept
-> 8 of them. The stable core has **25 tasks** spread across 6 categories.
-> V2 adds 12 harder, multi-stage candidates and now freezes an 8-task
-> hard subset after a preregistered weak/middle/strong model probe. A separate nine-model
-> e-INFRA panel and a Tectonic preprint are in progress.
-> Harbor runs and rationale live in [docs/status.md](docs/status.md)
-> and [docs/harbor-runs.md](docs/harbor-runs.md).
+> **Status — BioTerm-Bench v1.0 task set frozen.** The release benchmark is
+> one unified set of **50 tasks** across six capability domains. The immutable
+> receipt is [`configs/benchmark_v1.0_manifest.json`](configs/benchmark_v1.0_manifest.json),
+> the public/source mapping is
+> [`configs/benchmark_v1.0_tasks.tsv`](configs/benchmark_v1.0_tasks.tsv), and
+> [`notes/v1.0-freeze.md`](notes/v1.0-freeze.md) records the decision and next
+> release steps. Earlier core-25, hard-8, and candidate-wave material below is
+> retained as development provenance and will be rewritten for the v1.0 paper.
 
 ## What BioTerm-Bench is
 
@@ -25,8 +20,9 @@ synthesis) that a coding agent must complete in a terminal environment.
 Grading is **deterministic** — bcftools isec, set comparison, numeric
 tolerance, or exact file diff. No LLM judges.
 
-The 25 tasks currently shipping (see
-[docs/status.md](docs/status.md) for the full roadmap):
+The following table is the historical core-25 used during development, not the
+v1.0 release manifest. See [`configs/benchmark_v1.0_tasks.tsv`](configs/benchmark_v1.0_tasks.tsv)
+for the 50 tasks currently shipping.
 
 | task                           | category  | grader    | image           |
 | ------------------------------ | --------- | --------- | --------------- |
@@ -128,6 +124,22 @@ bioterm-bench/
 
 ## Quickstart
 
+### Set up the local Python environment
+
+Use uv to install the project and its development, analysis, plotting, and
+data-generation dependencies into `.venv`:
+
+```bash
+uv sync --locked --extra dev
+uv run --locked --extra dev pytest -q
+uv run --locked --extra dev python scripts/validate_task.py
+```
+
+Run Python scripts through `uv run --locked --extra dev` to use this environment.
+Bioinformatics command-line tools and R packages are supplied by the task Docker
+images built below. Harbor is installed separately as shown under
+"Running the benchmark".
+
 ### Build the base image (local dev, single-arch)
 
 ```bash
@@ -178,10 +190,14 @@ export OPENAI_API_KEY=sk-...
 harbor run --path tasks/gtf-to-bed \
     --agent terminus-2 -m openai/gpt-5.4-mini --no-delete
 
-# full current pack run
-harbor run --path tasks/ \
-    --agent terminus-2 -m openai/gpt-5.4-mini \
-    --no-delete -n 4 -k 1
+# full v1.0 run (the repository also contains non-release candidates)
+benchmark_args=()
+while IFS= read -r task; do
+  benchmark_args+=(--include-task-name "$task")
+done < configs/benchmark_tasks_50.txt
+harbor run --path tasks/ "${benchmark_args[@]}" \
+  --agent terminus-2 -m openai/gpt-5.4-mini \
+  --no-delete -n 4 -k 1
 ```
 
 `--no-delete` is **required** when running with the prebuilt images in

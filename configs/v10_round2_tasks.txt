@@ -1,0 +1,9 @@
+kmer-debruijn-unitigs
+phylo-neighbor-joining
+vcf-remap-verify
+align-affine-gap-score
+hmm-viterbi-segments
+counts-fisher-bh-fdr
+interval-weighted-scheduling
+phylo-fitch-parsimony
+popgen-haplotype-em

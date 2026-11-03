@@ -1,0 +1,142 @@
+{
+  "audit_rows": 115,
+  "deployments": [
+    "or-gptoss-20b",
+    "or-qwen36-35b-a3b",
+    "or-gemma4-26b",
+    "or-nemotron35",
+    "or-qwen38-27b",
+    "or-gpt56-luna",
+    "or-gptoss-120b",
+    "ei-gptoss-120b",
+    "ei-qwen35-int4",
+    "ei-deepseek-flash"
+  ],
+  "followup_assignments": 123,
+  "included_tasks": 113,
+  "initial_complete_cells": 1130,
+  "jobs": {
+    "followup:ei-deepseek-flash": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-ei-deepseek-flash",
+      "scored": 18,
+      "trials": 18
+    },
+    "followup:ei-gptoss-120b": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-ei-gptoss-120b",
+      "scored": 66,
+      "trials": 66
+    },
+    "followup:ei-qwen35-int4": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-ei-qwen35-int4",
+      "scored": 10,
+      "trials": 10
+    },
+    "followup:or-gemma4-26b": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-or-gemma4-26b",
+      "scored": 10,
+      "trials": 10
+    },
+    "followup:or-gpt56-luna": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-or-gpt56-luna",
+      "scored": 18,
+      "trials": 18
+    },
+    "followup:or-gptoss-120b": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-or-gptoss-120b",
+      "scored": 66,
+      "trials": 66
+    },
+    "followup:or-gptoss-20b": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-or-gptoss-20b",
+      "scored": 66,
+      "trials": 66
+    },
+    "followup:or-nemotron35": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-or-nemotron35",
+      "scored": 10,
+      "trials": 10
+    },
+    "followup:or-qwen36-35b-a3b": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-or-qwen36-35b-a3b",
+      "scored": 10,
+      "trials": 10
+    },
+    "followup:or-qwen38-27b": {
+      "errors": 0,
+      "path": "jobs/preirt-followup-or-qwen38-27b",
+      "scored": 18,
+      "trials": 18
+    },
+    "k1:ei-deepseek-flash": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-ei-deepseek-flash",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:ei-gptoss-120b": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-ei-gptoss-120b",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:ei-qwen35-int4": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-ei-qwen35-int4",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:or-gemma4-26b": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-or-gemma4-26b",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:or-gpt56-luna": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-or-gpt56-luna",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:or-gptoss-120b": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-or-gptoss-120b",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:or-gptoss-20b": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-or-gptoss-20b",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:or-nemotron35": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-or-nemotron35",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:or-qwen36-35b-a3b": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-or-qwen36-35b-a3b",
+      "scored": 113,
+      "trials": 113
+    },
+    "k1:or-qwen38-27b": {
+      "errors": 0,
+      "path": "jobs/preirt-k1-or-qwen38-27b",
+      "scored": 113,
+      "trials": 113
+    }
+  },
+  "primary_data_policy": "preirt jobs only; historical receipts are sensitivity fields",
+  "required_initial_cells": 1130
+}

@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/abundance.tsv")
-GOLD = Path("/gold/abundance.tsv")
+GOLD = Path("/tests/gold/abundance.tsv")
 
 HEADER = [
     "reference_id",

@@ -6,8 +6,8 @@ from pathlib import Path
 
 COUNTS = Path("/app/output/gene_counts.tsv")
 SUMMARY = Path("/app/output/assignment_summary.tsv")
-GOLD_COUNTS = Path("/gold/gene_counts.tsv")
-GOLD_SUMMARY = Path("/gold/assignment_summary.tsv")
+GOLD_COUNTS = Path("/tests/gold/gene_counts.tsv")
+GOLD_SUMMARY = Path("/tests/gold/assignment_summary.tsv")
 
 
 def fail(msg: str) -> None:

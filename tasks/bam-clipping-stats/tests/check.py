@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/stats.json")
-GOLD = Path("/gold/stats.json")
+GOLD = Path("/tests/gold/stats.json")
 INTS = ("n_primary_mapped", "n_with_any_clip")
 FLOATS = ("mean_total_clip", "p90_total_clip")
 REQUIRED = set(INTS) | set(FLOATS)

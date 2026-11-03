@@ -13,7 +13,7 @@ from pathlib import Path
 CRAM = Path("/app/output/reads.cram")
 CRAI = Path("/app/output/reads.cram.crai")
 REF = Path("/app/data/ref.fa")
-GOLD = Path("/gold/reads.txt")
+GOLD = Path("/tests/gold/reads.txt")
 
 
 def fail(msg: str) -> None:

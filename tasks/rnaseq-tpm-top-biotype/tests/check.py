@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/top_biotype.tsv")
-GOLD = Path("/gold/top_biotype.tsv")
+GOLD = Path("/tests/gold/top_biotype.tsv")
 TOL = 1e-3
 HEADER = "gene_id\tgene_name\tmax_tpm"
 

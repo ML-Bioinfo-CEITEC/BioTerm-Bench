@@ -1,0 +1,2 @@
+canonical_kmer	count
+Row order: decreasing count, then canonical k-mer alphabetically.

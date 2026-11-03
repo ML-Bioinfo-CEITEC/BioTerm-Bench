@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/exons.bed")
-GOLD = Path("/gold/exons.bed")
+GOLD = Path("/tests/gold/exons.bed")
 
 
 def fail(msg: str) -> None:

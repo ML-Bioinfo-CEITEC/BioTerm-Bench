@@ -1,0 +1,2 @@
+a_id	b_id	overlap_bp	a_fraction	b_fraction
+Row order: A interval ID, then B interval ID, alphabetically.

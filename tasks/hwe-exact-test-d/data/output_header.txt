@@ -1,0 +1,2 @@
+variant	hom_ref	heterozygous	hom_alt	minor_allele_count	exact_p	fails_hwe
+Row order: input variant order.

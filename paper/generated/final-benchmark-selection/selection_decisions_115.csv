@@ -1,0 +1,116 @@
+task,reason
+align-affine-gap-score,lower information/diversity priority
+bam-clipping-stats,lower information/diversity priority
+bam-depth-histogram,selected
+bam-mark-duplicates,selected
+bam-pair-orientation-stats,selected
+bam-softclip-breakpoints,selected
+blast-best-hit,selected
+canonical-kmer-counts-a,unselected A-D family sibling
+canonical-kmer-counts-b,selected
+canonical-kmer-counts-c,unselected A-D family sibling
+canonical-kmer-counts-d,unselected A-D family sibling
+cigar-consumption-ledger-a,unselected A-D family sibling
+cigar-consumption-ledger-b,unselected A-D family sibling
+cigar-consumption-ledger-c,selected
+cigar-consumption-ledger-d,unselected A-D family sibling
+counts-fisher-bh-fdr,selected
+depth-gc-bias-correction,selected
+deseq-median-ratio-a,selected
+deseq-median-ratio-b,unselected A-D family sibling
+deseq-median-ratio-c,unselected A-D family sibling
+deseq-median-ratio-d,unselected A-D family sibling
+fasta-6frame-codon-counts,selected
+fasta-longest-orf,uncertain negative
+fasta-rename-headers,lower information/diversity priority
+fastq-expected-errors,confirmed negative
+fastq-expected-errors-nohint,selected
+fastq-paired-adapter-qc,invalid task contract
+fastq-per-base-quality,lower information/diversity priority
+fastq-umi-dedup,lower information/diversity priority
+fastqc-quality-report,selected
+flagstat-report,selected
+gc-window-skew-a,unselected A-D family sibling
+gc-window-skew-b,unselected A-D family sibling
+gc-window-skew-c,selected
+gc-window-skew-d,unselected A-D family sibling
+genotype-sample-qc-a,unselected A-D family sibling
+genotype-sample-qc-b,unselected A-D family sibling
+genotype-sample-qc-c,unselected A-D family sibling
+genotype-sample-qc-d,selected
+grouped-interval-union-a,unselected A-D family sibling
+grouped-interval-union-b,unselected A-D family sibling
+grouped-interval-union-c,selected
+grouped-interval-union-d,unselected A-D family sibling
+gtf-cds-integrity,selected
+gtf-longest-transcript-cds,selected
+gtf-merged-exonic-length,lower-priority family/duplicate representative
+gtf-merged-exonic-length-nohint,lower-priority family/duplicate representative
+gtf-reconstruct-translate,unresolved negative k1 diagnostic
+gtf-to-bed,selected
+gtf-utr-lengths,selected
+hmm-viterbi-segments,selected
+hwe-exact-test-a,unselected A-D family sibling
+hwe-exact-test-b,unselected A-D family sibling
+hwe-exact-test-c,unselected A-D family sibling
+hwe-exact-test-d,selected
+insert-size-stats,selected
+interval-weighted-scheduling,lower information/diversity priority
+kmer-contamination-mixture,lower information/diversity priority
+kmer-debruijn-unitigs,selected
+kmer-index-similar-pairs,clear ceiling
+kmer-jaccard-matrix,lower information/diversity priority
+mafft-msa-identity,lower information/diversity priority
+metagenome-ambiguous-abundance,clear ceiling
+mini-align-call-filter,invalid task contract
+ortholog-rbh-clusters,selected
+ortholog-synteny-blocks,selected
+pairwise-ld-r2-a,unselected A-D family sibling
+pairwise-ld-r2-b,selected
+pairwise-ld-r2-c,unselected A-D family sibling
+pairwise-ld-r2-d,unselected A-D family sibling
+phylo-fitch-parsimony,selected
+phylo-neighbor-joining,selected
+pileup-threshold-consensus-a,unselected A-D family sibling
+pileup-threshold-consensus-b,unselected A-D family sibling
+pileup-threshold-consensus-c,unselected A-D family sibling
+pileup-threshold-consensus-d,selected
+popgen-haplotype-em,selected
+pwm-bidirectional-scan-a,unselected A-D family sibling
+pwm-bidirectional-scan-b,unselected A-D family sibling
+pwm-bidirectional-scan-c,unselected A-D family sibling
+pwm-bidirectional-scan-d,selected
+reciprocal-interval-overlap-a,unselected A-D family sibling
+reciprocal-interval-overlap-b,unselected A-D family sibling
+reciprocal-interval-overlap-c,unselected A-D family sibling
+reciprocal-interval-overlap-d,selected
+rnaseq-deseq2-contrast,selected
+rnaseq-featurecounts-matrix,selected
+rnaseq-sample-qc-report,selected
+rnaseq-tpm-rpkm-divergence,selected
+rnaseq-tpm-rpkm-divergence-nohint,unresolved negative k1 diagnostic
+rnaseq-tpm-top-biotype,selected
+sam-to-cram-roundtrip,clear ceiling
+seqkit-fasta-stats,selected
+taxonomy-score-lca-a,unselected A-D family sibling
+taxonomy-score-lca-b,unselected A-D family sibling
+taxonomy-score-lca-c,unselected A-D family sibling
+taxonomy-score-lca-d,selected
+tpm-normalize,selected
+umi-directed-adjacency-a,confirmed floor
+umi-directed-adjacency-b,confirmed floor
+umi-directed-adjacency-c,confirmed floor
+umi-directed-adjacency-d,confirmed floor
+vcf-allele-frequency,lower information/diversity priority
+vcf-denovo-strict,selected
+vcf-diploid-consensus,selected
+vcf-leftalign-concordance,lower information/diversity priority
+vcf-multisample-qc,selected
+vcf-normalize,clear ceiling
+vcf-phase-blocks,selected
+vcf-region-variant-density,selected
+vcf-remap-verify,lower information/diversity priority
+vcf-split-by-type,uncertain negative
+vcf-to-tsv,selected
+vcf-trio-compound-het,selected
+vcf-trio-mendelian,selected

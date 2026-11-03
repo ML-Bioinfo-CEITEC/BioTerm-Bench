@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/mixture.tsv")
-GOLD = Path("/gold/mixture.tsv")
+GOLD = Path("/tests/gold/mixture.tsv")
 ORDER = ["alpha", "beta", "gamma", "delta", "ambiguous", "unassigned"]
 
 

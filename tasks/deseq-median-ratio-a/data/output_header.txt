@@ -1,0 +1,2 @@
+sample	genes_used	size_factor	normalized_sum	normalized_median
+Row order: input sample order.

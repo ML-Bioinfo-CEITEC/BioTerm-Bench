@@ -1,0 +1,3 @@
+# Fundamentally underspecified; retained in the 115-row audit but not screened.
+fastq-paired-adapter-qc
+mini-align-call-filter

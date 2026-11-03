@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/per_base_quality.tsv")
-GOLD = Path("/gold/per_base_quality.tsv")
+GOLD = Path("/tests/gold/per_base_quality.tsv")
 TOL = 1e-3
 HEADER = "pos\tn\tmean_q\tmedian_q"
 

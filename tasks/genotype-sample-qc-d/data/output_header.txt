@@ -1,0 +1,2 @@
+sample	called	missing	call_rate	heterozygous	heterozygosity	alt_alleles
+Row order: input sample order.

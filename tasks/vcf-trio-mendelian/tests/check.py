@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/summary.json")
-GOLD = Path("/gold/summary.json")
+GOLD = Path("/tests/gold/summary.json")
 INTS = ("n_sites", "n_violations")
 FLOATS = ("violation_rate",)
 REQUIRED = set(INTS) | set(FLOATS)

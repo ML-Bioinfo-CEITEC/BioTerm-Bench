@@ -1,0 +1,2 @@
+contig	position	reference	depth	consensus	top_fraction	differs_from_reference
+Row order: input site order.

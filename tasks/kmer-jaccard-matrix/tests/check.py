@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/jaccard.tsv")
-GOLD = Path("/gold/jaccard.tsv")
+GOLD = Path("/tests/gold/jaccard.tsv")
 TOL = 1e-5
 
 

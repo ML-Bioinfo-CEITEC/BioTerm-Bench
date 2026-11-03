@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/clusters.tsv")
-GOLD = Path("/gold/clusters.tsv")
+GOLD = Path("/tests/gold/clusters.tsv")
 
 
 def fail(msg: str) -> None:

@@ -1,0 +1,53 @@
+task	family	level	category	operation	output_header
+gc-window-skew-a	gc-window-skew	1	qc	gc_windows	seq_id	start_1based	end_1based	gc_fraction	gc_skew
+gc-window-skew-b	gc-window-skew	2	qc	gc_windows	seq_id	start_1based	end_1based	gc_fraction	gc_skew
+gc-window-skew-c	gc-window-skew	3	qc	gc_windows	seq_id	start_1based	end_1based	gc_fraction	gc_skew
+gc-window-skew-d	gc-window-skew	4	qc	gc_windows	seq_id	start_1based	end_1based	gc_fraction	gc_skew
+canonical-kmer-counts-a	canonical-kmer-counts	1	search	canonical_kmers	canonical_kmer	count
+canonical-kmer-counts-b	canonical-kmer-counts	2	search	canonical_kmers	canonical_kmer	count
+canonical-kmer-counts-c	canonical-kmer-counts	3	search	canonical_kmers	canonical_kmer	count
+canonical-kmer-counts-d	canonical-kmer-counts	4	search	canonical_kmers	canonical_kmer	count
+pwm-bidirectional-scan-a	pwm-bidirectional-scan	1	search	motif_pwm	seq_id	start_1based	strand	forward_sequence	log2_score
+pwm-bidirectional-scan-b	pwm-bidirectional-scan	2	search	motif_pwm	seq_id	start_1based	strand	forward_sequence	log2_score
+pwm-bidirectional-scan-c	pwm-bidirectional-scan	3	search	motif_pwm	seq_id	start_1based	strand	forward_sequence	log2_score
+pwm-bidirectional-scan-d	pwm-bidirectional-scan	4	search	motif_pwm	seq_id	start_1based	strand	forward_sequence	log2_score
+grouped-interval-union-a	grouped-interval-union	1	metadata	interval_union	group	input_intervals	merged_blocks	raw_length	union_length	duplicated_length
+grouped-interval-union-b	grouped-interval-union	2	metadata	interval_union	group	input_intervals	merged_blocks	raw_length	union_length	duplicated_length
+grouped-interval-union-c	grouped-interval-union	3	metadata	interval_union	group	input_intervals	merged_blocks	raw_length	union_length	duplicated_length
+grouped-interval-union-d	grouped-interval-union	4	metadata	interval_union	group	input_intervals	merged_blocks	raw_length	union_length	duplicated_length
+reciprocal-interval-overlap-a	reciprocal-interval-overlap	1	metadata	reciprocal_overlap	a_id	b_id	overlap_bp	a_fraction	b_fraction
+reciprocal-interval-overlap-b	reciprocal-interval-overlap	2	metadata	reciprocal_overlap	a_id	b_id	overlap_bp	a_fraction	b_fraction
+reciprocal-interval-overlap-c	reciprocal-interval-overlap	3	metadata	reciprocal_overlap	a_id	b_id	overlap_bp	a_fraction	b_fraction
+reciprocal-interval-overlap-d	reciprocal-interval-overlap	4	metadata	reciprocal_overlap	a_id	b_id	overlap_bp	a_fraction	b_fraction
+cigar-consumption-ledger-a	cigar-consumption-ledger	1	alignment	cigar_accounting	read_id	cigar	reference_span	query_consumed	aligned_bases	inserted_bases	deleted_bases	skipped_bases	clipped_bases
+cigar-consumption-ledger-b	cigar-consumption-ledger	2	alignment	cigar_accounting	read_id	cigar	reference_span	query_consumed	aligned_bases	inserted_bases	deleted_bases	skipped_bases	clipped_bases
+cigar-consumption-ledger-c	cigar-consumption-ledger	3	alignment	cigar_accounting	read_id	cigar	reference_span	query_consumed	aligned_bases	inserted_bases	deleted_bases	skipped_bases	clipped_bases
+cigar-consumption-ledger-d	cigar-consumption-ledger	4	alignment	cigar_accounting	read_id	cigar	reference_span	query_consumed	aligned_bases	inserted_bases	deleted_bases	skipped_bases	clipped_bases
+pileup-threshold-consensus-a	pileup-threshold-consensus	1	alignment	pileup_consensus	contig	position	reference	depth	consensus	top_fraction	differs_from_reference
+pileup-threshold-consensus-b	pileup-threshold-consensus	2	alignment	pileup_consensus	contig	position	reference	depth	consensus	top_fraction	differs_from_reference
+pileup-threshold-consensus-c	pileup-threshold-consensus	3	alignment	pileup_consensus	contig	position	reference	depth	consensus	top_fraction	differs_from_reference
+pileup-threshold-consensus-d	pileup-threshold-consensus	4	alignment	pileup_consensus	contig	position	reference	depth	consensus	top_fraction	differs_from_reference
+genotype-sample-qc-a	genotype-sample-qc	1	variant	genotype_qc	sample	called	missing	call_rate	heterozygous	heterozygosity	alt_alleles
+genotype-sample-qc-b	genotype-sample-qc	2	variant	genotype_qc	sample	called	missing	call_rate	heterozygous	heterozygosity	alt_alleles
+genotype-sample-qc-c	genotype-sample-qc	3	variant	genotype_qc	sample	called	missing	call_rate	heterozygous	heterozygosity	alt_alleles
+genotype-sample-qc-d	genotype-sample-qc	4	variant	genotype_qc	sample	called	missing	call_rate	heterozygous	heterozygosity	alt_alleles
+pairwise-ld-r2-a	pairwise-ld-r2	1	variant	ld_r2	variant_a	variant_b	paired_samples	r_squared
+pairwise-ld-r2-b	pairwise-ld-r2	2	variant	ld_r2	variant_a	variant_b	paired_samples	r_squared
+pairwise-ld-r2-c	pairwise-ld-r2	3	variant	ld_r2	variant_a	variant_b	paired_samples	r_squared
+pairwise-ld-r2-d	pairwise-ld-r2	4	variant	ld_r2	variant_a	variant_b	paired_samples	r_squared
+hwe-exact-test-a	hwe-exact-test	1	variant	hwe_exact	variant	hom_ref	heterozygous	hom_alt	minor_allele_count	exact_p	fails_hwe
+hwe-exact-test-b	hwe-exact-test	2	variant	hwe_exact	variant	hom_ref	heterozygous	hom_alt	minor_allele_count	exact_p	fails_hwe
+hwe-exact-test-c	hwe-exact-test	3	variant	hwe_exact	variant	hom_ref	heterozygous	hom_alt	minor_allele_count	exact_p	fails_hwe
+hwe-exact-test-d	hwe-exact-test	4	variant	hwe_exact	variant	hom_ref	heterozygous	hom_alt	minor_allele_count	exact_p	fails_hwe
+deseq-median-ratio-a	deseq-median-ratio	1	rnaseq	deseq_size_factors	sample	genes_used	size_factor	normalized_sum	normalized_median
+deseq-median-ratio-b	deseq-median-ratio	2	rnaseq	deseq_size_factors	sample	genes_used	size_factor	normalized_sum	normalized_median
+deseq-median-ratio-c	deseq-median-ratio	3	rnaseq	deseq_size_factors	sample	genes_used	size_factor	normalized_sum	normalized_median
+deseq-median-ratio-d	deseq-median-ratio	4	rnaseq	deseq_size_factors	sample	genes_used	size_factor	normalized_sum	normalized_median
+taxonomy-score-lca-a	taxonomy-score-lca	1	search	taxonomy_lca	query	best_score	retained_hits	lca_taxon	lca_rank
+taxonomy-score-lca-b	taxonomy-score-lca	2	search	taxonomy_lca	query	best_score	retained_hits	lca_taxon	lca_rank
+taxonomy-score-lca-c	taxonomy-score-lca	3	search	taxonomy_lca	query	best_score	retained_hits	lca_taxon	lca_rank
+taxonomy-score-lca-d	taxonomy-score-lca	4	search	taxonomy_lca	query	best_score	retained_hits	lca_taxon	lca_rank
+umi-directed-adjacency-a	umi-directed-adjacency	1	qc	umi_adjacency	gene	representative_umi	read_count	raw_umis	members
+umi-directed-adjacency-b	umi-directed-adjacency	2	qc	umi_adjacency	gene	representative_umi	read_count	raw_umis	members
+umi-directed-adjacency-c	umi-directed-adjacency	3	qc	umi_adjacency	gene	representative_umi	read_count	raw_umis	members
+umi-directed-adjacency-d	umi-directed-adjacency	4	qc	umi_adjacency	gene	representative_umi	read_count	raw_umis	members

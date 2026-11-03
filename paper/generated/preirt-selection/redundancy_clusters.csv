@@ -1,0 +1,8 @@
+cluster,size,tasks
+1,3,bam-clipping-stats;bam-depth-histogram;bam-mark-duplicates
+2,4,canonical-kmer-counts-a;canonical-kmer-counts-d;taxonomy-score-lca-b;taxonomy-score-lca-d
+3,4,genotype-sample-qc-a;genotype-sample-qc-c;pairwise-ld-r2-b;pairwise-ld-r2-c
+4,2,gtf-merged-exonic-length;gtf-merged-exonic-length-nohint
+5,2,reciprocal-interval-overlap-a;reciprocal-interval-overlap-c
+6,3,vcf-allele-frequency;vcf-leftalign-concordance;vcf-trio-mendelian
+7,2,vcf-phase-blocks;vcf-trio-compound-het

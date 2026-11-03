@@ -1,0 +1,7 @@
+bam-pair-orientation-stats
+gtf-utr-lengths
+vcf-denovo-strict
+vcf-phase-blocks
+fastq-umi-dedup
+ortholog-synteny-blocks
+bam-softclip-breakpoints

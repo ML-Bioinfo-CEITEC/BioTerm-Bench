@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/compound_hets.tsv")
-GOLD = Path("/gold/compound_hets.tsv")
+GOLD = Path("/tests/gold/compound_hets.tsv")
 HEADER = "gene\tn_paternal\tn_maternal\tfirst_paternal_pos\tfirst_maternal_pos"
 
 

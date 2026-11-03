@@ -1,0 +1,21 @@
+version = "1.0"
+
+[metadata]
+author_name  = "Petr Simecek"
+author_email = "simecek@mail.muni.cz"
+difficulty   = "hard"
+category     = "rnaseq"
+tags         = ["tpm", "rpkm", "normalisation", "ranking"]
+
+[verifier]
+timeout_sec = 120.0
+
+[agent]
+timeout_sec = 1200.0
+
+[environment]
+build_timeout_sec = 600.0
+docker_image      = "bioterm-base:v1"
+cpus              = 2
+memory            = "4G"
+storage           = "5G"

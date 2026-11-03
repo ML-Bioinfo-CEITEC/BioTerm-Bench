@@ -1,0 +1,6 @@
+gtf-merged-exonic-length
+gtf-merged-exonic-length-nohint
+fastq-expected-errors
+fastq-expected-errors-nohint
+rnaseq-tpm-rpkm-divergence
+rnaseq-tpm-rpkm-divergence-nohint

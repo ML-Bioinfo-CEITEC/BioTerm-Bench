@@ -1,0 +1,71 @@
+{
+  "benchmark": "BioTerm-Bench",
+  "category_counts": {
+    "alignment": 8,
+    "metadata": 8,
+    "qc": 6,
+    "rnaseq": 8,
+    "search": 10,
+    "variant": 10
+  },
+  "frozen_at": "2026-08-27T15:16:06.805165+00:00",
+  "public_task_ids": "canonical IDs omit internal A-D/nohint suffixes",
+  "receipt_corrections": [
+    {
+      "date": "2026-11-03T14:56:26+00:00",
+      "previous_task_set_digest": "f505c2cbd215db7907677e76549ddbac4a50d6980c003c2bcd802db779ded376",
+      "reason": "The original receipt hashed __pycache__/*.pyc bytecode left by local grader runs. Git ignores those files, so these checksums could not be reproduced from a clean checkout. Checksums now cover task files only. Every task file is byte-identical to the frozen set; v1 panel runs recorded under the previous digest evaluated exactly these tasks.",
+      "task_content_changed": false,
+      "task_set_digest": "d8baee3f4e29c23d67a89fc6970df9361f5fedd5e88acfd69eb97db83296705f",
+      "tasks_with_corrected_checksum": [
+        "bam-depth-histogram",
+        "bam-mark-duplicates",
+        "blast-best-hit",
+        "fasta-6frame-codon-counts",
+        "fastqc-quality-report",
+        "flagstat-report",
+        "gtf-longest-transcript-cds",
+        "gtf-to-bed",
+        "insert-size-stats",
+        "ortholog-rbh-clusters",
+        "rnaseq-deseq2-contrast",
+        "rnaseq-featurecounts-matrix",
+        "rnaseq-tpm-top-biotype",
+        "seqkit-fasta-stats",
+        "tpm-normalize",
+        "vcf-diploid-consensus",
+        "vcf-multisample-qc",
+        "vcf-region-variant-density",
+        "vcf-to-tsv",
+        "vcf-trio-compound-het",
+        "vcf-trio-mendelian"
+      ]
+    }
+  ],
+  "reference_protocol": {
+    "agent": "terminus-2",
+    "grader": "deterministic task verifier",
+    "harbor_version_at_freeze": "0.4.0",
+    "primary_metric": "single-attempt mean reward"
+  },
+  "selection_artifacts": {
+    "configs/benchmark_tasks_50.txt": "bd1563343f1db28611e9bf9b69cea3ad7ae985bf3e22ddf3a0e14641650360dd",
+    "paper/generated/final-benchmark-selection/README.md": "840beba2ab71d2dbf51db0ea4a5675e10b543083423a1c202d3aa463a2ab8a60",
+    "paper/generated/final-benchmark-selection/all_item_irt.csv": "e6c25ee92acecb93897a23bb8d9d232a620c516925f3218c10d5507e77932618",
+    "paper/generated/final-benchmark-selection/selected_tasks_50.csv": "0a4a5060cdd7ec6d07619b5c2b68d066795047dc32bdcb88c696bd4c14865a52",
+    "paper/generated/final-benchmark-selection/selection_decisions_115.csv": "46f905aaadfe4ecb52c08bc6c52ce802034042148dac361c906a01e130e13bc5",
+    "paper/generated/final-benchmark-selection/selection_summary.json": "c13323993b1bfa8266913f6dc2c36dad8389b333e5723ded32a320d7838c3d31",
+    "scripts/select_final_benchmark.py": "6df41666d75269db98cce3cc14345ae2f610bff3d4d7aa0e9c2023cb8df8bf95"
+  },
+  "selection_method": "ridge-regularized Rasch/1PL on the complete k1 matrix, followed by psychometric and diversity constraints",
+  "source_task_list": "configs/benchmark_tasks_50.txt",
+  "status": "frozen",
+  "task_count": 50,
+  "task_images": {
+    "bioterm-base:v1": "sha256:1fbe12243fad9ef648aeb398b0146ef189d6751f0736543eed0fcbd5c13ed017",
+    "bioterm-rnaseq:v1": "sha256:5295f9369cbebd61a28af61c211ea6719e70dc82407d0aa58301f9527ac76b5c"
+  },
+  "task_set_digest": "d8baee3f4e29c23d67a89fc6970df9361f5fedd5e88acfd69eb97db83296705f",
+  "task_table": "configs/benchmark_v1.0_tasks.tsv",
+  "version": "1.0.0"
+}

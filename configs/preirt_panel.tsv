@@ -1,0 +1,11 @@
+deployment	provider	model_id	display_name	bridge_group	scheduling_tier
+or-gptoss-20b	openrouter	openrouter/openai/gpt-oss-20b	GPT-OSS-20B		1
+or-qwen36-35b-a3b	openrouter	openrouter/qwen/qwen3.6-35b-a3b	Qwen3.6 35B-A3B		2
+or-gemma4-26b	openrouter	openrouter/google/gemma-4-26b-a4b-it	Gemma 4 26B-A4B		4
+or-nemotron35	openrouter	openrouter/nvidia/nemotron-3.5-lightning	Nemotron 3.5 Lightning		5
+or-qwen38-27b	openrouter	openrouter/qwen/qwen3.8-27b	Qwen3.8 27B		7
+or-gpt56-luna	openrouter	openrouter/openai/gpt-5.6-luna	GPT-5.6 Luna		9
+or-gptoss-120b	openrouter	openrouter/openai/gpt-oss-120b	GPT-OSS-120B	gpt-oss-120b	3
+ei-gptoss-120b	einfra	openai/gpt-oss-120b	GPT-OSS-120B	gpt-oss-120b	3
+ei-qwen35-int4	einfra	openai/qwen3.5-int4	Qwen3.5 Int4		8
+ei-deepseek-flash	einfra	openai/deepseek-v4-flash	DeepSeek V4 Flash		10

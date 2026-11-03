@@ -1,0 +1,7 @@
+{
+  "gc_content": 38,
+  "per_base_q20_frac": 0.9090909090909091,
+  "sequence_length_max": 100,
+  "sequence_length_min": 100,
+  "total_sequences": 5000
+}

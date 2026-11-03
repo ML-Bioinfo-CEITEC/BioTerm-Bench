@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/orf.tsv")
-GOLD = Path("/gold/orf.tsv")
+GOLD = Path("/tests/gold/orf.tsv")
 HEADER = ["seq_id", "strand", "frame", "start", "end", "length"]
 
 

@@ -1,0 +1,2 @@
+variant_a	variant_b	paired_samples	r_squared
+Row order: decreasing r-squared, then variant A and variant B alphabetically.

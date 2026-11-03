@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/insert.json")
-GOLD = Path("/gold/insert.json")
+GOLD = Path("/tests/gold/insert.json")
 REQUIRED = {"mean_insert", "stdev_insert"}
 
 

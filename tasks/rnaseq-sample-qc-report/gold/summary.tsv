@@ -1,0 +1,6 @@
+metric	value
+n_samples_total	12
+n_samples_passing	10
+n_genes_total	4000
+n_genes_retained	2270
+median_library_size	65430.0

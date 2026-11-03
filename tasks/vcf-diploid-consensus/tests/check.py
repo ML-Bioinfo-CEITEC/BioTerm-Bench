@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/consensus.fa")
-GOLD = Path("/gold/consensus.fa")
+GOLD = Path("/tests/gold/consensus.fa")
 
 
 def fail(msg: str) -> None:

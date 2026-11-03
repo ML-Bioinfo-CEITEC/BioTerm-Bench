@@ -1,0 +1,42 @@
+{
+  "adaptive_followups": "used only for audit status and repeat agreement",
+  "bad_status_selected": 0,
+  "category_counts": {
+    "alignment": 8,
+    "metadata": 8,
+    "qc": 6,
+    "rnaseq": 8,
+    "search": 10,
+    "variant": 10
+  },
+  "constraints": {
+    "A-D variants": "at most one per explicit irt-family tag",
+    "category": "6-10 per main domain; at most one synthesis task if psychometrically eligible",
+    "empirical redundancy": "at most three identical k1 response signatures per category",
+    "hint variants": "at most one canonical/nohint pair"
+  },
+  "estimated_sequential_wall_seconds": 2874.6313985,
+  "irt_sensitivity": {
+    "drop_ei-gptoss-120b": 0.9356908345980224,
+    "drop_or-gptoss-120b": 0.8949565475805668,
+    "leave_one_deployment_out_rank_correlation_median": 0.95813119739564,
+    "leave_one_deployment_out_rank_correlation_min": 0.8949565475805668
+  },
+  "k1_success_distribution": {
+    "4": 3,
+    "5": 3,
+    "6": 4,
+    "7": 15,
+    "8": 19,
+    "9": 6
+  },
+  "mean_k1_pass_rate": 0.7240000000000001,
+  "median_k1_pass_rate": 0.75,
+  "method": "ridge-regularized Rasch/1PL on complete k1 matrix",
+  "near_ceiling_selected": 6,
+  "ranking_data": "113 tasks x 10 deployments, k1 only",
+  "selected_tasks": 50,
+  "source_tasks": 113,
+  "theoretical_minimum_median_k1_pass_rate": 0.75,
+  "variant_families_selected": 12
+}

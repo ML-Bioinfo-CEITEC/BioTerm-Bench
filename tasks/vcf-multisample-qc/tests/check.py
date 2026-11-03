@@ -6,8 +6,8 @@ import sys
 from pathlib import Path
 
 FILES = [
-    (Path("/app/output/sample_qc.tsv"), Path("/gold/sample_qc.tsv"), "sample\tn_sites\tn_called\tcall_rate\tn_het\thet_rate"),
-    (Path("/app/output/pair_concordance.tsv"), Path("/gold/pair_concordance.tsv"), "sample_a\tsample_b\tn_compared\tconcordance"),
+    (Path("/app/output/sample_qc.tsv"), Path("/tests/gold/sample_qc.tsv"), "sample\tn_sites\tn_called\tcall_rate\tn_het\thet_rate"),
+    (Path("/app/output/pair_concordance.tsv"), Path("/tests/gold/pair_concordance.tsv"), "sample_a\tsample_b\tn_compared\tconcordance"),
 ]
 
 

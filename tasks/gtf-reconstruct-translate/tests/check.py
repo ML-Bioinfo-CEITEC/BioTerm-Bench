@@ -7,7 +7,7 @@ import sys
 from pathlib import Path
 
 OUT = Path("/app/output/proteins.tsv")
-GOLD = Path("/gold/proteins.tsv")
+GOLD = Path("/tests/gold/proteins.tsv")
 
 
 def fail(msg: str) -> None:
