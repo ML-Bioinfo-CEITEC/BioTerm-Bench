@@ -108,7 +108,7 @@ for dir in "${task_dirs[@]}"; do
         -e NCBI_API_KEY="${NCBI_API_KEY:-}" \
         -e BIOTERM_OFFLINE="${BIOTERM_OFFLINE:-}" \
         "${image}" \
-        bash -c 'set -e; mkdir -p /logs/verifier; bash /solution/solve.sh; bash /tests/test.sh'
+        bash -c 'trap "chmod -R a+rwX /logs /app/output" EXIT; set -e; mkdir -p /logs/verifier; bash /solution/solve.sh; bash /tests/test.sh'
     rc=$?
     set -e
 
