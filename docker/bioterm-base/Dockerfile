@@ -70,7 +70,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 #   arm64 -> aarch64 / arm64
 RUN set -eux; \
     case "${TARGETARCH}" in \
-        amd64) echo "x86_64"  > /tmp/arch_gnu;  echo "linux64" > /tmp/arch_label ;; \
+        amd64) echo "x64"  > /tmp/arch_gnu;  echo "amd64" > /tmp/arch_label ;; \
         arm64) echo "aarch64" > /tmp/arch_gnu;  echo "arm64"   > /tmp/arch_label ;; \
         *) echo "unsupported TARGETARCH=${TARGETARCH}" >&2; exit 1 ;; \
     esac
@@ -125,7 +125,7 @@ RUN set -eux; \
         tar -xjf bwa-mem2-${BWA_MEM2_VERSION}_x64-linux.tar.bz2; \
         rm bwa-mem2-${BWA_MEM2_VERSION}_x64-linux.tar.bz2; \
         mv bwa-mem2-${BWA_MEM2_VERSION}_x64-linux bwa-mem2; \
-        ln -s /opt/bwa-mem2/bwa-mem2 /usr/local/bin/bwa-mem2; \
+        ln -s /opt/bwa-mem2/bwa-mem2* /usr/local/bin/; \
     else \
         echo "arm64 build: bwa-mem2 not available; classic bwa is the default aligner"; \
     fi
@@ -316,9 +316,9 @@ RUN set -eux; \
 # Keeps the DB tiny but non-trivial for blastp best-hit / homolog-set tasks.
 RUN set -eux; \
     cd /opt/references/blast_db; \
-    curl -sS -o kinome.fasta \
+    curl -fsS --retry 5 --retry-delay 15 --retry-all-errors -o kinome.fasta \
         "https://rest.uniprot.org/uniprotkb/stream?query=reviewed:true+AND+organism_id:9606+AND+keyword:KW-0418&format=fasta"; \
-    makeblastdb -in kinome.fasta -dbtype prot -out kinome -title "UniProt human kinome (Swiss-Prot)"; \
+    head -c1 kinome.fasta | grep -q ">"; makeblastdb -in kinome.fasta -dbtype prot -out kinome -title "UniProt human kinome (Swiss-Prot)"; \
     rm -f kinome.fasta
 
 ENV BLASTDB=/opt/references/blast_db
